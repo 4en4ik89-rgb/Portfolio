@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Pavel Chen</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"><style>
+/* Layout: inner pages = grey canvas with a fixed white column on the right (Tilda "Pavel Chen" portfolio); home = 50/50 split. */
+:root{
+  --bg:#EDF0F5;        /* page canvas */
+  --panel:#FFFFFF;     /* right column / cards */
+  --ink:#393B3F;       /* headings, nav */
+  --ink-2:#454545;     /* card text */
+  --muted:#8B9099;     /* captions, rules */
+  --link:#4C4CAD;      /* inline links */
+  --accent:#FF8562;    /* hover */
+  --black:#17171B;
+  --font:"Plus Jakarta Sans","GT Walsheim",Arial,sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.56;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+ul{margin:0;padding-left:20px}
+strong{font-weight:700}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- home ---------- */
+.home{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+.home__left{background:var(--bg);display:flex;align-items:center;justify-content:flex-end;padding-block:120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:48px}
+.home__right{background:var(--panel);position:relative;padding-block:40px;padding-right:max(16px,env(safe-area-inset-right,0px));padding-left:24px}
+.home__logo{display:inline-block;width:230px}
+.home__nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;text-align:right}
+.home__nav a{display:inline-flex;align-items:baseline;gap:14px;font-size:clamp(40px,5.2vw,62px);font-weight:700;line-height:1.3;color:var(--ink);transition:transform .3s cubic-bezier(.25,.1,.25,1)}
+.home__nav a:hover{transform:translateX(-10px)}
+@media (prefers-reduced-motion:reduce){.home__nav a{transition:none}.home__nav a:hover{transform:none}}
+.home__nav small{font-size:13px;font-weight:700;width:24px;text-align:left}
+.say-hello{position:absolute;right:max(48px,env(safe-area-inset-right,0px));bottom:40px;width:210px;height:210px;display:block;overflow:hidden;border-radius:50%}
+.home{overflow:hidden}
+.say-hello img{width:100%;height:100%;animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(-360deg)}}
+@media (prefers-reduced-motion:reduce){.say-hello img{animation:none}}
+@media (max-width:760px){
+  .home{grid-template-columns:1fr;min-height:0}
+  .home__right{order:-1;min-height:120px;padding-block:28px 0;padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .home__left{justify-content:flex-start;padding-block:40px 120px;padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .home__nav{text-align:left}
+  .say-hello{position:fixed;width:120px;height:120px;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px))}
+}
+
+/* ---------- inner pages ---------- */
+.shell{display:grid;grid-template-columns:minmax(0,1fr) clamp(250px,25vw,380px);min-height:100vh;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+.main{min-width:0;padding-block:48px 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:24px}
+.main__inner{max-width:1000px;margin-left:clamp(0px,8vw,160px)}
+.side{background:var(--panel);padding-block:46px 40px;padding-left:40px;padding-right:max(16px,env(safe-area-inset-right,0px))}
+.side__in{position:sticky;top:46px}
+.side__logo{display:block;width:230px;max-width:100%;margin-bottom:140px}
+.nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:24px}
+.nav a{display:flex;align-items:center;gap:16px;font-size:30px;line-height:1.25;color:var(--ink)}
+.nav small{font-size:13px;font-weight:700;width:18px;text-align:right}
+.nav a[aria-current]::before{content:"";width:50px;height:1px;background:var(--ink);order:1;margin-left:4px}
+.nav a[aria-current]::before{animation:grow .45s cubic-bezier(.65,0,.35,1) both}
+@keyframes grow{from{width:0}}
+@media (prefers-reduced-motion:reduce){.nav a[aria-current]::before{animation:none}}
+.morph{position:fixed;inset:0;z-index:40;background:var(--bg);pointer-events:none}
+.morph__white{position:absolute;top:0;bottom:0;right:0;background:var(--panel)}
+.morph__logo{position:absolute;width:230px;height:auto}
+.nav a[aria-current] span{order:2}
+@media (max-width:860px){
+  .shell{grid-template-columns:1fr}
+  .side{order:-1;padding-block:20px;padding-left:max(16px,env(safe-area-inset-left,0px))}
+  .side__in{position:static;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .side__logo{width:150px;margin:0}
+  .nav{flex-direction:row;gap:18px}
+  .nav a{font-size:18px;gap:6px}
+  .nav small{display:none}
+  .nav a[aria-current]::before{width:18px;margin:0}
+  .main{padding-block:32px 80px;padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .main__inner{margin-left:0}
+}
+
+/* ---------- projects ---------- */
+.projects{display:flex;flex-direction:column;gap:200px;padding-top:40px;width:860px;max-width:100%;margin:0 auto}
+#view-projects .main{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:24px}
+#view-projects .main__inner{margin:0 auto;max-width:860px}
+.project{position:relative;display:grid;grid-template-columns:280px 1fr;min-height:396px}
+.project__card{background:var(--panel);grid-column:1/-1;grid-row:1;width:680px;max-width:100%;min-height:396px;padding:62px 40px 40px}
+.project__card--dark{background:var(--panel)}
+/* border beam on hover: a short comet travelling the card edge at constant speed */
+.project__card{position:relative;overflow:hidden}
+.project__card::before{content:"";position:absolute;left:0;top:0;width:160px;height:1px;pointer-events:none;opacity:0;transition:opacity .8s;
+  background:linear-gradient(90deg,rgba(23,23,27,0),#17171B);box-shadow:0 0 3px rgba(23,23,27,.3);
+  offset-path:inset(0);offset-anchor:100% 50%;offset-rotate:auto;offset-distance:0%;
+  animation:beamrun 14s linear infinite;animation-play-state:paused}
+@supports not (offset-path:inset(0)){.project__card::before{offset-path:path("M0 0H680V396H0Z")}}
+.project:hover .project__card::before{opacity:1;animation-play-state:running}
+@keyframes beamrun{to{offset-distance:100%}}
+@media (prefers-reduced-motion:reduce){.project__card::before{display:none}}
+.project__logo{height:auto;margin-bottom:28px}
+.project__title{font-size:18px;line-height:28px;color:var(--ink-2);max-width:170px;margin-bottom:20px}
+.project__meta{font-size:16px;line-height:25px;color:var(--ink-2);max-width:200px}
+.project__meta a{color:var(--link);text-decoration:underline;text-underline-offset:3px;position:relative;z-index:3}
+.project__img{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:start;margin-top:76px;width:580px;max-width:100%;aspect-ratio:580/355;overflow:hidden;background:var(--bg);transition:transform .55s cubic-bezier(.65,0,.35,1)}
+.project:hover .project__img,.project:focus-within .project__img{transform:translateY(-38px)}
+@media (prefers-reduced-motion:reduce){.project__img{transition:none}.project:hover .project__img{transform:none}}
+.project__img img{width:100%;height:100%;object-fit:cover}
+.project__link{position:absolute;inset:0;z-index:2}
+@media (max-width:1180px){
+  .project:hover .project__img,.project:focus-within .project__img{transform:none}
+  .project{grid-template-columns:1fr}
+  .project__card{width:100%}
+  .project__img{grid-column:1;grid-row:2;margin:-120px 0 0 auto;width:min(580px,90%)}
+  .projects{gap:120px}
+}
+@media (max-width:600px){
+  .project__img{margin-top:-40px;width:100%}
+  .project__card{padding:36px 24px 70px;min-height:0}
+}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:280px minmax(0,1fr);gap:36px;align-items:start}
+.about__photo{width:280px;max-width:100%;aspect-ratio:4/5;object-fit:cover;background:#3b3b46;margin-top:12px}
+.about__name{font-size:28px;font-weight:700;line-height:1.5;margin:0}
+.about__role{font-size:20px;line-height:1.55;margin-bottom:26px}
+.about__text{font-size:18px;line-height:28px;max-width:583px}
+.about__text ul{margin:0 0 0;padding-left:20px}
+.about__text ul li{padding-left:0}
+.about__text>*+*{margin-top:28px}
+@media (max-width:700px){.about{grid-template-columns:1fr}.about__photo{width:220px}}
+
+/* ---------- contact ---------- */
+.contact{padding-top:200px;padding-left:clamp(0px,10vw,120px);font-size:18px;line-height:2}
+.contact dt{font-weight:300;display:inline}
+.contact dd{display:inline;margin:0}
+.contact a{text-decoration:underline;text-underline-offset:3px}
+.contact .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.contact__social{display:flex;gap:10px;margin-top:10px}
+.contact__social a{display:inline-flex;width:20px;height:20px;color:#333}
+.contact__social svg{width:20px;height:20px}
+.copy{font:500 12px/1 var(--font);border:1px solid var(--muted);background:transparent;color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer;margin-left:6px;vertical-align:middle}
+.copy:hover{border-color:var(--ink)}
+@media (max-width:860px){.contact{padding-top:60px}}
+
+/* ---------- case study (ROCKEN) ---------- */
+.case{max-width:1160px;margin:0 auto;padding-block:20px 100px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.case .back{position:fixed;top:0;left:max(16px,calc((100% - 1160px)/2));z-index:6;display:inline-flex;align-items:center;gap:14px;height:47px;padding:0 20px;background:var(--bg);font-size:22px;line-height:34px;color:var(--muted);transition:color .25s}
+.case__head{position:relative;margin:50px 0 70px}
+.case__mark{position:absolute;left:0;top:0;width:1100px;max-width:100%;opacity:.03;pointer-events:none}
+.case__logo{position:relative;display:block;width:200px;margin:0 auto;padding-top:52px;padding-bottom:52px}
+.case .back:hover{color:var(--ink)}
+.case .back svg{width:108px;height:12px;flex:none}
+.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 40px;max-width:1160px}
+.meta dt{font-weight:700;margin-bottom:10px}
+.meta dd{margin:0}
+.note{color:var(--muted);font-weight:300;margin-top:40px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:120px 60px;margin-top:90px}
+.product img{width:100%;aspect-ratio:882/541;object-fit:cover;background:#2b2d4a}
+.product h3{font-size:16px;font-weight:700;margin:20px 0 10px}
+.product .lists{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;max-width:460px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,.05);color:#000;font-size:16px;line-height:25px;padding:4px 22px 4px 14px;margin-top:20px;transition:background .5s}
+.btn:hover{background:rgba(0,0,0,.12)}
+.btn svg{width:15px;height:15px}
+.rule{border:0;border-top:1px solid rgba(139,144,153,.4);margin:120px 0 0}
+.section{padding-top:90px}
+.section__logo{display:block;width:203px;margin:0 auto 100px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.h2{font-size:25px;font-weight:700;line-height:1.56;margin:0 0 14px}
+.h3{font-size:16px;font-weight:700;margin:0 0 10px}
+.text{font-size:16px;line-height:25px}
+.text+.h3{margin-top:30px}
+.text+.text{margin-top:14px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.sub{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;padding-top:40px}
+.subnav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;position:sticky;top:60px;align-self:start}
+.subnav a{display:inline-flex;align-items:center;gap:13px;font-size:18px;line-height:28px;color:var(--ink);transition:opacity .3s}
+.subnav a:hover{opacity:.6}
+.subnav svg{width:16px;height:16px;flex:none}
+.block{padding-bottom:110px}
+.block:last-child{padding-bottom:0}
+.block>.h2{margin-bottom:36px}
+.label{font-size:16px;line-height:25px;margin:40px 0 12px}
+.label--first{margin-top:36px}
+.hint{color:var(--muted);font-weight:300;margin-top:20px}
+.fig{max-width:640px}
+.fig img{width:100%}
+.fig--wide{max-width:900px}
+.annot{position:relative;max-width:640px}
+.annot img{width:100%}
+.annot span{position:absolute;left:calc(100% + 30px);white-space:nowrap;color:var(--ink)}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;align-items:start;margin-top:10px}
+.compare .label{margin-top:0}
+.zoom{display:block;position:relative;cursor:zoom-in;background:#fff;overflow:hidden}
+.zoom img{width:100%}
+.zoom--crop{aspect-ratio:559/355}
+.zoom--crop img{height:100%;object-fit:cover;object-position:top}
+.zoom--crop.tall{aspect-ratio:559/355}
+.zoom::after{content:"zoom";position:absolute;right:10px;bottom:10px;font-size:12px;font-weight:500;background:rgba(0,0,0,.6);color:#fff;padding:3px 8px;border-radius:999px;opacity:0;transition:opacity .2s}
+.zoom:hover::after,.zoom:focus-visible::after{opacity:1}
+.video{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--black);color:#fff;aspect-ratio:559/290;text-align:center;padding:20px;transition:background .25s}
+.video:hover{background:#2a2a33}
+.video--tall{aspect-ratio:209/413}
+.video svg{width:56px;height:56px}
+.video small{opacity:.7;font-size:13px}
+.personas{display:grid;grid-template-columns:1fr 1px 1fr;gap:40px;margin-top:30px}
+.personas .vline{background:rgba(139,144,153,.4)}
+.persona__tag{width:200px;margin-bottom:30px}
+.persona__head{display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:start}
+.persona__head img{width:150px}
+.persona__name{font-size:20px;font-weight:700;line-height:1.55}
+.persona__quote{font-style:italic;margin-top:20px}
+.persona .h3{margin-top:50px}
+.persona .text+.text{margin-top:14px}
+.slider{position:relative;max-width:640px}
+.slider__track{display:flex;overflow:hidden}
+.slider__slide{flex:0 0 100%;transition:transform .4s}
+.slider__btns{display:flex;gap:8px;margin-top:12px}
+.slider__btns button{font:500 13px var(--font);border:1px solid var(--ink);background:#fff;color:var(--ink);padding:6px 14px;cursor:pointer;border-radius:999px}
+.slider__btns button:hover{background:var(--ink);color:#fff}
+.solution{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:40px;align-items:start}
+.solution img{width:176px}
+.totop{opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.totop.show{opacity:1;visibility:visible}
+.totop{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:max(24px,env(safe-area-inset-bottom,0px));width:50px;height:50px;border-radius:50%;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;z-index:5}
+.totop svg{width:24px;height:24px}
+.lightbox{position:fixed;inset:0;background:rgba(20,20,24,.92);z-index:50;display:none;overflow:auto;padding:40px 16px;cursor:zoom-out}
+.lightbox.open{display:block}
+.lightbox img{margin:0 auto;max-width:min(1200px,100%);width:auto;box-shadow:0 20px 80px rgba(0,0,0,.5)}
+.lightbox__close{position:fixed;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#000;font:700 22px/1 var(--font);cursor:pointer}
+@media (max-width:900px){
+  .meta{grid-template-columns:1fr 1fr}
+  .products,.two,.compare{grid-template-columns:1fr}
+  .sub{grid-template-columns:1fr}
+  .subnav{position:static;flex-direction:row;flex-wrap:wrap;gap:8px 20px}
+  .personas{grid-template-columns:1fr}
+  .personas .vline{height:1px}
+  .annot span{position:static;display:block;margin-top:8px}
+  .solution{grid-template-columns:1fr}
+  .products{gap:70px}
+  .rule{margin-top:70px}
+  .section{padding-top:60px}
+  .section__logo{margin-bottom:60px}
+  .block{padding-bottom:70px}
+  .case__head{margin:30px 0 48px}
+  .case__logo{padding:24px 0}
+}
+@media (max-width:520px){.meta{grid-template-columns:1fr}.persona__head{grid-template-columns:1fr}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.view[hidden]{display:none!important}</style>
+
+</head>
+<body>
+<section class="view home" id="view-home">
+  <div class="home__left">
+    <nav aria-label="Site"><ul class="home__nav">
+      <li><a href="#projects">Projects <small>01</small></a></li>
+      <li><a href="#about">About <small>02</small></a></li>
+      <li><a href="#contact">Contacts <small>03</small></a></li>
+    </ul></nav>
+  </div>
+  <div class="home__right">
+    <a class="home__logo" href="#home" aria-label="Pavel Chen, designer"><img src="assets/logo-pavelchen.png" width="230" height="57" alt="Pavel Chen — designer"></a>
+    <a class="say-hello" href="#contact" aria-label="Say hello — contacts"><img src="assets/say-hello.png" width="210" height="210" alt=""></a>
+  </div>
+</section>
+<section class="view shell" id="view-projects">
+  <main class="main"><div class="main__inner"><h1 class="sr">Projects</h1><div class="projects">
+<article class="project">
+  <div class="project__card">
+    <img class="project__logo" src="assets/rocken-logo.svg" width="200" height="23" alt="">
+    <p class="project__title">Human resources solutions</p>
+    <p class="project__meta">Product design<br>2022</p>
+  </div>
+  <div class="project__img"><img src="assets/cover-rocken.jpg" width="580" height="355" alt="ROCKEN — human resources solutions, product design case" loading="lazy"></div>
+  <a class="project__link" href="#rocken" aria-label="ROCKEN — human resources solutions, product design case"></a>
+</article>
+<article class="project">
+  <div class="project__card">
+    <img class="project__logo" src="assets/epul-logo.svg" width="171" height="84" alt="">
+    <p class="project__title">Online payment system</p>
+    <p class="project__meta">Redesign iOS, Android, Web<br>2020</p>
+  </div>
+  <div class="project__img"><img src="assets/cover-epul.jpg" width="580" height="355" alt="e-pul — online payment system redesign on Behance" loading="lazy"></div>
+  <a class="project__link" href="https://www.behance.net/gallery/134924403/UIUX-Epul-Payment-system" target="_blank" rel="noopener" aria-label="e-pul — online payment system redesign on Behance"></a>
+</article>
+<article class="project">
+  <div class="project__card">
+    <img class="project__logo" src="assets/asalart-logo.png" width="200" height="40" alt="">
+    <p class="project__title">Online store for women&#8217;s sportswear</p>
+    <p class="project__meta">Redesign, Web<br>2021</p>
+  </div>
+  <div class="project__img"><img src="assets/cover-asalart.jpg" width="580" height="355" alt="asalart — online store for women&#8217;s sportswear" loading="lazy"></div>
+  <a class="project__link" href="https://asalart.ua/" target="_blank" rel="noopener" aria-label="asalart — online store for women&#8217;s sportswear"></a>
+</article>
+<article class="project">
+  <div class="project__card">
+    <img class="project__logo" src="assets/tabletki-logo.svg" width="190" height="133" alt="">
+    <p class="project__title">Service for search<br>and ordering medicines</p>
+    <p class="project__meta">Redesign, <a href="https://apps.apple.com/ua/app/tabletki-ua-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BB%D0%B5%D0%BA%D0%B0%D1%80%D1%81%D1%82%D0%B2/id1296582839" target="_blank" rel="noopener">iOS</a>, <a href="https://play.google.com/store/apps/details?id=com.tabletkiua.tabletki" target="_blank" rel="noopener">Android</a>, <a href="https://tabletki.ua/uk/" target="_blank" rel="noopener">Web</a><br>2020</p>
+  </div>
+  <div class="project__img"><img src="assets/cover-tabletki.jpg" width="580" height="355" alt="Tabletki.ua — service for search and ordering medicines" loading="lazy"></div>
+  <a class="project__link" href="https://tabletki.ua/uk/" target="_blank" rel="noopener" aria-label="Tabletki.ua — service for search and ordering medicines"></a>
+</article></div></div></main>
+  <aside class="side"><div class="side__in"><a class="side__logo" href="#home" aria-label="Pavel Chen, designer — home"><img src="assets/logo-pavelchen.png" width="230" height="57" alt="Pavel Chen — designer"></a><nav aria-label="Site"><ul class="nav"><li><a href="#projects" aria-current="page"><small>01</small><span>Projects</span></a></li><li><a href="#about"><small>02</small><span>About</span></a></li><li><a href="#contact"><small>03</small><span>Contacts</span></a></li></ul></nav></div></aside>
+</section>
+<section class="view shell" id="view-about">
+  <main class="main"><div class="main__inner about">
+    <img class="about__photo" src="assets/photo.jpg" width="280" height="350" alt="Pavlo Chenchyk">
+    <div>
+      <h1 class="about__name">Pavlo Chenchyk</h1>
+      <p class="about__role">Product / UX / UI designer<br>Age: 33</p>
+      <div class="about__text">
+        <p><strong>Summary</strong><br>Experienced product designer specializing in smart design and UX/UI. Strong skills in creative problem-solving, prototyping, user research, and user-centered design. 10 years of experience delivering successful projects with effective resource management.</p>
+        <p><strong>Skills</strong><br>Interface design. Analysis of user experience and test results. Creating visual concepts. Design process management.</p>
+        <p><strong>Work Experience</strong><br><strong>&#8220;ROCKEN&#8221;</strong> Online platform for job search and talent acquisition.<br>Product designer from 05.2022 till present<br>Main job responsibilities:</p>
+        <ul>
+          <li>Managing the product design process from start to finish.</li>
+          <li>Developing wireframes, prototypes, and designs for various web, desktop, and mobile products.</li>
+          <li>Identifying and analyzing problem areas in products and opportunities for growth.</li>
+          <li>Conducting research in the areas of product, business, and consumer behavior.</li>
+          <li>Analyzing quantitative data to inform design decisions.</li>
+          <li>Generating hypotheses for improving product performance and usability.</li>
+          <li>Defining metrics to measure the success of implementation.</li>
+          <li>Organizing A/B tests to optimize product performance.</li>
+          <li>Conducting requirements analysis and preparing estimates for design projects.</li>
+        </ul>
+        <p><strong>&#8220;PROMODO&#8221;</strong> Digital marketing agency<br>UX/UI designer from 11.2022 till 05.2022</p>
+        <p><strong>&#8220;SKALAR&#8221;</strong> Software development company<br>UX/UI designer from 08.2017 till 11.2018</p>
+        <p><strong>Freelance</strong><br>UX/UI designer from 2012 till 2017</p>
+        <p><strong>Language Skills:</strong><br>English - B2<br>Ukrainian - native</p>
+        <p><strong>Other Skills:</strong><br>Google Analytics, Google ADS, online store management</p>
+      </div>
+    </div>
+  </div></main>
+  <aside class="side"><div class="side__in"><a class="side__logo" href="#home" aria-label="Pavel Chen, designer — home"><img src="assets/logo-pavelchen.png" width="230" height="57" alt="Pavel Chen — designer"></a><nav aria-label="Site"><ul class="nav"><li><a href="#projects"><small>01</small><span>Projects</span></a></li><li><a href="#about" aria-current="page"><small>02</small><span>About</span></a></li><li><a href="#contact"><small>03</small><span>Contacts</span></a></li></ul></nav></div></aside>
+</section>
+<section class="view shell" id="view-contact">
+  <main class="main"><div class="main__inner contact">
+    <h1 class="sr">Contacts</h1>
+    <dl>
+      <div class="row"><dt>Address:</dt> <dd>Poland, Wroclaw</dd></div>
+      <div class="row"><dt>Telegram:</dt> <dd><a href="https://t.me/chenchyk" target="_blank" rel="noopener">@chenchyk</a></dd></div>
+      <div class="row"><dt>E-mail:</dt> <dd><span id="email">4en4ik89@gmail.com</span><button class="copy" type="button" data-copy="4en4ik89@gmail.com" data-target="email">copy</button></dd></div>
+    </dl>
+    <div class="contact__social">
+      <a href="https://www.linkedin.com/in/%D0%BF%D0%B0%D0%B2%D0%B5%D0%BB-%D1%87%D0%B5%D0%BD%D1%87%D0%B8%D0%BA-a7a7b777/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5C2.239 0 0 2.239 0 5V19C0 21.761 2.239 24 5 24H19C21.762 24 24 21.761 24 19V5C24 2.239 21.762 0 19 0ZM8 19H5V8H8V19ZM6.5 6.732C5.534 6.732 4.75 5.942 4.75 4.968C4.75 3.994 5.534 3.204 6.5 3.204C7.466 3.204 8.25 3.994 8.25 4.968C8.25 5.942 7.467 6.732 6.5 6.732ZM20 19H17V13.396C17 10.028 13 10.283 13 13.396V19H10V8H13V9.765C14.396 7.179 20 6.988 20 12.241V19Z" fill="currentColor"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=100008547378838" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 0C2.239 0 0 2.239 0 5V19C0 21.762 2.239 24 5 24H12.128V15.081H9V11.459H12.128V8.788C12.128 5.688 14.021 4 16.787 4C18.112 4 19.25 4.099 19.582 4.143V7.383L17.664 7.384C16.16 7.384 15.869 8.099 15.869 9.147V11.46H19.456L18.989 15.082H15.869V24H19C21.762 24 24 21.762 24 19V5C24 2.239 21.762 0 19 0H5Z" fill="currentColor"/></svg></a>
+    </div>
+  </div></main>
+  <aside class="side"><div class="side__in"><a class="side__logo" href="#home" aria-label="Pavel Chen, designer — home"><img src="assets/logo-pavelchen.png" width="230" height="57" alt="Pavel Chen — designer"></a><nav aria-label="Site"><ul class="nav"><li><a href="#projects"><small>01</small><span>Projects</span></a></li><li><a href="#about"><small>02</small><span>About</span></a></li><li><a href="#contact" aria-current="page"><small>03</small><span>Contacts</span></a></li></ul></nav></div></aside>
+</section>
+<section class="view" id="view-rocken">
+<div class="case" id="rocken-top">
+  <a class="back" href="#projects"><svg viewBox="0 0 108 12" fill="none" aria-hidden="true"><path d="M1 6h107M1 6l5.984-5M1 6l5.984 5" stroke="currentColor"/></svg>projects</a>
+  <div class="case__head"><img class="case__mark" src="assets/rocken-wordmark.svg" width="1100" height="127" alt="" aria-hidden="true"><img class="case__logo" src="assets/rocken-wordmark.svg" width="200" height="23" alt="ROCKEN®"></div>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Product designer</dd></div>
+    <div><dt>Category</dt><dd>Human Resources</dd></div>
+    <div><dt>Location of product</dt><dd>Switzerland</dd></div>
+    <div><dt>Tools</dt><dd>Figma, Google Analitics, Google Optimize, Hotjar</dd></div>
+    <div><dt>Period of time</dt><dd>May 2022 - till present</dd></div>
+    <div><dt>Designer</dt><dd>Pavlo Chenchyk</dd></div>
+  </dl>
+  <p class="note">Some data were hidden for privacy reasons</p>
+
+  <div class="products">
+    <article class="product">
+      <img src="assets/r-jobs.jpg" width="882" height="541" alt="ROCKEN Jobs — public job listings site" loading="lazy">
+      <h3>ROCKEN JOBS</h3>
+      <p class="text">Website to attract applicants with listings vacancies. Potential candidates can find interesting vacancies and apply.</p>
+      <a class="btn" href="#rocken-jobs"><svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1.8 3l5.632 4.2L13.064 3" stroke="#393B3F" stroke-width="1.5"/><path d="M1.8 7.8l5.632 4.2 5.632-4.2" stroke="#393B3F" stroke-width="1.5"/></svg>scroll to case</a>
+    </article>
+    <article class="product">
+      <img src="assets/r-crm.jpg" width="882" height="541" alt="ROCKEN CRM — candidates table" loading="lazy">
+      <h3>ROCKEN CRM</h3>
+      <p class="text">After applying CVs of applicants get into the CRM system and then will be checked by consultants.<br>CRM provides management:</p>
+      <div class="lists text"><ul><li>candidates</li><li>recruitment processes</li><li>interview</li></ul><ul><li>vacancies</li><li>publications</li><li>recruiting teams</li></ul></div>
+      <a class="btn" href="#rocken-crm"><svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1.8 3l5.632 4.2L13.064 3" stroke="#393B3F" stroke-width="1.5"/><path d="M1.8 7.8l5.632 4.2 5.632-4.2" stroke="#393B3F" stroke-width="1.5"/></svg>scroll to case</a>
+    </article>
+    <article class="product">
+      <img src="assets/r-talent.jpg" width="882" height="541" alt="ROCKEN Talent — candidate dashboard" loading="lazy">
+      <h3>ROCKEN TALENT</h3>
+      <p class="text">Closed service for verified candidates. There they can:</p>
+      <ul class="text"><li>The control process of hiring</li><li>Improve their profiles</li><li>Communicate with consultants</li><li>Search vacancies and explore all the details</li></ul>
+      <a class="btn" href="#rocken-talent"><svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1.8 3l5.632 4.2L13.064 3" stroke="#393B3F" stroke-width="1.5"/><path d="M1.8 7.8l5.632 4.2 5.632-4.2" stroke="#393B3F" stroke-width="1.5"/></svg>scroll to case</a>
+    </article>
+    <article class="product">
+      <img src="assets/r-dash.jpg" width="882" height="541" alt="ROCKEN Dashboard — reporting for managers" loading="lazy">
+      <h3>ROCKEN DASHBOARD</h3>
+      <p class="text">Dashboard it is a special service for managers of the ROCKEN company for monitoring all processes and timely response on signals.</p>
+      <a class="btn" href="#rocken-dashboard"><svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1.8 3l5.632 4.2L13.064 3" stroke="#393B3F" stroke-width="1.5"/><path d="M1.8 7.8l5.632 4.2 5.632-4.2" stroke="#393B3F" stroke-width="1.5"/></svg>scroll to case</a>
+    </article>
+  </div>
+
+  <!-- ================= JOBS ================= -->
+  <hr class="rule" id="rocken-jobs">
+  <div class="section">
+    <img class="section__logo" src="assets/rocken-jobs.png" width="203" height="50" alt="ROCKEN Jobs">
+    <div class="two">
+      <div><h2 class="h2">About</h2><p class="text">The website with listings vacancies to attract applicants. Potential candidates can find interesting vacancies and apply.</p></div>
+      <div><h2 class="h2">Challenge</h2><p class="text">Increase conversion rate to applicants without loss of quality of filling profiles.<br>Refresh of UI.<br>Make it the minimum allowable resources.</p></div>
+    </div>
+  </div>
+  <hr class="rule">
+  <div class="sub">
+    <ul class="subnav"><li><a href="#jobs-search"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Search</a></li><li><a href="#jobs-returned"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Returned visitors</a></li><li><a href="#jobs-involvement"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Involvement blocks</a></li><li><a href="#jobs-apply"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Applying form</a></li><li><a href="#jobs-ui"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>UI</a></li></ul>
+    <div>
+      <div class="block" id="jobs-search">
+        <h2 class="h2">Search</h2>
+        <h3 class="h3">Research</h3>
+        <p class="text">24% of users left the site after getting search results.<br>Some of the requests of the users showed no results. Input area for location looks like required and users can't see results from neighbor cantons, however, some are ready for visiting work there.<br>The site is not a job aggregator and doesn't have &gt;10k vacancies, early filtering limits the search results.</p>
+        <h3 class="h3">Solutions</h3>
+        <p class="text">Was decided to change the realization of the search input area. Location becomes like additional function.</p>
+        <p class="label">Before</p>
+        <div class="fig"><img src="assets/search-before.jpg" width="873" height="116" alt="Old search: keyword field, separate location field, Job finden button" loading="lazy"></div>
+        <p class="label">After</p>
+        <div class="stack fig"><img src="assets/search-after1.jpg" width="873" height="135" alt="New search: one keyword field with an optional Standort control" loading="lazy"><img src="assets/search-after2.jpg" width="873" height="116" alt="New search with location chips Geneva and Zurich" loading="lazy"></div>
+      </div>
+
+      <div class="block" id="jobs-returned">
+        <h2 class="h2">Features for returned visitors</h2>
+        <h3 class="h3">Research</h3>
+        <p class="text">38% of all traffic is returning users. The site didn't have any functions for this auditory.</p>
+        <h3 class="h3">Solutions</h3>
+        <p class="text">For returned visitors were added two fitches.</p>
+        <div class="annot" style="margin-top:30px"><img src="assets/returned.jpg" width="951" height="802" alt="Home page with a previous search bar and a Viewed vacancies row" loading="lazy"><span style="top:9%">/ previous search</span><span style="top:52%">/ viewed vacancies</span></div>
+      </div>
+
+      <div class="block" id="jobs-involvement">
+        <h2 class="h2">Involvement blocks</h2>
+        <h3 class="h3">Research</h3>
+        <p class="text">The most popular page for entering is home page, but 21% of users left the site there.</p>
+        <h3 class="h3">Solutions</h3>
+        <p class="text">Suggest to users more helpful information</p>
+        <ul class="text"><li>The latest added vacancies are filtered by area and location.</li><li>Statistics on the number of vacancies by city and industry,</li></ul>
+        <div class="fig" style="margin-top:30px"><img src="assets/involvement.jpg" width="870" height="870" alt="Latest jobs block and a Number of vacancies chart by city" loading="lazy"></div>
+      </div>
+
+      <div class="block" id="jobs-apply">
+        <h2 class="h2">Applying form</h2>
+        <h3 class="h3">Research</h3>
+        <p class="text">55% of visitors didn't fill it out and left this page.<br>To find a solution was analyzed application processing process of recruiters. Were found one more issue: Some recruiters have to ask for references and certificates from applicants additionally because they didn't attach them in apply.</p>
+        <h3 class="h3">Solutions</h3>
+        <p class="text">Hide some input areas with not important information on the first step. <br>Add split types of documents in the attached form.</p>
+        <p class="hint">Click on a picture for zoom</p>
+        <div class="compare">
+          <div><p class="label">Before</p><a class="zoom" href="assets/apply-before.jpg" role="button" aria-label="Zoom: Old application form with many fields"><img src="assets/apply-before.jpg" width="1000" height="860" alt="Old application form with many fields" loading="lazy"></a></div>
+          <div><p class="label">After</p><a class="zoom" href="assets/apply-after.jpg" role="button" aria-label="Zoom: New two-step application form with CV, References and Other uploads"><img src="assets/apply-after.jpg" width="1280" height="832" alt="New two-step application form with CV, References and Other uploads" loading="lazy"></a></div>
+        </div>
+      </div>
+
+      <div class="block" id="jobs-ui">
+        <h2 class="h2">UI design</h2>
+        <p class="hint" style="margin-top:0">Click on a picture for zoom</p>
+        <div class="compare">
+          <div><p class="label">Before</p><a class="zoom zoom--crop" href="assets/ui-before.jpg" role="button" aria-label="Zoom: Old ROCKEN Jobs home page, full length"><img src="assets/ui-before.jpg" width="800" height="1894" alt="Old ROCKEN Jobs home page, full length" loading="lazy"></a></div>
+          <div><p class="label">After</p><a class="zoom zoom--crop" href="assets/ui-after.jpg" role="button" aria-label="Zoom: New ROCKEN Jobs home page, full length"><img src="assets/ui-after.jpg" width="800" height="3296" alt="New ROCKEN Jobs home page, full length" loading="lazy"></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CRM ================= -->
+  <hr class="rule" id="rocken-crm">
+  <div class="section">
+    <img class="section__logo" src="assets/rocken-crm.png" width="203" height="50" alt="ROCKEN CRM">
+    <div class="two">
+      <div><h2 class="h2">About</h2><p class="text">After applying CVs of applicants get into the CRM system and then will be checked by consultants.<br>CRM provides management:</p>
+        <div class="lists text" style="display:grid;grid-template-columns:1fr 1fr;max-width:460px;margin-top:10px"><ul><li>candidates</li><li>recruitment processes</li><li>interview</li></ul><ul><li>vacancies</li><li>publications</li><li>recruiting teams</li></ul></div></div>
+      <div><h2 class="h2">Challenge</h2><p class="text">Suggest new UI design based on Candidates page.</p></div>
+    </div>
+  </div>
+  <hr class="rule">
+  <div class="section" style="padding-top:40px">
+    <h2 class="h2">Solution</h2>
+    <p class="hint" style="margin-top:0">Click on a picture for zoom</p>
+    <div class="compare">
+      <div><p class="label">Before</p><a class="zoom" href="assets/crm-before.jpg" role="button" aria-label="Zoom: Old CRM candidates table"><img src="assets/crm-before.jpg" width="1500" height="738" alt="Old CRM candidates table" loading="lazy"></a></div>
+      <div><p class="label">After</p><a class="video" href="https://vimeo.com/773447324" target="_blank" rel="noopener"><svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="27" stroke="#fff" stroke-width="1.5"/><path d="M23 19l14 9-14 9z" fill="#fff"/></svg><span>Watch the prototype video on Vimeo</span><small>vimeo.com/773447324 · opens in a new tab</small></a></div>
+    </div>
+  </div>
+
+  <!-- ================= TALENT ================= -->
+  <hr class="rule" id="rocken-talent">
+  <div class="section">
+    <img class="section__logo" src="assets/rocken-talent.png" width="203" height="50" alt="ROCKEN Talent">
+    <div class="two">
+      <div><h2 class="h2">About</h2><p class="text">Closed service for verified candidates. There they can:</p><ul class="text"><li>The control process of hiring</li><li>Improve their profiles</li><li>Communicate with consultants</li><li>Search vacancies and explore all the details</li></ul></div>
+      <div><h2 class="h2">Challenge</h2><p class="text">1. Connection with the refactoring of the product has an opportunity to make a full redesign.<br><br>2. Prepare and suggest a system of monetization for employers in the service.</p></div>
+    </div>
+  </div>
+  <hr class="rule">
+  <div class="sub">
+    <ul class="subnav"><li><a href="#talent-users"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Users</a></li><li><a href="#talent-home"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Home page</a></li><li><a href="#talent-profile"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Profile</a></li><li><a href="#talent-jobs"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.116 12.523h8.657m0-8.657v8.657M12.773 12.523 3.227 2.977" stroke="currentColor"/></svg>Job Search</a></li></ul>
+    <div>
+      <div class="block" id="talent-users">
+        <h2 class="h2">Users</h2>
+        <p class="text"><strong>What do we want to motivate users to do:</strong></p>
+        <ul class="text"><li>Improving a profile</li><li>Search vacancies</li><li>Replies to requests</li></ul>
+        <p class="text" style="margin-top:30px"><strong>Who are our users and what is their motivation:</strong></p>
+        <div class="personas">
+          <div class="persona">
+            <img class="persona__tag" src="assets/persona-tag-tom.png" width="200" height="28" alt="Candidate Driven Market">
+            <div class="persona__head"><img src="assets/tom.jpg" width="150" height="150" alt="Tom"><div><p class="persona__name">Tom</p><p class="text">Senior Developer</p><p class="text persona__quote">He has a good job but is open to new opportunities.</p></div></div>
+            <h3 class="h3">Motivations</h3>
+            <p class="text">Career and Professional growing</p><ul class="text"><li>Perspective project</li><li>Sharing skills in a strong team</li></ul>
+            <p class="text">Work-life balance</p><ul class="text"><li>Nearer location to home</li><li>Flexible working time</li></ul>
+            <p class="text">Get a job with a bigger salary</p>
+          </div>
+          <div class="vline" aria-hidden="true"></div>
+          <div class="persona">
+            <img class="persona__tag" src="assets/persona-tag-diana.png" width="190" height="28" alt="Employer Driven Market">
+            <div class="persona__head"><img src="assets/diana.jpg" width="150" height="150" alt="Diana"><div><p class="persona__name">Diana</p><p class="text">Junior Sales Manager</p><p class="text persona__quote">She has a first job with a small salary which depends on the effectiveness</p></div></div>
+            <h3 class="h3">Motivations</h3>
+            <p class="text">Career and Professional growing</p><ul class="text"><li>Get new skills and knowledge</li><li>Become demanded specialists</li></ul>
+            <p class="text">Get a job with a bigger salary</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block" id="talent-home">
+        <h2 class="h2">Home page</h2>
+        <p class="text">The profile page was used like the home page. It doesn't show any useful and motivating information.</p>
+        <p class="hint">Click on a picture for zoom</p>
+        <p class="label">Before</p>
+        <a class="zoom zoom--crop" href="assets/home-before.jpg" role="button" aria-label="Zoom: Old ROCKEN Talent profile page used as home, full length"><img src="assets/home-before.jpg" width="800" height="2707" alt="Old ROCKEN Talent profile page used as home, full length" loading="lazy"></a>
+        <p class="text" style="margin-top:40px">Make the home page like a dashboard of a career.<br>Use features to the motivation of users.</p>
+        <p class="label">After</p>
+        <div class="slider">
+          <div class="slider__track">
+            <div class="slider__slide"><a class="zoom zoom--crop" href="assets/home-after1.jpg" role="button" aria-label="Zoom: New ROCKEN Talent home page as a career dashboard, variant 1"><img src="assets/home-after1.jpg" width="800" height="1322" alt="New ROCKEN Talent home page as a career dashboard, variant 1" loading="lazy"></a></div>
+            <div class="slider__slide"><a class="zoom zoom--crop" href="assets/home-after2.jpg" role="button" aria-label="Zoom: New ROCKEN Talent home page as a career dashboard, variant 2"><img src="assets/home-after2.jpg" width="800" height="1322" alt="New ROCKEN Talent home page as a career dashboard, variant 2" loading="lazy"></a></div>
+          </div>
+          <div class="slider__btns"><button type="button" class="prev" aria-label="Previous">&larr;</button><span class="slider__count text" aria-live="polite"></span><button type="button" class="next" aria-label="Next">&rarr;</button></div>
+        </div>
+      </div>
+
+      <div class="block" id="talent-profile">
+        <h2 class="h2">Profile</h2>
+        <p class="text">The profile page included all information about the user. <br>Was suggested split information into logical groups.</p>
+        <div class="fig" style="max-width:341px;margin-top:14px"><img src="assets/profile-nav.jpg" width="365" height="197" alt="Profile navigation: Personal, Professional, Interview, My request for a job, Profile preview" loading="lazy"></div>
+        <p class="text" style="margin-top:40px">76% of users have more than 40 skills, and the stars system of rate looks too noisy, one and two stars skills look underrated.<br>Was saggested 3 levels rate "Advanced", "Confident", "Elementary",</p>
+        <div class="compare">
+          <div><p class="label">Before</p><a class="zoom" href="assets/profile-before.jpg" role="button" aria-label="Zoom: Skills with five-star ratings"><img src="assets/profile-before.jpg" width="561" height="878" alt="Skills with five-star ratings" loading="lazy"></a></div>
+          <div><p class="label">After</p><a class="zoom" href="assets/profile-after.jpg" role="button" aria-label="Zoom: Skills as chips with three-level rating dots"><img src="assets/profile-after.jpg" width="611" height="775" alt="Skills as chips with three-level rating dots" loading="lazy"></a></div>
+        </div>
+        <p class="text" style="margin-top:50px">For editing, profiles used a lot of complex pop-ups. It was causing issues for programmers.</p>
+        <p class="text">It was suggested to "Edit mode" with navigation, a fixed panel for saving, and amount changes.</p>
+        <p class="hint">Click on a picture for zoom</p>
+        <div class="compare">
+          <div><p class="label">Before</p><a class="zoom" href="assets/edit-before.jpg" role="button" aria-label="Zoom: Old skills editing pop-up"><img src="assets/edit-before.jpg" width="1100" height="831" alt="Old skills editing pop-up" loading="lazy"></a></div>
+          <div><p class="label">After</p><a class="zoom" href="assets/edit-after.jpg" role="button" aria-label="Zoom: New edit mode with navigation and a fixed save panel"><img src="assets/edit-after.jpg" width="1100" height="831" alt="New edit mode with navigation and a fixed save panel" loading="lazy"></a></div>
+        </div>
+      </div>
+
+      <div class="block" id="talent-jobs">
+        <h2 class="h2">Job search</h2>
+        <p class="text">In addition to the general redesign, the following was added: </p>
+        <ul class="text"><li>Filters</li><li>Fast overview of vacancy</li><li>Saved search with preset filters</li></ul>
+        <p class="hint">Click on a picture for zoom</p>
+        <div class="compare">
+          <div><p class="label">Before</p><a class="zoom" href="assets/job-before.jpg" role="button" aria-label="Zoom: Old vacancy page"><img src="assets/job-before.jpg" width="700" height="837" alt="Old vacancy page" loading="lazy"></a></div>
+          <div><p class="label">After</p><a class="video" href="https://vimeo.com/775556473" target="_blank" rel="noopener"><svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="27" stroke="#fff" stroke-width="1.5"/><path d="M23 19l14 9-14 9z" fill="#fff"/></svg><span>Watch the prototype video on Vimeo</span><small>vimeo.com/775556473 · opens in a new tab</small></a></div>
+        </div>
+        <div class="compare" style="margin-top:40px;grid-template-columns:repeat(2,minmax(0,234px))">
+          <div><a class="zoom" href="assets/job-mobile.jpg" role="button" aria-label="Zoom: Old mobile job search"><img src="assets/job-mobile.jpg" width="376" height="669" alt="Old mobile job search" loading="lazy"></a></div>
+          <div><a class="video video--tall" href="https://vimeo.com/775582155" target="_blank" rel="noopener"><svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="27" stroke="#fff" stroke-width="1.5"/><path d="M23 19l14 9-14 9z" fill="#fff"/></svg><span>Mobile prototype on Vimeo</span><small>vimeo.com/775582155 · opens in a new tab</small></a></div>
+        </div>
+      </div>
+
+      <div class="block" id="talent-monetization">
+        <h2 class="h2">Monetization model</h2>
+        <p class="text">Monetization is closely related to UX design because customers are willing to pay for convenience but should be made programmed inconvenience too.</p>
+        <div class="fig fig--wide" style="margin-top:30px"><a class="zoom" href="assets/monetization.jpg" role="button" aria-label="Zoom: Monetization flow: free publications and profiles, paid push-ups, unlimited publications, internal currency and monthly unlock"><img src="assets/monetization.jpg" width="1415" height="706" alt="Monetization flow: free publications and profiles, paid push-ups, unlimited publications, internal currency and monthly unlock" loading="lazy"></a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= DASHBOARD ================= -->
+  <hr class="rule" id="rocken-dashboard">
+  <div class="section">
+    <img class="section__logo" src="assets/rocken-dashboard.png" width="203" height="50" alt="ROCKEN Dashboard">
+    <div class="two">
+      <div><h2 class="h2">About</h2><p class="text">Dashboard it is a special service for managers of the ROCKEN company for monitoring all processes and timely response on signals.</p></div>
+      <div><h2 class="h2">Challenge</h2><p class="text">Build from the existing tabular reports a flexible reporting system for managers. Make all data visible and convenient for comparison. </p></div>
+    </div>
+  </div>
+  <hr class="rule">
+  <div class="section" style="padding-top:40px">
+    <h2 class="h2">Solution</h2>
+    <div class="solution">
+      <div class="text">For the base structure was took the 2-columns system.<br>Pluses of the solution: <br><ul><li>It gives a flexible height of reports.</li><li>Roll up and unroll additional information.</li><li>Change the sorting of reports for Different roles of users.</li></ul><br>Based on interviews were highlighted key signals and founded relevant visual solutions.</div>
+      <img src="assets/personas-shapes.svg" width="176" height="194" alt="Two-column layout scheme with collapsible blocks">
+    </div>
+    <p class="hint">Click on a picture for zoom</p>
+    <div class="compare">
+      <div><p class="label">Before</p><a class="zoom" href="assets/dash-before.jpg" role="button" aria-label="Zoom: Old tabular spreadsheet reports"><img src="assets/dash-before.jpg" width="1120" height="794" alt="Old tabular spreadsheet reports" loading="lazy"></a></div>
+      <div><p class="label">After</p><a class="zoom zoom--crop" href="assets/dash-after.jpg" role="button" aria-label="Zoom: New dashboard with two columns of reports, full length"><img src="assets/dash-after.jpg" width="800" height="3092" alt="New dashboard with two columns of reports, full length" loading="lazy"></a></div>
+    </div>
+  </div>
+</div>
+<a class="totop" href="#rocken-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="#17171B" stroke-width="1.5"/></svg></a>
+</section><div class="lightbox" id="lightbox" role="dialog" aria-label="Zoomed picture"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><img src="" alt=""></div><script>
+(function(){
+  var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken'};
+  var all=document.querySelectorAll('.view');
+  var current=null, busy=false, pending=null;
+  var EASE='cubic-bezier(.65,0,.35,1)';
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function wide(){ return matchMedia('(min-width: 861px)').matches; }
+  function resolve(h){
+    h=(h||'').replace(/^#/,'');
+    if(!h) return {view:'home',anchor:null};
+    if(views[h]) return {view:h,anchor:null};
+    if(/^(rocken-|jobs-|talent-)/.test(h)) return {view:'rocken',anchor:h};
+    return {view:'home',anchor:null};
+  }
+  function render(r){
+    var changed=r.view!==current;
+    all.forEach(function(v){v.hidden=v.id!==views[r.view];});
+    current=r.view;
+    if(r.anchor){var el=document.getElementById(r.anchor);if(el){el.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});}}
+    else if(changed){window.scrollTo(0,0);}
+  }
+  function sideWidth(){ return Math.min(380,Math.max(250,window.innerWidth*0.25)); }
+  function fade(els,out,stagger,dur,dx){
+    return Promise.all([].map.call(els,function(el,i){
+      var kf=out?[{opacity:1,transform:'none'},{opacity:0,transform:'translateX('+dx+'px)'}]
+                :[{opacity:0,transform:'translateX('+dx+'px)'},{opacity:1,transform:'none'}];
+      var a=el.animate(kf,{duration:dur,delay:i*stagger,easing:out?'cubic-bezier(.4,0,1,1)':'cubic-bezier(0,0,.2,1)',fill:'both'});
+      return a.finished.then(function(){ if(!out) a.cancel(); });
+    }));
+  }
+  function overlay(fromHome){
+    var W=document.documentElement.clientWidth;
+    var sx=fromHome?W/2:W-sideWidth(), ex=fromHome?W-sideWidth():W/2;
+    var ov=document.createElement('div'); ov.className='morph';
+    ov.innerHTML='<div class="morph__white"></div><img class="morph__logo" src="assets/logo-pavelchen.png" alt="">';
+    document.body.appendChild(ov);
+    var white=ov.firstChild, logo=ov.lastChild;
+    var l0=sx+(fromHome?24:40), l1=ex+(fromHome?40:24), t0=fromHome?40:46, t1=fromHome?46:40;
+    white.style.left=sx+'px';
+    var a=white.animate([{left:sx+'px'},{left:ex+'px'}],{duration:560,easing:EASE,fill:'forwards'});
+    logo.animate([{left:l0+'px',top:t0+'px'},{left:l1+'px',top:t1+'px'}],{duration:560,easing:EASE,fill:'forwards'});
+    return a.finished.then(function(){ return ov; });
+  }
+  function hideInner(id){
+    var v=document.getElementById(id);
+    return {nav:v.querySelectorAll('.nav li'), main:v.querySelector('.main')};
+  }
+  function transition(r){
+    var from=current, to=r.view;
+    if(reduce||!wide()||from===to||from===null||to==='rocken'||from==='rocken'){
+      if(from&&to!==from&&!reduce&&from!=='rocken'&&to!=='rocken'){ return crossfade(r); }
+      render(r); return Promise.resolve();
+    }
+    busy=true;
+    if(from==='home'){
+      var home=document.getElementById('view-home');
+      var items=home.querySelectorAll('.home__nav li');
+      var hello=home.querySelector('.say-hello');
+      var f1=fade(items,true,45,220,-18);
+      hello.animate([{opacity:1},{opacity:0}],{duration:180,fill:'forwards'});
+      return new Promise(function(res){ setTimeout(res,170); }).then(function(){ return overlay(true); }).then(function(ov){
+        f1.then(function(){});
+        render(r);
+        home.getAnimations({subtree:true}).forEach(function(a){a.cancel();});
+        var parts=hideInner(views[to]);
+        var navIn=fade(parts.nav,false,70,340,18);
+        var mainIn=parts.main.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:380,delay:60,easing:'cubic-bezier(0,0,.2,1)',fill:'backwards'});
+        requestAnimationFrame(function(){ ov.remove(); });
+        return Promise.all([navIn,mainIn.finished]).then(function(){ busy=false; });
+      });
+    }
+    // inner -> home
+    var inner=document.getElementById(views[from]);
+    var parts=hideInner(views[from]);
+    fade(parts.nav,true,40,200,18);
+    parts.main.animate([{opacity:1},{opacity:0}],{duration:200,fill:'forwards'});
+    return new Promise(function(res){ setTimeout(res,160); }).then(function(){ return overlay(false); }).then(function(ov){
+      render(r);
+      inner.getAnimations({subtree:true}).forEach(function(a){a.cancel();});
+      var home=document.getElementById('view-home');
+      var items=home.querySelectorAll('.home__nav li');
+      var hello=home.querySelector('.say-hello');
+      var a1=fade(items,false,70,340,-18);
+      var a2=hello.animate([{opacity:0},{opacity:1}],{duration:400,delay:150,fill:'backwards'});
+      requestAnimationFrame(function(){ ov.remove(); });
+      return Promise.all([a1,a2.finished]).then(function(){ busy=false; });
+    });
+  }
+  function crossfade(r){
+    busy=true;
+    var fromV=document.getElementById(views[current]);
+    var main=fromV.querySelector('.main')||fromV;
+    return main.animate([{opacity:1},{opacity:0}],{duration:150,fill:'forwards'}).finished.then(function(){
+      render(r);
+      fromV.getAnimations({subtree:true}).forEach(function(a){a.cancel();});
+      var toV=document.getElementById(views[r.view]);
+      var m=toV.querySelector('.main')||toV;
+      return m.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:260,easing:'cubic-bezier(0,0,.2,1)'}).finished;
+    }).then(function(){ busy=false; });
+  }
+  function go(h){
+    if(busy){ pending=h; return; }
+    try{ if(location.hash!==h){ history.pushState(null,'',h); } }catch(e){ try{location.hash=h;}catch(e2){} }
+    transition(resolve(h)).then(function(){ busy=false; if(pending){var p=pending;pending=null;go(p);} });
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a) return;
+    e.preventDefault();
+    go(a.getAttribute('href'));
+  });
+  function onHash(){ if(busy) return; transition(resolve(location.hash)).then(function(){busy=false;}); }
+  window.addEventListener('hashchange',onHash);
+  window.addEventListener('popstate',onHash);
+  render(resolve(location.hash));
+})();
+
+(function(){
+  // lightbox
+  var lb=document.getElementById('lightbox');
+  if(lb){
+    var lbImg=lb.querySelector('img');
+    document.querySelectorAll('.zoom').forEach(function(z){
+      z.addEventListener('click',function(e){e.preventDefault();lbImg.src=z.getAttribute('href')||z.querySelector('img').src;lb.classList.add('open');document.body.style.overflow='hidden';});
+    });
+    function close(){lb.classList.remove('open');document.body.style.overflow='';}
+    lb.addEventListener('click',close);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  }
+  var tt=document.querySelector('.totop');
+  if(tt){ var upd=function(){ tt.classList.toggle('show',window.scrollY>600); }; window.addEventListener('scroll',upd,{passive:true}); upd(); }
+  // sliders
+  document.querySelectorAll('.slider').forEach(function(s){
+    var slides=s.querySelectorAll('.slider__slide'),i=0,n=slides.length;
+    function go(k){i=(k+n)%n;slides.forEach(function(sl){sl.style.transform='translateX('+(-i*100)+'%)';});s.querySelector('.slider__count').textContent=(i+1)+' / '+n;}
+    s.querySelector('.prev').addEventListener('click',function(){go(i-1)});
+    s.querySelector('.next').addEventListener('click',function(){go(i+1)});
+    go(0);
+  });
+  // copy buttons
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.getAttribute('data-copy');
+      var done=function(){b.textContent='copied';setTimeout(function(){b.textContent='copy'},1500)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback()})}else{fallback()}
+      function fallback(){var el=document.getElementById(b.getAttribute('data-target'));if(el){var r=document.createRange();r.selectNodeContents(el);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);}}
+    });
+  });
+})();
+</script>
+</body>
+</html>
