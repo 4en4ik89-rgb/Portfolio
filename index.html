@@ -163,16 +163,17 @@ strong{font-weight:700}
 .numlist span{color:var(--muted);font-size:15px;width:24px;flex:none}
 .numlist--big{font-size:24px;gap:22px;margin-bottom:50px}
 .numlist--big b{font-weight:500;color:var(--green);margin-left:16px}
-.store{display:flex;flex-direction:column;gap:8px;margin-top:34px}
-.store img{height:26px;width:auto}
+.store{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:34px}
+.store img{height:26px;width:auto;flex:none}
 .two--center{align-items:center}
-.circles{position:relative;height:480px;max-width:100%}
-.circles img:first-child{position:absolute;left:0;top:0;width:400px;max-width:100%}
-.circles img:last-child{position:absolute;left:46%;top:4%;width:334px;max-width:70%}
+.circles{position:relative;width:min(715px,100%);aspect-ratio:715/469;margin-left:auto}
+.circles img:first-child{position:absolute;left:0;top:0;width:65.6%;height:auto}
+.circles img:last-child{position:absolute;left:53.8%;top:2.1%;width:46.2%;height:auto}
 .options{margin-top:40px}
 .option__title{font-size:30px;font-weight:500;margin:0 0 14px}
 .option__title span{font-size:22px;color:var(--muted);font-weight:400;margin-left:14px}
 .option__img{width:300px;max-width:100%;margin:40px auto 0}
+.option__img--online{width:420px;margin-top:30px}
 .phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;align-items:start}
 .phones .zoom{background:transparent}
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start}
@@ -182,8 +183,7 @@ strong{font-weight:700}
 @media (max-width:900px){
   .phones,.quotes{grid-template-columns:1fr}
   .tab__h{font-size:28px}
-  .circles{height:auto;display:flex;gap:16px;align-items:center}
-  .circles img{position:static!important;width:50%!important;max-width:none}
+  .circles{margin-left:0}
   .tab__lead--big{max-width:none}
 }
 
@@ -274,7 +274,7 @@ strong{font-weight:700}
 .lightbox__close{position:fixed;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#000;font:700 22px/1 var(--font);cursor:pointer}
 @media (max-width:900px){
   .meta{grid-template-columns:1fr 1fr}
-  .products,.two,.compare{grid-template-columns:1fr}
+  .products,.two,.compare{grid-template-columns:minmax(0,1fr)}
   .sub{grid-template-columns:1fr}
   .subnav{position:static;flex-direction:row;flex-wrap:wrap;gap:8px 20px}
   .personas{grid-template-columns:1fr}
@@ -702,7 +702,7 @@ strong{font-weight:700}
       <div>
         <p class="option__title">Online <span>24%</span></p>
         <p class="text">Booking medicine one by one can be time-consuming, and it may also require picking up items from multiple pharmacies</p>
-        <img class="option__img" src="assets/tab-online.png" width="310" height="215" alt="Search, cart and pharmacy connected by repeated arrows: booking items one by one" loading="lazy">
+        <img class="option__img option__img--online" src="assets/tab-online.png" width="310" height="215" alt="Search, cart and pharmacy connected by repeated arrows: booking items one by one" loading="lazy">
       </div>
     </div>
   </div>
