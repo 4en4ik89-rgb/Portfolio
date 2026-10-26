@@ -115,18 +115,18 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 }
 
 /* ---------- projects ---------- */
-.projects{display:flex;flex-direction:column;gap:200px;padding-top:40px;width:860px;max-width:100%;margin:0 auto}
+.projects{display:flex;flex-direction:column;gap:200px;padding-top:40px;width:872px;max-width:100%;margin:0 auto}
 #view-projects .main{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:24px}
 #view-projects .main__inner{margin:0 auto;max-width:860px}
-.project{position:relative;display:grid;grid-template-columns:280px 1fr;min-height:396px}
-.project__card{background:var(--panel);grid-column:1/-1;grid-row:1;width:680px;max-width:100%;min-height:396px;padding:62px 40px 40px}
+.project{position:relative;display:grid;grid-template-columns:280px 1fr;min-height:379px}
+.project__card{background:var(--panel);grid-column:1/-1;grid-row:1;width:100%;max-width:100%;min-height:379px;padding:50px 40px 40px}
 .project__card--dark{background:var(--panel)}
 .project__card{position:relative;overflow:hidden}
 .project__logo{height:auto;margin-bottom:28px}
 .project__title{font-size:18px;line-height:28px;color:var(--ink-2);max-width:170px;margin-bottom:20px}
-.project__meta{font-size:16px;line-height:25px;color:var(--ink-2);max-width:200px}
+.project__meta{font-size:16px;line-height:25px;color:var(--ink-2);max-width:240px}
 .project__meta a{color:var(--link);text-decoration:underline;text-underline-offset:3px;position:relative;z-index:3}
-.project__img{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:center;margin-top:0;width:580px;max-width:100%;aspect-ratio:580/355;overflow:hidden;background:var(--bg);transition:box-shadow .35s ease}
+.project__img{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:center;justify-self:end;margin-top:0;margin-right:12px;width:580px;max-width:100%;aspect-ratio:580/355;overflow:hidden;background:var(--bg);transition:box-shadow .35s ease}
 /* hover: no movement, just a soft shadow */
 .project__card{transition:background-color .45s,color .45s,border-color .45s,box-shadow .35s ease}
 .project:hover .project__card,.project:focus-within .project__card{box-shadow:var(--card-shadow)}
@@ -381,7 +381,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 </article>
 <article class="project">
   <div class="project__card">
-    <img class="project__logo" src="assets/tabletki-logo.svg" width="190" height="133" alt="">
+    <img class="project__logo" src="assets/tabletki-logo.svg" width="150" height="105" alt="">
     <p class="project__title">Service for search<br>and ordering medicines</p>
     <p class="project__meta">Redesign, <a href="https://apps.apple.com/ua/app/tabletki-ua-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BB%D0%B5%D0%BA%D0%B0%D1%80%D1%81%D1%82%D0%B2/id1296582839" target="_blank" rel="noopener">iOS</a>, <a href="https://play.google.com/store/apps/details?id=com.tabletkiua.tabletki" target="_blank" rel="noopener">Android</a>, <a href="https://tabletki.ua/uk/" target="_blank" rel="noopener">Web</a><br>2020</p>
   </div>
@@ -1006,6 +1006,7 @@ layout();})();</script></section>
     layers.forEach(function(layer){ if(layer.count){ layer.items=[]; for(var i=0;i<layer.count;i++) layer.items.push({x:rand()*2.4-1.2,y:rand(),width:.32+rand()*.5,speed:(.003+rand()*.006)*(rand()>.5?1:-1),phase:rand()*Math.PI*2,alpha:.14+rand()*.22}); } });
     function render(now){
       raf=0; if(!loaded||lost||document.hidden) return;
+      if(W<=1||H<=1||Math.abs(cv.getBoundingClientRect().width-W)>1) resize();
       var dt=Math.min((now-last)/1000,.05)||.016; last=now; if(!reduced) clock+=dt;
       var follow=1-Math.exp(-dt*2.4); mouse.x+=(pointer.x-mouse.x)*follow; mouse.y+=(pointer.y-mouse.y)*follow;
       fade=Math.min(1,fade+dt*.8);
@@ -1034,9 +1035,14 @@ layout();})();</script></section>
     addEventListener('pointermove',function(e){ pointer.x=e.clientX/innerWidth*2-1; pointer.y=1-e.clientY/innerHeight*2; wake(); },{passive:true});
     addEventListener('pointerout',function(e){ if(!e.relatedTarget){ pointer.x=pointer.y=0; wake(); } });
     addEventListener('resize',function(){ resize(); wake(); },{passive:true});
+    // the home view can start hidden (deep link to an inner page): re-measure whenever the canvas actually changes size
+    if(window.ResizeObserver) new ResizeObserver(function(){ resize(); wake(); }).observe(cv);
     document.addEventListener('visibilitychange',function(){ if(document.hidden){ cancelAnimationFrame(raf); raf=0; } else wake(); });
-    cv.addEventListener('webglcontextlost',function(e){ e.preventDefault(); lost=true; cancelAnimationFrame(raf); });
-    try{ setup(); resize(); Promise.all(Object.keys(assets).map(function(n){ return loadTexture(n,assets[n]); })).then(function(){ loaded=true; wake(); }); }catch(err){ /* no scene */ }
+    cv.addEventListener('webglcontextlost',function(e){ e.preventDefault(); lost=true; loaded=false; cancelAnimationFrame(raf); raf=0; });
+    cv.addEventListener('webglcontextrestored',function(){ lost=false; textures={}; start(); });
+    function loadAll(tries){ return Promise.all(Object.keys(assets).map(function(n){ return loadTexture(n,assets[n]); })).catch(function(e){ if(tries>0) return new Promise(function(r){ setTimeout(r,800); }).then(function(){ return loadAll(tries-1); }); throw e; }); }
+    function start(){ try{ setup(); resize(); loadAll(2).then(function(){ loaded=true; fade=0; wake(); }).catch(function(){}); }catch(err){ /* no scene */ } }
+    start();
   })();
 
   // --- theme toggle (bottom-left): flips data-site-theme, remembers the choice, tells the mountain scene
