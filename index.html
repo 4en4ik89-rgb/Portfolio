@@ -117,7 +117,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 /* ---------- projects ---------- */
 .projects{display:flex;flex-direction:column;gap:200px;padding-top:40px;width:881px;max-width:100%;margin:0 auto}
 #view-projects .main{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:24px}
-#view-projects .main__inner{margin:0 auto;max-width:860px}
+#view-projects .main__inner{margin:0 auto;max-width:881px}
 .project{position:relative;display:grid;grid-template-columns:280px 1fr;min-height:396px}
 .project__card{background:var(--panel);grid-column:1/-1;grid-row:1;width:100%;max-width:100%;min-height:396px;padding:62px 40px 40px}
 .project__card--dark{background:var(--panel)}
@@ -126,7 +126,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project__title{font-size:18px;line-height:28px;color:var(--ink-2);max-width:170px;margin-bottom:20px}
 .project__meta{font-size:16px;line-height:25px;color:var(--ink-2);max-width:200px}
 .project__meta a{color:var(--link);text-decoration:underline;text-underline-offset:3px;position:relative;z-index:3}
-.project__img{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:center;justify-self:end;margin-top:0;margin-right:21px;width:580px;max-width:100%;aspect-ratio:580/355;overflow:hidden;background:var(--bg);transition:box-shadow .35s ease}
+.project__img{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:center;justify-self:end;margin-top:0;margin-right:21px;width:min(580px,calc(100% - 21px));max-width:none;aspect-ratio:580/355;overflow:hidden;background:var(--bg);transition:box-shadow .35s ease}
 /* hover: no movement, just a soft shadow */
 .project__card{transition:background-color .45s,color .45s,border-color .45s,box-shadow .35s ease}
 .project:hover .project__card,.project:focus-within .project__card{box-shadow:var(--card-shadow)}
@@ -138,14 +138,23 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project__img{border-radius:16px;isolation:isolate}
 .project__link{border-radius:24px}
 @media (max-width:1180px){
-  .project{grid-template-columns:1fr}
-  .project__card{width:100%}
-  .project__img{grid-column:1;grid-row:2;margin:-120px 0 0 auto;width:min(580px,90%)}
-  .projects{gap:120px}
+  .project{display:flex;flex-direction:column;min-height:0;background:var(--panel);border-radius:24px;transition:background-color .45s,box-shadow .35s ease}
+  .project__card{width:100%;min-height:0;background:transparent;padding:40px 40px 28px}
+  .project:hover .project__card,.project:focus-within .project__card{box-shadow:none}
+  .project:hover,.project:focus-within{box-shadow:var(--card-shadow)}
+  .project__img{align-self:stretch;justify-self:auto;margin:0 21px 21px;width:auto}
+  .projects{gap:56px}
+}
+@media (min-width:601px) and (max-width:1180px){
+  .project__card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:start}
+  .project__logo{grid-column:1;grid-row:1/3;margin-bottom:0;max-width:100%}
+  .project__title{grid-column:2;grid-row:1;max-width:none}
+  .project__meta{grid-column:2;grid-row:2;max-width:none}
 }
 @media (max-width:600px){
-  .project__img{margin-top:-40px;width:100%}
-  .project__card{padding:36px 24px 70px;min-height:0}
+  .project__img{margin:0 12px 12px}
+  .project__card{padding:32px 24px 24px;min-height:0}
+  .project,.project__link{border-radius:20px}
 }
 
 /* ---------- about ---------- */
