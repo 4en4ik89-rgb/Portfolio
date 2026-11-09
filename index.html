@@ -43,7 +43,7 @@ strong{font-weight:700}
 .home__left{background:var(--bg);display:flex;align-items:center;justify-content:flex-end;padding-block:120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:48px}
 .home__right{background:var(--panel);position:relative;overflow:hidden;padding-block:40px;padding-right:max(16px,env(safe-area-inset-right,0px));padding-left:50px}
 .brand{position:relative;z-index:1;display:inline-flex;align-items:center;gap:30px;color:var(--ink);text-decoration:none}
-.peaks{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
+.sharks{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
 .brand__photo{width:84px;height:84px;border-radius:50%;object-fit:cover;flex:none}
 .brand__text{display:flex;flex-direction:column;gap:8px;white-space:nowrap}
 .brand__name{font-size:14px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;line-height:1}
@@ -62,13 +62,6 @@ strong{font-weight:700}
 }
 
 
-.roles-ring{position:absolute;right:max(56px,env(safe-area-inset-right,0px));bottom:56px;width:190px;height:190px;z-index:1;pointer-events:none}
-.roles-ring svg{width:100%;height:100%;display:block;animation:ringspin 24s linear infinite;overflow:visible}
-.roles-ring text{font-family:var(--font);font-size:13px;font-weight:400;letter-spacing:.32em;fill:var(--ink)}
-.roles-ring circle{fill:var(--ink)}
-@keyframes ringspin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.roles-ring svg{animation:none}}
-@media (max-width:760px){.roles-ring{display:none}}
 
 /* dark-ink logos and line art flip in dark mode; screenshots dim slightly */
 img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordmark.svg"],img[src*="assets/rocken-"][src$=".png"],img[src$="tab-appstore.png"],img[src$="tab-googleplay.png"],img[src$="tab-offline.png"],img[src$="tab-online.png"],img[src$="personas-shapes.svg"],img[src$="profile-nav.jpg"]{filter:var(--logo-filter);transition:filter .45s}
@@ -369,8 +362,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
     </ul></nav>
   </div>
   <div class="home__right">
-    <canvas class="peaks" aria-hidden="true"></canvas>
-    <div class="roles-ring" role="img" aria-label="Designer, manager, founder"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="roles-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#roles-circle" textLength="490" lengthAdjust="spacing">DESIGNER&#160;&#8226;&#160;MANAGER&#160;&#8226;&#160;FOUNDER&#160;&#8226;&#160;</textPath></text><circle cx="100" cy="100" r="3" /></svg></div>
+    <canvas class="sharks" aria-hidden="true"></canvas>
     <a class="brand" href="#home" aria-label="Pavlo Chenchyk — home"><img class="brand__photo" src="assets/avatar.jpg" width="84" height="84" alt=""><span class="brand__text"><span class="brand__name">Pavlo Chenchyk</span></span></a>
   </div>
 </section>
@@ -838,7 +830,7 @@ layout();})();</script></section>
   </div>
 </div>
 <a class="totop" href="#tabletki-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
-</section><div class="lightbox" id="lightbox" role="dialog" aria-label="Zoomed picture"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><img src="" alt=""></div><button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button><script>
+</section><script src="assets/ascii-sharks.js"></script><div class="lightbox" id="lightbox" role="dialog" aria-label="Zoomed picture"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><img src="" alt=""></div><button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button><script>
 (function(){
   var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken',tabletki:'view-tabletki'};
   var all=document.querySelectorAll('.view');
@@ -983,84 +975,15 @@ layout();})();</script></section>
 
 
 
-  // --- home: WebGL mountain (back / middle / front + 74 clouds), front plane displaced by a depth map ("fake 3D"),
-  // parallax by depth, canvas2d fallback. Same pipeline and constants as the Alpine study; framed for the white panel.
+  // --- home: ASCII sharks (github.com/stackedlol/ascii-sharks, MIT) in the right panel; follows the site theme
   (function(){
-    var cv=document.querySelector('.home__right .peaks'); if(!cv) return;
-    var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var settings={parallaxX:.0046,parallaxY:10.35,depthStrength:.46,cloudOpacity:1};
-    var gl=null,ctx=null,program,loc,W=1,H=1,dpr=1,loaded=false,lost=false,fade=0;
-    var pointer={x:0,y:0},mouse={x:0,y:0},clock=0,last=0,raf=0,textures={},images={};
-    var assets={back:'assets/peaks-bg.webp',middle:'assets/peaks-middle.webp',front:'assets/peaks-front.webp',alpha:'assets/peaks-alpha.webp',depth:'assets/peaks-depth.webp',cloud:'assets/peaks-cloud.webp'};
-    var vertex='attribute vec2 aPosition;uniform vec2 uSize;uniform vec2 uCenter;uniform vec2 uViewport;varying vec2 vUv;void main(){vUv=aPosition*.5+.5;vec2 p=aPosition*uSize*.5+uCenter;gl_Position=vec4(p/uViewport*2.,0.,1.);}';
-    var fragment='precision highp float;varying vec2 vUv;uniform sampler2D uTexture;uniform sampler2D uDepth;uniform sampler2D uAlpha;uniform vec2 uMouse;uniform float uStereo;uniform float uOpacity;uniform float uBrightness;uniform float uCloud;uniform float uDark;uniform vec3 uBg;'
-      +'void main(){vec2 uv=vUv;if(uStereo>.5){float d=texture2D(uDepth,uv).r;uv+=(d-.5)*uMouse/20.;}if(uv.x<0.||uv.x>1.||uv.y<0.||uv.y>1.)discard;vec4 c=texture2D(uTexture,uv);float a=c.a;if(uStereo>.5)a=texture2D(uAlpha,uv).r;if(uCloud>.5)c.rgb=mix(c.rgb,vec3(1.),.65);vec3 col=min(c.rgb+uBrightness,vec3(1.));if(uDark>.5){vec3 inv=max(vec3(1.)-col-.07,0.);col=uBg+inv*vec3(.85,.93,1.1)*1.6;col=mix(col,uBg,.35);}else{col=vec3(1.)-(vec3(1.)-col)*vec3(1.15,1.,.72);col=mix(col,uBg,.5);}gl_FragColor=vec4(col,a*uOpacity);}';
-    function compile(type,src){var sh=gl.createShader(type);gl.shaderSource(sh,src);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;}
-    function setup(){
-      try{ gl=cv.getContext('webgl',{alpha:true,antialias:false,premultipliedAlpha:true,powerPreference:'low-power'}); }catch(e){ gl=null; }
-      if(!gl){ ctx=cv.getContext('2d'); return; }
-      program=gl.createProgram();gl.attachShader(program,compile(gl.VERTEX_SHADER,vertex));gl.attachShader(program,compile(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(program);
-      if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
-      gl.useProgram(program);var buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
-      var ap=gl.getAttribLocation(program,'aPosition');gl.enableVertexAttribArray(ap);gl.vertexAttribPointer(ap,2,gl.FLOAT,false,0,0);
-      loc={};['Size','Center','Viewport','Texture','Depth','Alpha','Mouse','Stereo','Opacity','Brightness','Cloud','Dark','Bg'].forEach(function(n){loc[n]=gl.getUniformLocation(program,'u'+n);});
-      gl.uniform1i(loc.Texture,0);gl.uniform1i(loc.Depth,1);gl.uniform1i(loc.Alpha,2);gl.enable(gl.BLEND);gl.blendFuncSeparate(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA,gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);gl.clearColor(1,1,1,1);
-    }
-    function loadTexture(name,file){return new Promise(function(resolve,reject){var img=new Image();img.onload=function(){images[name]=img;if(!gl){resolve();return;}var t=gl.createTexture();gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,t);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,img);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);textures[name]=t;resolve();};img.onerror=function(){reject(Error(file));};img.src=file;});}
-    function resize(){var r=cv.getBoundingClientRect();W=r.width||1;H=r.height||1;dpr=Math.min(devicePixelRatio||1,gl?1.6:1);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);if(gl){gl.viewport(0,0,cv.width,cv.height);gl.uniform2f(loc.Viewport,W,H);}}
-    function bind(name,unit){gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,textures[name]);}
-    // x,y are offsets from the panel centre (y up). The composition is shifted so the peak (62% of plane width) lands at 72% of the panel.
-    var SHIFT=0;
-    function draw(name,w,h,x,y,opacity,stereo,brightness){
-      x+=SHIFT;
-      if(ctx){ctx.globalAlpha=opacity;ctx.drawImage(images[name],W/2+x-w/2,H/2-y-h/2,w,h);return;}
-      gl.uniform2f(loc.Size,w,h);gl.uniform2f(loc.Center,x,y);gl.uniform1f(loc.Stereo,stereo?1:0);gl.uniform1f(loc.Cloud,name==='cloud'?1:0);gl.uniform1f(loc.Opacity,opacity);gl.uniform1f(loc.Brightness,brightness||0);bind(name,0);gl.drawArrays(gl.TRIANGLES,0,6);
-    }
-    var seed=479;function rand(){seed=(seed*16807)%2147483647;return(seed-1)/2147483646;}
-    var layers=[{name:'back',depth:.2},{name:'cloud',depth:.35,count:25},{name:'middle',depth:.5},{name:'cloud',depth:.65,count:20},{name:'front',depth:.8},{name:'cloud',depth:.9,count:7},{name:'cloud',depth:1,count:7},{name:'cloud',depth:1.2,count:15}];
-    layers.forEach(function(layer){ if(layer.count){ layer.items=[]; for(var i=0;i<layer.count;i++) layer.items.push({x:rand()*2.4-1.2,y:rand(),width:.32+rand()*.5,speed:(.003+rand()*.006)*(rand()>.5?1:-1),phase:rand()*Math.PI*2,alpha:.14+rand()*.22}); } });
-    function render(now){
-      raf=0; if(!loaded||lost||document.hidden) return;
-      if(W<=1||H<=1||Math.abs(cv.getBoundingClientRect().width-W)>1) resize();
-      var dt=Math.min((now-last)/1000,.05)||.016; last=now; if(!reduced) clock+=dt;
-      var follow=1-Math.exp(-dt*2.4); mouse.x+=(pointer.x-mouse.x)*follow; mouse.y+=(pointer.y-mouse.y)*follow;
-      fade=Math.min(1,fade+dt*.8);
-      if(gl){var dk=isDark(),bgc=dk?[.078,.086,.102]:[.929,.941,.961];gl.clearColor(bgc[0],bgc[1],bgc[2],1);gl.uniform1f(loc.Dark,dk?1:0);gl.uniform3f(loc.Bg,bgc[0],bgc[1],bgc[2]);gl.clear(gl.COLOR_BUFFER_BIT);bind('depth',1);bind('alpha',2);gl.uniform2f(loc.Mouse,mouse.x*settings.depthStrength,mouse.y*settings.depthStrength);}
-      else{ctx.setTransform(dpr,0,0,dpr,0,0);ctx.globalAlpha=1;ctx.clearRect(0,0,W,H);ctx.filter=isDark()?'invert(1) hue-rotate(180deg) brightness(.35) contrast(.8)':'none';}
-      // base plane sized for the panel: use the stage height so the full ridge is in view, plane aspect 2.496
-      var baseHeight=Math.max(H*1.1, W*0.52), baseWidth=baseHeight*2.496;   // taller than the panel so parallax never reveals a plane edge
-      SHIFT=W*0.72 - baseWidth*0.62 - (W/2 - baseWidth/2);
-      for(var li=0;li<layers.length;li++){ var layer=layers[li], d=layer.depth;
-        var px=-mouse.x*settings.parallaxX*W*d, py=mouse.y*settings.parallaxY*2*d;
-        var scale=1+(d-.2)*.13;
-        if(!layer.count){ var k=layer.name==='back'?1.15:1; draw(layer.name,baseWidth*scale*k,baseHeight*scale*k,px,py-H*.025,fade,layer.name==='front',layer.name==='front'?.035:0); continue; }
-        for(var ci=0;ci<layer.items.length;ci++){ var c=layer.items[ci];
-          var x=(((c.x+c.speed*clock+2.4)%2.4)-1.2)*baseWidth*.55, near=d>.85;
-          var y=near?(-H*.34+c.y*H*.19):(-H*.14+c.y*H*.27);
-          var w=(Math.max(baseWidth*.5,600)*c.width)*(near?1.35:.9), h=w/2.622;
-          var opacity=c.alpha*(near?1.45:.55)*settings.cloudOpacity*fade;
-          draw('cloud',w,h,x+px,y+py+Math.sin(clock*.08+c.phase)*6,opacity,false,0);
-        }
-      }
-      if(!reduced||fade<1) raf=requestAnimationFrame(render);
-    }
-    function isDark(){ return getComputedStyle(document.documentElement).getPropertyValue('--is-dark').trim()==='1'; }
-    function wake(){ if(loaded&&!document.hidden&&!raf){ last=performance.now(); raf=requestAnimationFrame(render); } }
-    window.addEventListener('sitethemechange',function(){ wake(); });
-    addEventListener('pointermove',function(e){ pointer.x=e.clientX/innerWidth*2-1; pointer.y=1-e.clientY/innerHeight*2; wake(); },{passive:true});
-    addEventListener('pointerout',function(e){ if(!e.relatedTarget){ pointer.x=pointer.y=0; wake(); } });
-    addEventListener('resize',function(){ resize(); wake(); },{passive:true});
-    // the home view can start hidden (deep link to an inner page): re-measure whenever the canvas actually changes size
-    if(window.ResizeObserver) new ResizeObserver(function(){ resize(); wake(); }).observe(cv);
-    document.addEventListener('visibilitychange',function(){ if(document.hidden){ cancelAnimationFrame(raf); raf=0; } else wake(); });
-    cv.addEventListener('webglcontextlost',function(e){ e.preventDefault(); lost=true; loaded=false; cancelAnimationFrame(raf); raf=0; });
-    cv.addEventListener('webglcontextrestored',function(){ lost=false; textures={}; start(); });
-    function loadAll(tries){ return Promise.all(Object.keys(assets).map(function(n){ return loadTexture(n,assets[n]); })).catch(function(e){ if(tries>0) return new Promise(function(r){ setTimeout(r,800); }).then(function(){ return loadAll(tries-1); }); throw e; }); }
-    function start(){ try{ setup(); resize(); loadAll(2).then(function(){ loaded=true; fade=0; wake(); }).catch(function(){}); }catch(err){ /* no scene */ } }
-    start();
+    var cv=document.querySelector('.home__right .sharks'); if(!cv||!window.OceanEngine) return;
+    var engine; try{ engine=new OceanEngine(cv,[{kind:'hammerhead',size:1},{kind:'classic',size:.8},{kind:'mako',size:.72}]); }catch(e){ return; }
+    function apply(){ var cs=getComputedStyle(document.documentElement); engine.setTheme(cs.getPropertyValue('--is-dark').trim()==='1'?false:true, getComputedStyle(cv.parentNode).backgroundColor); }
+    apply(); window.addEventListener('sitethemechange',apply);
   })();
 
-  // --- theme toggle (bottom-left): flips data-site-theme, remembers the choice, tells the mountain scene
+  // --- theme toggle (bottom-left): flips data-site-theme, remembers the choice, tells the shark scene
   (function(){
     var btn=document.querySelector('.theme-toggle'); if(!btn) return; var root=document.documentElement;
     function dark(){ return getComputedStyle(root).getPropertyValue('--is-dark').trim()==='1'; }
