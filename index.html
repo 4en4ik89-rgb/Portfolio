@@ -118,6 +118,18 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .projects{display:flex;flex-direction:column;gap:200px;padding-top:40px;width:881px;max-width:100%;margin:0 auto}
 #view-projects .main{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:24px}
 #view-projects .main__inner{margin:0 auto;max-width:881px}
+/* projects: extra room at the end so the last card can rise out of the blur */
+#view-projects .main{padding-bottom:calc(120px + 22vh)}
+/* progressive blur along the bottom of the projects column: stacked backdrop blurs, each masked to a band, then a fade into the page colour */
+.pblur{position:fixed;left:0;bottom:0;right:clamp(250px,25vw,380px);height:30vh;z-index:5;pointer-events:none}
+.pblur>i{position:absolute;inset:0;-webkit-backdrop-filter:blur(var(--b));backdrop-filter:blur(var(--b));-webkit-mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--c));mask-image:linear-gradient(to bottom,transparent var(--a),#000 var(--c))}
+.pblur>i:nth-child(1){--b:1px;--a:0%;--c:30%}
+.pblur>i:nth-child(2){--b:2px;--a:15%;--c:45%}
+.pblur>i:nth-child(3){--b:4px;--a:30%;--c:60%}
+.pblur>i:nth-child(4){--b:8px;--a:45%;--c:75%}
+.pblur>i:nth-child(5){--b:16px;--a:60%;--c:90%}
+.pblur::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,var(--bg) 100%);opacity:.85;transition:background .45s}
+@media (max-width:860px){.pblur{right:0;height:22vh}}
 .project{position:relative;display:grid;grid-template-columns:280px 1fr;min-height:396px}
 .project__card{background:var(--panel);grid-column:1/-1;grid-row:1;width:100%;max-width:100%;min-height:396px;padding:62px 40px 40px}
 .project__card--dark{background:var(--panel)}
@@ -375,6 +387,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   </div>
 </section>
 <section class="view shell" id="view-projects">
+  <div class="pblur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <main class="main"><div class="main__inner"><h1 class="sr">Projects</h1><div class="projects">
 <article class="project">
   <div class="project__card">
@@ -961,6 +974,33 @@ layout();})();</script></section>
   window.addEventListener('hashchange',onHash);
   window.addEventListener('popstate',onHash);
   render(resolve(location.hash));
+})();
+
+// projects: soft wheel scrolling (eases toward the target; keyboard, scrollbar and touch stay native)
+(function(){
+  var view=document.getElementById('view-projects'); if(!view) return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)'), fine=matchMedia('(pointer: fine)');
+  var target=0, cur=0, raf=0, last=0, mine=-1;
+  function on(){ return !view.hidden && fine.matches && !reduce.matches && !document.querySelector('.lightbox.open'); }
+  function max(){ return document.documentElement.scrollHeight-innerHeight; }
+  function stop(){ cancelAnimationFrame(raf); raf=0; }
+  function tick(now){
+    var dt=Math.min((now-last)/1000,.05)||.016; last=now;
+    cur+=(target-cur)*(1-Math.exp(-dt*9));
+    if(Math.abs(target-cur)<.5) cur=target;
+    mine=Math.round(cur); window.scrollTo(0,cur);
+    raf=cur===target?0:requestAnimationFrame(tick);
+  }
+  addEventListener('wheel',function(e){
+    if(!on()||e.ctrlKey||e.defaultPrevented||Math.abs(e.deltaX)>Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    if(!raf){ target=cur=scrollY; last=performance.now(); }
+    var d=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);
+    target=Math.max(0,Math.min(max(),target+d));
+    if(!raf) raf=requestAnimationFrame(tick);
+  },{passive:false});
+  // a scroll we didn't make (keys, scrollbar, anchor jump, view change) hands control back
+  addEventListener('scroll',function(){ if(raf&&Math.abs(scrollY-mine)>2){ stop(); } },{passive:true});
 })();
 
 (function(){
