@@ -1094,9 +1094,9 @@ layout();})();</script></section>
       var rc=document.createElement('canvas'), rx=rc.getContext('2d');
       // waypoints from the hand-drawn route: from the lower left across the slope in switchbacks,
       // up to the ridge and onto the summit plateau. Third value: 1 = camp.
-      var WAY=[[0.3778,0.8629,1],[0.3781,0.8414,0],[0.3819,0.8225,0],[0.3881,0.8069,0],[0.3946,0.7908,0],[0.4007,0.7745,0],[0.4082,0.7644,0],[0.4129,0.7493,0],[0.4106,0.729,0],[0.4087,0.7082,0],[0.4087,0.6855,0],[0.4095,0.6636,0],[0.4165,0.6575,1],[0.4249,0.6612,0],[0.4336,0.6641,0],[0.4425,0.665,0],[0.4511,0.6681,0],[0.4599,0.6697,0],[0.469,0.6697,0],[0.4772,0.6645,0],[0.4827,0.6513,0],[0.485,0.6309,0],[0.485,0.609,0],[0.4883,0.5897,0],[0.492,0.5717,1],[0.5003,0.567,0],[0.5094,0.567,0],[0.5185,0.567,0],[0.5276,0.567,0],[0.5367,0.567,0],[0.5452,0.5704,0],[0.5539,0.5726,0],[0.5578,0.558,0],[0.5555,0.5377,1],[0.5543,0.5191,0],[0.5626,0.5161,0],[0.5716,0.517,0],[0.5806,0.5174,0],[0.589,0.5161,0],[0.5918,0.4971,1],[0.5927,0.4753,0],[0.5989,0.4624,0],[0.6079,0.4614,0],[0.616,0.4558,0],[0.6236,0.4462,0],[0.6269,0.427,0],[0.625,0.4062,0],[0.6212,0.3874,0],[0.622,0.37,1]];
+      var WAY=[[0.3659,0.7432,1],[0.3702,0.7267,0],[0.3778,0.7171,0],[0.3851,0.7056,0],[0.3916,0.6915,0],[0.3967,0.6739,0],[0.4035,0.6612,0],[0.4165,0.6575,1],[0.4249,0.6612,0],[0.4336,0.6641,0],[0.4425,0.665,0],[0.4511,0.6681,0],[0.4599,0.6697,0],[0.469,0.6697,0],[0.4772,0.6645,0],[0.4827,0.6513,0],[0.485,0.6309,0],[0.485,0.609,0],[0.4883,0.5897,0],[0.492,0.5717,1],[0.5003,0.567,0],[0.5094,0.567,0],[0.5185,0.567,0],[0.5276,0.567,0],[0.5367,0.567,0],[0.5452,0.5704,0],[0.5539,0.5726,0],[0.5578,0.558,0],[0.5555,0.5377,1],[0.5543,0.5191,0],[0.5626,0.5161,0],[0.5716,0.517,0],[0.5806,0.5174,0],[0.589,0.5161,0],[0.5918,0.4971,1],[0.5927,0.4753,0],[0.5989,0.4624,0],[0.6079,0.4614,0],[0.616,0.4558,0],[0.6236,0.4462,0],[0.6269,0.427,0],[0.625,0.4062,0],[0.6224,0.3926,0],[0.6197,0.3794,0],[0.616,0.3719,0],[0.6137,0.3625,0],[0.6129,0.353,1]];
       var CAMPS=[]; WAY.forEach(function(w,i){ if(w[2]) CAMPS.push(i); });
-      var ORANGE='#FF6A1F', TRAVEL=5.2, PAUSE=.35, depth=null, start=0, cw=0, chh=0;
+      var ORANGE='#FF6A1F', TRAVEL=10, depth=null, start=0, cw=0, chh=0;
       function ease(t){ return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
       function back(t){ var c=1.9; return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2); }
       function readDepth(){
@@ -1128,23 +1128,18 @@ layout();})();</script></section>
         var mx=mouse.x*settings.depthStrength, my=mouse.y*settings.depthStrength;
         var P=WAY.map(function(c){ var d=dAt(c[0],c[1])-.5; return {x:fr.x+(c[0]-d*mx/20)*fr.w, y:fr.y+(c[1]+d*my/20)*fr.h}; });
         var T=trail(P), pts=T.pts;
-        // timeline: walk each leg at a steady pace, pause at the camp, go on
-        var n=CAMPS.length-1, total=pts[pts.length-1].l, legEnd=[0], t=0, head=0, reached=0;
-        for(var k=0;k<n;k++){
-          var a=pts[T.at[CAMPS[k]]].l, b=pts[T.at[CAMPS[k+1]]].l, dur=TRAVEL*(b-a)/total;
-          if(el<t+dur){ head=a+(b-a)*ease((el-t)/dur); reached=k; break; }
-          t+=dur; legEnd.push(t);
-          if(el<t+PAUSE||k===n-1){ head=b; reached=k+1; if(k<n-1) break; }
-          t+=PAUSE;
-        }
+        // timeline: one slow continuous climb (soft start and finish, no stops); a camp lights up as the trail passes it
+        var n=CAMPS.length-1, total=pts[pts.length-1].l, k=Math.min(1,el/TRAVEL);
+        var head=total*(k<1?(1-Math.cos(Math.PI*k))/2:1), legEnd=[], reached=-1;
+        for(var c=0;c<=n;c++){ var lc=pts[T.at[CAMPS[c]]].l; if(lc<=head+.5){ reached=c; var f=lc/total; legEnd.push(TRAVEL*Math.acos(1-2*Math.min(1,f))/Math.PI); } }
         var dark=isDark(), ring=dark?'#1C1F25':'#ffffff';
         // dotted trail
         rx.fillStyle=ORANGE;
-        for(var s=0,j=1;s<=head;s+=7){
+        for(var s=0,j=1;s<=head;s+=5){
           while(j<pts.length-1&&pts[j].l<s) j++;
           var p=pts[j-1],q=pts[j],f=(s-p.l)/Math.max(1e-6,q.l-p.l);
-          rx.globalAlpha=Math.min(1,.35+.65*Math.min(1,(head-s)/40+.4));
-          rx.beginPath(); rx.arc(p.x+(q.x-p.x)*f,p.y+(q.y-p.y)*f,1.6,0,6.2832); rx.fill();
+          rx.globalAlpha=Math.min(1,.4+.6*Math.min(1,(head-s)/60+.3));
+          rx.beginPath(); rx.arc(p.x+(q.x-p.x)*f,p.y+(q.y-p.y)*f,1.1,0,6.2832); rx.fill();
         }
         // camps (no labels): pop in with a pulse when the trail reaches them; the summit keeps breathing
         for(var i=0;i<=reached;i++){
