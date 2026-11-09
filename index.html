@@ -44,6 +44,7 @@ strong{font-weight:700}
 .home__right{background:var(--panel);position:relative;overflow:hidden;padding-block:40px;padding-right:max(16px,env(safe-area-inset-right,0px));padding-left:50px}
 .brand{position:relative;z-index:1;display:inline-flex;align-items:center;gap:30px;color:var(--ink);text-decoration:none}
 .peaks{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
+.route{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
 .brand__photo{width:84px;height:84px;border-radius:50%;object-fit:cover;flex:none}
 .brand__text{display:flex;flex-direction:column;gap:8px;white-space:nowrap}
 .brand__name{font-size:14px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;line-height:1}
@@ -382,6 +383,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   </div>
   <div class="home__right">
     <canvas class="peaks" aria-hidden="true"></canvas>
+    <canvas class="route" aria-hidden="true"></canvas>
     <div class="roles-ring" role="img" aria-label="Designer, manager, founder"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="roles-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#roles-circle" textLength="490" lengthAdjust="spacing">DESIGNER&#160;&#8226;&#160;MANAGER&#160;&#8226;&#160;FOUNDER&#160;&#8226;&#160;</textPath></text><circle cx="100" cy="100" r="3" /></svg></div>
     <a class="brand" href="#home" aria-label="Pavlo Chenchyk — home"><img class="brand__photo" src="assets/avatar.jpg" width="84" height="84" alt=""><span class="brand__text"><span class="brand__name">Pavlo Chenchyk</span></span></a>
   </div>
@@ -1073,6 +1075,7 @@ layout();})();</script></section>
       for(var li=0;li<layers.length;li++){ var layer=layers[li], d=layer.depth;
         var px=-mouse.x*settings.parallaxX*W*d, py=mouse.y*settings.parallaxY*2*d;
         var scale=1+(d-.2)*.13;
+        if(layer.name==='front'){ frontRect={x:W/2+px+SHIFT-baseWidth*scale/2,y:H/2-(py-H*.025)-baseHeight*scale/2,w:baseWidth*scale,h:baseHeight*scale}; }
         if(!layer.count){ var k=layer.name==='back'?1.15:1; draw(layer.name,baseWidth*scale*k,baseHeight*scale*k,px,py-H*.025,fade,layer.name==='front',layer.name==='front'?.035:0); continue; }
         for(var ci=0;ci<layer.items.length;ci++){ var c=layer.items[ci];
           var x=(((c.x+c.speed*clock+2.4)%2.4)-1.2)*baseWidth*.55, near=d>.85;
@@ -1082,8 +1085,90 @@ layout();})();</script></section>
           draw('cloud',w,h,x+px,y+py+Math.sin(clock*.08+c.phase)*6,opacity,false,0);
         }
       }
+      route.draw(frontRect,now);
       if(!reduced||fade<1) raf=requestAnimationFrame(render);
     }
+
+    // --- expedition route: orange dotted trail drawn camp by camp up the front ridge to the summit.
+    // Points are in front-plane UV (0..1 from the top-left of peaks-front.webp), so the trail rides the parallax;
+    // each point is also nudged by the depth map the same way the shader displaces the texture.
+    var frontRect=null;
+    var route=(function(){
+      var rc=document.querySelector('.home__right .route'), rx=rc&&rc.getContext('2d');
+      var CAMPS=[[.478,.865,'Base camp','2 150 m'],[.517,.775,'Camp I','2 480 m'],[.556,.695,'Camp II','2 790 m'],[.586,.6,'Camp III','3 060 m'],[.604,.495,'Camp IV','3 310 m'],[.626,.392,'Summit','3 540 m']];
+      var ORANGE='#FF6A1F', SEG=.85, PAUSE=.38, depth=null, start=0, cw=0, chh=0;
+      function ease(t){ return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+      function back(t){ var c=1.9; return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2); }
+      function readDepth(){
+        var img=images.depth; if(!img||depth) return;
+        try{ var c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight; var g=c.getContext('2d'); g.drawImage(img,0,0); depth={w:c.width,h:c.height,d:g.getImageData(0,0,c.width,c.height).data}; }catch(e){ depth={w:1,h:1,d:[128]}; }
+      }
+      function dAt(u,v){ if(!depth||!depth.d.length) return .5; var x=Math.max(0,Math.min(depth.w-1,Math.round(u*(depth.w-1)))), y=Math.max(0,Math.min(depth.h-1,Math.round(v*(depth.h-1)))); return depth.d[(y*depth.w+x)*4]/255; }
+      // Catmull-Rom through the camps, flattened to a polyline with running length
+      function trail(P){
+        var out=[{x:P[0].x,y:P[0].y,l:0}], at=[0];
+        for(var i=0;i<P.length-1;i++){
+          var p0=P[Math.max(0,i-1)],p1=P[i],p2=P[i+1],p3=P[Math.min(P.length-1,i+2)];
+          for(var k=1;k<=16;k++){ var t=k/16,t2=t*t,t3=t2*t;
+            var x=.5*((2*p1.x)+(-p0.x+p2.x)*t+(2*p0.x-5*p1.x+4*p2.x-p3.x)*t2+(-p0.x+3*p1.x-3*p2.x+p3.x)*t3);
+            var y=.5*((2*p1.y)+(-p0.y+p2.y)*t+(2*p0.y-5*p1.y+4*p2.y-p3.y)*t2+(-p0.y+3*p1.y-3*p2.y+p3.y)*t3);
+            var q=out[out.length-1]; out.push({x:x,y:y,l:q.l+Math.hypot(x-q.x,y-q.y)}); }
+          at.push(out.length-1);
+        }
+        return {pts:out,at:at};
+      }
+      function draw(fr,now){
+        if(!rx) return;
+        if(W<=1||H<=1||!fr||!loaded){ start=0; return; }          // home hidden: replay when it shows again
+        readDepth();
+        if(!start){ if(fade<.55) return; start=now+250; }
+        var w=Math.round(W*dpr), h=Math.round(H*dpr); if(rc.width!==w||rc.height!==h){ rc.width=w; rc.height=h; }
+        rx.setTransform(dpr,0,0,dpr,0,0); rx.clearRect(0,0,W,H);
+        var el=reduced?1e9:(now-start)/1000; if(el<0) return;
+        var mx=mouse.x*settings.depthStrength, my=mouse.y*settings.depthStrength;
+        var P=CAMPS.map(function(c){ var d=dAt(c[0],c[1])-.5; return {x:fr.x+(c[0]-d*mx/20)*fr.w, y:fr.y+(c[1]+d*my/20)*fr.h}; });
+        var T=trail(P), pts=T.pts;
+        // timeline: travel a leg, pause at the camp, travel the next…
+        var n=CAMPS.length-1, leg=Math.min(n,Math.floor(el/(SEG+PAUSE))), inLeg=el-leg*(SEG+PAUSE), reached=leg;
+        var head;
+        if(leg>=n){ head=pts[pts.length-1].l; reached=n; }
+        else{ var a=pts[T.at[leg]].l,b=pts[T.at[leg+1]].l; head=a+(b-a)*ease(Math.min(1,inLeg/SEG)); if(inLeg>=SEG) reached=leg+1; }
+        var dark=isDark(), ring=dark?'#1C1F25':'#ffffff';
+        // dotted trail
+        rx.fillStyle=ORANGE;
+        for(var s=0,j=1;s<=head;s+=7){
+          while(j<pts.length-1&&pts[j].l<s) j++;
+          var p=pts[j-1],q=pts[j],f=(s-p.l)/Math.max(1e-6,q.l-p.l);
+          rx.globalAlpha=Math.min(1,.35+.65*Math.min(1,(head-s)/40+.4));
+          rx.beginPath(); rx.arc(p.x+(q.x-p.x)*f,p.y+(q.y-p.y)*f,1.6,0,6.2832); rx.fill();
+        }
+        // camps
+        rx.font='700 10px '+getComputedStyle(document.documentElement).getPropertyValue('--font');
+        rx.textBaseline='middle';
+        for(var i=0;i<=reached;i++){
+          var tReach=i===0?0:i*(SEG+PAUSE)-PAUSE, age=el-tReach; if(age<0) continue;
+          var c=P[i], top=i===n, pop=back(Math.min(1,age/.45)), r=(top?5.5:4)*pop;
+          // pulse: once on arrival; the summit keeps breathing
+          var ph=top&&!reduced?(age%2.4)/2.4:Math.min(1,age/1.1);
+          if(ph<1&&!(reduced&&!top)){ rx.globalAlpha=(1-ph)*.55; rx.strokeStyle=ORANGE; rx.lineWidth=1.5; rx.beginPath(); rx.arc(c.x,c.y,r+ph*(top?22:14),0,6.2832); rx.stroke(); }
+          rx.globalAlpha=1; rx.fillStyle=ORANGE; rx.strokeStyle=ring; rx.lineWidth=2;
+          rx.beginPath(); rx.arc(c.x,c.y,r,0,6.2832); rx.fill(); rx.stroke();
+          if(top){ // little flag
+            rx.globalAlpha=Math.min(1,age/.5); rx.strokeStyle=ORANGE; rx.lineWidth=1.5; rx.beginPath(); rx.moveTo(c.x,c.y-r); rx.lineTo(c.x,c.y-r-16); rx.stroke();
+            rx.fillStyle=ORANGE; rx.beginPath(); rx.moveTo(c.x,c.y-r-16); rx.lineTo(c.x+11,c.y-r-12.5); rx.lineTo(c.x,c.y-r-9); rx.closePath(); rx.fill();
+          }
+          // label
+          var la=Math.max(0,Math.min(1,(age-.15)/.4)); if(!la) continue;
+          var left=c.x>W-120; rx.textAlign=left?'right':'left';
+          var tx=c.x+(left?-1:1)*(r+10)+(1-la)*(left?6:-6);
+          rx.globalAlpha=la; rx.fillStyle=ORANGE; rx.fillText(CAMPS[i][2].toUpperCase(),tx,c.y-6);
+          rx.globalAlpha=la*.75; rx.font='400 10px '+getComputedStyle(document.documentElement).getPropertyValue('--font'); rx.fillText(CAMPS[i][3],tx,c.y+7);
+          rx.font='700 10px '+getComputedStyle(document.documentElement).getPropertyValue('--font');
+        }
+        rx.globalAlpha=1;
+      }
+      return {draw:draw};
+    })();
     function isDark(){ return getComputedStyle(document.documentElement).getPropertyValue('--is-dark').trim()==='1'; }
     function wake(){ if(loaded&&!document.hidden&&!raf){ last=performance.now(); raf=requestAnimationFrame(render); } }
     window.addEventListener('sitethemechange',function(){ wake(); });
