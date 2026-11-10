@@ -150,23 +150,28 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project:hover .project__card,.project:focus-within .project__card{box-shadow:var(--card-shadow)}
 .project:hover .project__img,.project:focus-within .project__img{box-shadow:var(--img-shadow)}
 .project__img img{width:100%;height:100%;object-fit:cover}
-/* hover: the cover stays sharp in the middle and blurs progressively toward the edges (two masked backdrop blurs + a soft haze), with the call to action on top */
-/* fade the blur layers themselves: an ancestor with opacity < 1 would cut them off from the cover and the blur would snap in at the end */
-.project__glass{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
-.project__glass::before,.project__glass::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
-.project:hover .project__glass::before,.project:focus-within .project__glass::before,.project:hover .project__glass::after,.project:focus-within .project__glass::after{opacity:1}
-.project__glass::before{-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);-webkit-mask-image:radial-gradient(ellipse closest-side,transparent 58%,#000 100%);mask-image:radial-gradient(ellipse closest-side,transparent 58%,#000 100%)}
-.project__glass::after{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);background:rgba(255,255,255,.14);-webkit-mask-image:radial-gradient(ellipse closest-side,transparent 78%,#000 125%);mask-image:radial-gradient(ellipse closest-side,transparent 78%,#000 125%)}
+/* hover: a thick glass pane over the cover — bevelled rim (light top-left, shade bottom-right), refraction along the edge,
+   a specular highlight that follows the cursor, and a slight 3D tilt of the cover toward the pointer */
+.project__img{--mx:50%;--my:30%;--rx:0deg;--ry:0deg;transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transition:box-shadow .35s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.project__img.is-tilting{transition:box-shadow .35s ease,transform .12s linear}
+.project__glass{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .4s ease;
+  background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,.38),rgba(255,255,255,.08) 28%,transparent 55%),linear-gradient(135deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 38%,rgba(255,255,255,0) 70%,rgba(255,255,255,.1) 100%)}
+.project__glass::before{content:"";position:absolute;inset:0;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35),inset 2px 2px 1px rgba(255,255,255,.65),inset -2px -2px 3px rgba(0,0,0,.22),inset 0 0 28px rgba(255,255,255,.2),inset -10px -14px 30px rgba(0,0,0,.12)}
+.project:hover .project__glass,.project:focus-within .project__glass{opacity:1}
+/* edge thickness: the cover seen through a 14px rim of glass is magnified, blurred and more saturated */
+.project__rim{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;overflow:hidden;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:14px}
+.project__rim img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.1);filter:var(--shot-filter) blur(2.5px) saturate(1.35) brightness(1.06)}
+.project:hover .project__rim,.project:focus-within .project__rim{opacity:1}
 .project__cta{position:relative;z-index:1}
 .project__cta{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:rgba(23,23,27,.78);color:#fff;font-size:15px;line-height:20px;font-weight:500;transform:translateY(8px);transition:transform .35s ease,opacity .35s ease}
-.project__cta{opacity:0}
-.project:hover .project__cta,.project:focus-within .project__cta{opacity:1}
 .project__img img{transition:filter .4s ease,transform .5s ease}
-.project:hover .project__img img,.project:focus-within .project__img img{transform:scale(1.04)}
+.project:hover .project__img>img,.project:focus-within .project__img>img{transform:scale(1.03)}
 @media (hover:none){.project:hover .project__img img{filter:var(--shot-filter);transform:none}}
 .project:hover .project__cta,.project:focus-within .project__cta{transform:none}
-@media (hover:none){.project__glass{display:none}}
-@media (prefers-reduced-motion:reduce){.project__cta{transform:none}}
+@media (hover:none){.project__glass,.project__rim{display:none}.project__img{transform:none}}
+@media (prefers-reduced-motion:reduce){.project__cta{transform:none}.project__img{transform:none!important}}
 .project__link{position:absolute;inset:0;z-index:2}
 /* rounded cards and previews */
 .project__card{border-radius:24px}
@@ -1056,6 +1061,24 @@ layout();})();</script></section>
   var mq=matchMedia('(prefers-reduced-motion: reduce)');
   function apply(){ document.querySelectorAll('svg.ill').forEach(function(svg){ try{ if(mq.matches){ svg.pauseAnimations(); svg.setCurrentTime(1.2); } else svg.unpauseAnimations(); }catch(e){} }); }
   apply(); if(mq.addEventListener) mq.addEventListener('change',apply);
+})();
+
+// project covers: glass rim copy of the cover + highlight and tilt that follow the pointer
+(function(){
+  var fine=matchMedia('(hover: hover) and (pointer: fine)'), reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.project').forEach(function(card){
+    var box=card.querySelector('.project__img'), img=box&&box.querySelector('img'); if(!img) return;
+    var rim=document.createElement('span'); rim.className='project__rim'; rim.setAttribute('aria-hidden','true');
+    var copy=img.cloneNode(); copy.removeAttribute('loading'); copy.alt=''; rim.appendChild(copy);
+    box.insertBefore(rim,box.querySelector('.project__glass'));
+    card.addEventListener('pointermove',function(e){
+      if(!fine.matches) return;
+      var r=box.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      box.style.setProperty('--mx',(x*100).toFixed(1)+'%'); box.style.setProperty('--my',(y*100).toFixed(1)+'%');
+      if(!reduce.matches){ box.classList.add('is-tilting'); box.style.setProperty('--ry',((x-.5)*7).toFixed(2)+'deg'); box.style.setProperty('--rx',((.5-y)*7).toFixed(2)+'deg'); }
+    });
+    card.addEventListener('pointerleave',function(){ box.classList.remove('is-tilting'); box.style.setProperty('--rx','0deg'); box.style.setProperty('--ry','0deg'); });
+  });
 })();
 
 (function(){
