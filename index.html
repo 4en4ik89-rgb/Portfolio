@@ -380,17 +380,19 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-pc.is-on .wr-pair__arrow{opacity:1;transform:none}
 .wr-pc:focus-visible{outline:2px solid #7A45E6;outline-offset:2px}
 .wr-rs__vis{position:sticky;top:80px}
-.wr-seg{display:flex;width:max-content;margin:0 auto 16px;padding:4px;border-radius:999px;background:var(--panel);transition:background-color .45s}
+.wr-seg{grid-row:1;display:flex;width:max-content;margin:0 auto 16px;padding:4px;border-radius:999px;background:var(--panel);transition:background-color .45s}
 .wr-seg button{border:0;background:transparent;font:500 14px var(--font);color:var(--muted);padding:8px 18px;border-radius:999px;cursor:pointer;transition:background-color .25s,color .25s}
 .wr-seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
-.wr-pane{margin:0;display:none}
-.wr-pane.is-on{display:block;animation:wrfade .35s both}
+.wr-rs__vis{display:grid;grid-template-columns:minmax(0,1fr)}
+/* both screens share one cell and crossfade, so switching never jumps */
+.wr-pane{margin:0;grid-row:2;grid-column:1;opacity:0;visibility:hidden;transform:scale(.985);filter:blur(4px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .6s ease,visibility 0s linear .6s}
+.wr-pane.is-on{opacity:1;visibility:visible;transform:none;filter:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .6s ease,visibility 0s}
 .wr-pane__img{position:relative}
 .wr-hl{position:absolute;border-radius:var(--r,10px);box-shadow:0 0 0 3px #6A3BD6,0 0 0 11px rgba(106,59,214,.38);opacity:0;transform:scale(1.06);transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 .wr-hl.is-on{opacity:1;transform:none}
 .wr-pane[data-v="before"] .wr-hl{box-shadow:0 0 0 2.5px #7A45E6,0 0 0 9px rgba(122,69,230,.3)}
 .wr-pane[data-v="after"] .wr-hl{box-shadow:0 0 0 2.5px #3FB54C,0 0 0 9px rgba(63,181,76,.3)}
-@media (prefers-reduced-motion:reduce){.wr-pane.is-on{animation:none}.wr-hl,.wr-pair__arrow{transition:none}}
+@media (prefers-reduced-motion:reduce){.wr-pane,.wr-pane.is-on{transition:none;transform:none;filter:none}.wr-hl,.wr-pair__arrow{transition:none}}
 @media (max-width:900px){
   .wr-rs{grid-template-columns:1fr}
   .wr-rs__vis{position:static;order:-1}
