@@ -296,6 +296,8 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (prefers-reduced-motion:reduce){.ill *{animation:none!important}}
 .phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;align-items:start}
 .phones .zoom{background:transparent}
+.evo{margin:0}
+.evo__cap{margin:16px 0 0;font-size:15px;line-height:1.5;color:var(--muted);max-width:320px}
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start}
 .quote{position:relative;margin:0;background:var(--panel);padding:30px;font-size:17px;line-height:1.6;color:var(--ink)}
 .quote::after{content:"";position:absolute;left:30px;bottom:-26px;border:13px solid transparent;border-top-color:var(--panel);border-left-color:var(--panel)}
@@ -868,9 +870,9 @@ layout();})();</script></section>
     <h2 class="tab__h">Evolution</h2>
     <p class="hint" style="margin-top:0">Click on a picture for zoom</p>
     <div class="phones">
-      <a class="zoom" href="assets/tab-evolution-1.png" role="button" aria-label="Zoom: List of goods: before and after adding release form and dosage to each item"><img src="assets/tab-evolution-1.png" width="1130" height="1240" alt="List of goods: before and after adding release form and dosage to each item" loading="lazy"></a>
-      <a class="zoom" href="assets/tab-evolution-2.png" role="button" aria-label="Zoom: Results of search: before and after replacing the goods list with a Choose goods button"><img src="assets/tab-evolution-2.png" width="1130" height="1240" alt="Results of search: before and after replacing the goods list with a Choose goods button" loading="lazy"></a>
-      <a class="zoom" href="assets/tab-evolution-3.png" role="button" aria-label="Zoom: Pharmacy card: before and after grouping dosage options under “other options”"><img src="assets/tab-evolution-3.png" width="1130" height="1240" alt="Pharmacy card: before and after grouping dosage options under “other options”" loading="lazy"></a>
+      <figure class="evo"><a class="zoom" href="assets/tab-evolution-1.png" role="button" aria-label="Zoom: List of goods: before and after adding release form and dosage to each item"><img src="assets/tab-evolution-1.png" width="1130" height="1240" alt="List of goods: before and after adding release form and dosage to each item" loading="lazy"></a><figcaption class="evo__cap">Form and dosage set up front — fewer irrelevant SKUs next</figcaption></figure>
+      <figure class="evo"><a class="zoom" href="assets/tab-evolution-2.png" role="button" aria-label="Zoom: Results of search: before and after replacing the goods list with a Choose goods button"><img src="assets/tab-evolution-2.png" width="1130" height="1240" alt="Results of search: before and after replacing the goods list with a Choose goods button" loading="lazy"></a><figcaption class="evo__cap">Medicines collapsed — focus on choosing a pharmacy</figcaption></figure>
+      <figure class="evo"><a class="zoom" href="assets/tab-evolution-3.png" role="button" aria-label="Zoom: Pharmacy card: before and after grouping dosage options under “other options”"><img src="assets/tab-evolution-3.png" width="1130" height="1240" alt="Pharmacy card: before and after grouping dosage options under “other options”" loading="lazy"></a><figcaption class="evo__cap">Most popular option shown, the rest collapsed</figcaption></figure>
     </div>
   </div>
 
