@@ -249,6 +249,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .numlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;font-size:18px;line-height:1.5}
 .numlist li{display:flex;gap:28px;align-items:baseline}
 .numlist span{color:var(--muted);font-size:15px;width:24px;flex:none}
+.numlist__note{display:block;color:var(--muted);font-size:15px;line-height:1.5;margin-top:2px}
 .numlist--big{font-size:24px;gap:22px;margin-bottom:50px}
 .numlist--big b{font-weight:500;color:var(--green);margin-left:16px}
 .store{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:34px}
@@ -794,9 +795,10 @@ layout();})();</script></section>
       <div>
         <p class="tab__lead">Main functions</p>
         <ol class="numlist">
-          <li><span>01</span>Search a medicine</li>
-          <li><span>02</span>Read an instruction</li>
-          <li><span>03</span>Book in the nearest or the cheapest pharmacy</li>
+          <li><span>01</span><div>Find a medicine<small class="numlist__note">by name, active ingredient or analogue</small></div></li>
+          <li><span>02</span><div>Compare prices and stock<small class="numlist__note">in pharmacies nearby, on a map</small></div></li>
+          <li><span>03</span><div>Book at a lower price<small class="numlist__note">and pick it up at the pharmacy</small></div></li>
+          <li><span>04</span><div>Medicine directory<small class="numlist__note">instructions, available offline</small></div></li>
         </ol>
       </div>
     </div>
