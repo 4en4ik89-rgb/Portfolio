@@ -143,9 +143,10 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project__logo{height:auto;margin-bottom:28px}
 /* Tabletki's logo is taller than the others; at full size it stretched its card past 396px */
 .project__logo[src$="tabletki-logo.svg"]{height:84px;width:auto}
-.project__tag{display:block;font-size:18px;line-height:26px;color:var(--ink-2);margin:0 0 6px}
-.project__role{font-size:18px;line-height:26px;color:var(--ink-2);max-width:200px;margin:0 0 6px}
-.project__year{font-size:16px;line-height:24px;color:var(--muted);margin:0}
+.project__brand{height:84px;display:flex;align-items:flex-end;margin-bottom:30px}
+.project__brand .project__logo,.project__brand .project__nda{margin:0}
+.project__role{font-size:18px;line-height:26px;font-weight:500;color:var(--ink);max-width:210px;margin:0 0 6px}
+.project__sub{font-size:16px;line-height:24px;color:var(--muted);margin:0}
 .project__nda{display:flex;width:max-content;align-items:center;justify-content:center;height:44px;padding:0 18px;border-radius:12px;background:rgba(139,144,153,.18);font-size:22px;font-weight:800;letter-spacing:.22em;line-height:1;color:var(--ink);margin-bottom:28px;transition:background-color .45s,color .45s}
 .project__meta a{color:var(--link);text-decoration:underline;text-underline-offset:3px;position:relative;z-index:3}
 .project__img{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:center;justify-self:end;margin-top:0;margin-right:21px;width:min(580px,calc(100% - 21px));max-width:none;aspect-ratio:580/355;overflow:hidden;background:var(--bg);transition:box-shadow .35s ease}
@@ -191,10 +192,10 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 }
 @media (min-width:601px) and (max-width:1180px){
   .project__card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:start}
-  .project__logo,.project__nda{grid-column:1;grid-row:1/4;margin-bottom:0;max-width:100%;justify-self:start}
-  .project__tag{grid-column:2;grid-row:1;justify-self:start;margin-bottom:6px}
-  .project__role{grid-column:2;grid-row:2;max-width:none}
-  .project__year{grid-column:2;grid-row:3}
+  .project__brand{grid-column:1;grid-row:1/3;height:auto;align-items:flex-start;margin:0;max-width:100%}
+  .project__brand .project__logo{max-width:100%}
+  .project__role{grid-column:2;grid-row:1;max-width:none}
+  .project__sub{grid-column:2;grid-row:2}
 }
 @media (max-width:600px){
   .project__img{margin:0 12px 12px}
@@ -521,54 +522,49 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   <main class="main"><div class="main__inner"><h1 class="sr">Projects</h1><div class="projects">
 <article class="project">
   <div class="project__card">
-    <span class="project__nda" aria-label="Under NDA">NDA</span>
-    <span class="project__tag">Ed-tech</span>
+    <div class="project__brand"><span class="project__nda" aria-label="Under NDA">NDA</span></div>
     <p class="project__role">Feature owner, product designer</p>
-    <p class="project__year">2025</p>
+    <p class="project__sub">Ed-tech · 2025</p>
   </div>
   <div class="project__img"><img src="assets/cover-writers.jpg" width="580" height="355" alt="Academic writing marketplace — choosing a writer, product design case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
   <a class="project__link" href="#writers" aria-label="Academic writing marketplace — choosing a writer, product design case"></a>
 </article>
 <article class="project">
   <div class="project__card">
-    <img class="project__logo" src="assets/rocken-logo.svg" width="200" height="23" alt="">
+    <div class="project__brand"><img class="project__logo" src="assets/rocken-logo.svg" width="200" height="23" alt=""></div>
 
-    <span class="project__tag">HR-tech</span>
     <p class="project__role">Product designer</p>
-    <p class="project__year">2022</p>
+    <p class="project__sub">HR-tech · 2022</p>
   </div>
   <div class="project__img"><img src="assets/cover-rocken.jpg" width="580" height="355" alt="ROCKEN — human resources solutions, product design case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
   <a class="project__link" href="#rocken" aria-label="ROCKEN — human resources solutions, product design case"></a>
 </article>
 <article class="project">
   <div class="project__card">
-    <img class="project__logo" src="assets/tabletki-logo.svg" width="190" height="133" alt="">
+    <div class="project__brand"><img class="project__logo" src="assets/tabletki-logo.svg" width="190" height="133" alt=""></div>
 
-    <span class="project__tag">Health-tech</span>
     <p class="project__role">Product designer</p>
-    <p class="project__year">2020</p>
+    <p class="project__sub">Health-tech · 2020</p>
   </div>
   <div class="project__img"><img src="assets/cover-tabletki.jpg" width="580" height="355" alt="Tabletki.ua — service for search and ordering medicines, product design case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
   <a class="project__link" href="#tabletki" aria-label="Tabletki.ua — service for search and ordering medicines, product design case"></a>
 </article>
 <article class="project">
   <div class="project__card">
-    <img class="project__logo" src="assets/epul-logo.svg" width="171" height="84" alt="">
+    <div class="project__brand"><img class="project__logo" src="assets/epul-logo.svg" width="171" height="84" alt=""></div>
 
-    <span class="project__tag">Fintech</span>
     <p class="project__role">Product designer</p>
-    <p class="project__year">2020</p>
+    <p class="project__sub">Fintech · 2020</p>
   </div>
   <div class="project__img"><img src="assets/cover-epul.jpg" width="580" height="355" alt="e-pul — online payment system redesign on Behance" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View on Behance<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
   <a class="project__link" href="https://www.behance.net/gallery/134924403/UIUX-Epul-Payment-system" target="_blank" rel="noopener" aria-label="e-pul — online payment system redesign on Behance"></a>
 </article>
 <article class="project">
   <div class="project__card">
-    <img class="project__logo" src="assets/asalart-logo.png" width="176" height="44" alt="">
+    <div class="project__brand"><img class="project__logo" src="assets/asalart-logo.png" width="176" height="44" alt=""></div>
 
-    <span class="project__tag">E-commerce</span>
     <p class="project__role">Product designer</p>
-    <p class="project__year">2021</p>
+    <p class="project__sub">E-commerce · 2021</p>
   </div>
   <div class="project__img"><img src="assets/cover-asalart.jpg" width="580" height="355" alt="asalart — online store for women&#8217;s sportswear" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">Visit website<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
   <a class="project__link" href="https://asalart.ua/" target="_blank" rel="noopener" aria-label="asalart — online store for women&#8217;s sportswear"></a>
