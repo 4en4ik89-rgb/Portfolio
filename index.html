@@ -323,6 +323,81 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   .tab__lead--big{max-width:none}
 }
 
+/* ---------- case study: academic writing marketplace (NDA) ---------- */
+.wr{--green:#2FBF8A;--drop:#FF7A2F}
+.wr-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 9px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.14em;line-height:1.3;color:var(--muted)}
+.project__wordmark{font-size:24px;font-weight:700;line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin:0 0 28px;max-width:200px}
+.project__wordmark .wr-tag{margin:8px 0 0;display:table}
+.wr-head{display:flex;flex-direction:column;align-items:center;gap:14px;margin:50px 0 70px;text-align:center}
+.wr-head__name{font-size:34px;font-weight:700;letter-spacing:-.01em;margin:0}
+.wr-head .wr-tag{margin:0}
+.wr-chart{margin:0}
+.wr-funnel{display:block;width:100%;height:auto;overflow:visible}
+.wr-base{stroke:var(--muted);stroke-opacity:.35}
+.wr-bar{fill:#8FA3BF;fill-opacity:.55;transform-box:fill-box;transform-origin:50% 100%}
+.wr-bar--drop{fill:var(--drop);fill-opacity:1}
+.wr-axis{font:500 13px var(--font);fill:var(--muted);letter-spacing:.02em}
+.wr-callout path{stroke:var(--drop);stroke-width:1.2}
+.wr-callout text{font:600 14px var(--font);fill:var(--drop)}
+.wr-chart.is-in .wr-bar{animation:wrbar .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*90ms)}
+.wr-chart.is-in .wr-callout{animation:wrfade .5s .75s both}
+@keyframes wrbar{from{transform:scaleY(0)}}
+@keyframes wrfade{from{opacity:0}}
+.wr-group{font-size:22px;margin:50px 0 6px}
+.wr-row__k{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.wr-row__k--ok{color:var(--green)}
+.wr-shot{border-radius:14px;background:transparent}
+.wr-results{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.wr-res{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;background:var(--panel);border-radius:16px;padding:22px 22px 24px;min-height:92px;transition:background-color .45s}
+.wr-res__label{display:inline-flex;align-items:center;gap:8px;font-size:16px;line-height:1.3;color:var(--ink)}
+.wr-res__up{width:12px;height:12px;color:var(--green);flex:none}
+.wr-res__num{font-size:44px;font-weight:400;line-height:1;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.wr-chart .wr-bar,.wr-chart .wr-callout{animation:none!important}}
+@media (max-width:900px){
+  .wr-results{grid-template-columns:1fr}
+  .wr-head__name{font-size:28px}
+}
+
+/* research & solution: insight cards on the left, the screen with numbered marks pinned on the right */
+.wr-rs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:start;margin-top:10px}
+.wr-rs .wr-group:first-child{margin-top:0}
+.wr-rs .wr-group{margin-bottom:26px}
+.wr-cards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.wr-pair{display:flex;flex-direction:column;gap:1px}
+.wr-pc{position:relative;background:var(--panel);padding:24px 56px 26px 30px;transition:background-color .45s,box-shadow .3s}
+.wr-pc--ins{border-radius:16px 16px 4px 4px}
+.wr-pc--dec{border-radius:4px 4px 16px 16px}
+.wr-pc p{margin:0;font-size:18px;line-height:1.45;color:var(--ink)}
+.wr-pc__k{display:block;font-size:15px;line-height:1.4;margin-bottom:8px}
+.wr-pc--ins .wr-pc__k{color:#A98BE8;transition:color .3s}
+.wr-pc--dec .wr-pc__k{color:#3FB54C}
+.wr-pc{outline:none;cursor:default}
+.wr-pair__arrow{position:absolute;right:26px;top:28px;width:16px;height:13px;opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s}
+.wr-pc--ins .wr-pair__arrow{color:#7A45E6}
+.wr-pc--dec .wr-pair__arrow{color:#3FB54C}
+.wr-pc.is-on{box-shadow:0 10px 30px rgba(20,22,40,.12),0 2px 6px rgba(20,22,40,.06);z-index:1}
+.wr-pc--ins.is-on .wr-pc__k{color:#7A45E6}
+.wr-pc.is-on .wr-pair__arrow{opacity:1;transform:none}
+.wr-pc:focus-visible{outline:2px solid #7A45E6;outline-offset:2px}
+.wr-rs__vis{position:sticky;top:80px}
+.wr-seg{grid-row:1;display:flex;width:max-content;margin:0 auto 16px;padding:4px;border-radius:999px;background:var(--panel);transition:background-color .45s}
+.wr-seg button{border:0;background:transparent;font:500 14px var(--font);color:var(--muted);padding:8px 18px;border-radius:999px;cursor:pointer;transition:background-color .25s,color .25s}
+.wr-seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.wr-rs__vis{display:grid;grid-template-columns:minmax(0,1fr)}
+/* both screens share one cell and crossfade, so switching never jumps */
+.wr-pane{margin:0;grid-row:2;grid-column:1;opacity:0;visibility:hidden;transform:scale(.985);filter:blur(4px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .6s ease,visibility 0s linear .6s}
+.wr-pane.is-on{opacity:1;visibility:visible;transform:none;filter:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .6s ease,visibility 0s}
+.wr-pane__img{position:relative}
+.wr-hl{position:absolute;border-radius:var(--r,10px);box-shadow:0 0 0 3px #6A3BD6,0 0 0 11px rgba(106,59,214,.38);opacity:0;transform:scale(1.06);transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.wr-hl.is-on{opacity:1;transform:none}
+.wr-pane[data-v="before"] .wr-hl{box-shadow:0 0 0 2.5px #7A45E6,0 0 0 9px rgba(122,69,230,.3)}
+.wr-pane[data-v="after"] .wr-hl{box-shadow:0 0 0 2.5px #3FB54C,0 0 0 9px rgba(63,181,76,.3)}
+@media (prefers-reduced-motion:reduce){.wr-pane,.wr-pane.is-on{transition:none;transform:none;filter:none}.wr-hl,.wr-pair__arrow{transition:none}}
+@media (max-width:900px){
+  .wr-rs{grid-template-columns:1fr}
+  .wr-rs__vis{position:static;order:-1}
+}
+
 /* ---------- case study (ROCKEN) ---------- */
 .case{max-width:1160px;margin:0 auto;padding-block:20px 100px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .case .back{position:fixed;top:0;left:max(16px,calc((100% - 1160px)/2));z-index:6;display:inline-flex;align-items:center;gap:14px;height:47px;padding:0 20px;background:var(--bg);font-size:22px;line-height:34px;color:var(--muted);transition:color .25s}
@@ -443,6 +518,15 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 <section class="view shell" id="view-projects">
   <div class="pblur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <main class="main"><div class="main__inner"><h1 class="sr">Projects</h1><div class="projects">
+<article class="project">
+  <div class="project__card">
+    <p class="project__wordmark">Choosing a writer<span class="wr-tag">NDA</span></p>
+    <p class="project__title">Academic writing marketplace</p>
+    <p class="project__meta">Feature owner, Web<br>2025</p>
+  </div>
+  <div class="project__img"><img src="assets/cover-writers.jpg" width="580" height="355" alt="Academic writing marketplace — choosing a writer, product design case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+  <a class="project__link" href="#writers" aria-label="Academic writing marketplace — choosing a writer, product design case"></a>
+</article>
 <article class="project">
   <div class="project__card">
     <img class="project__logo" src="assets/rocken-logo.svg" width="200" height="23" alt="">
@@ -906,9 +990,71 @@ layout();})();</script></section>
   </div>
 </div>
 <a class="totop" href="#tabletki-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
+</section>
+<section class="view" id="view-writers" hidden>
+<div class="case tab wr" id="wr-top">
+  <a class="back" href="#projects"><svg viewBox="0 0 108 12" fill="none" aria-hidden="true"><path d="M1 6h107M1 6l5.984-5M1 6l5.984 5" stroke="currentColor"/></svg>projects</a>
+  <div class="wr-head"><p class="wr-head__name">Academic writing marketplace</p><span class="wr-tag">NDA</span></div>
+  <dl class="meta">
+    <div><dt>Category</dt><dd>Marketplace for academic writing</dd></div>
+    <div><dt>Role</dt><dd>Feature owner, product designer</dd></div>
+    <div><dt>Period of time</dt><dd>2025</dd></div>
+  </dl>
+
+  <hr class="rule" id="wr-problem">
+  <div class="tab__section">
+    <h2 class="tab__h">Problem statement</h2>
+    <div class="two two--center">
+      <p class="tab__lead tab__lead--big">Too many customers dropped off at the step where they choose a writer</p>
+      <figure class="wr-chart"><svg class="wr-funnel" viewBox="0 0 560 240" role="img" aria-label="Illustrative funnel: the step where customers choose a writer loses the most users"><line class="wr-base" x1="0" y1="210.5" x2="560" y2="210.5"/><rect class="wr-bar" x="12" y="20" width="64" height="190" rx="8" style="--i:0"/><text class="wr-axis" x="44.0" y="232" text-anchor="middle">Step 1</text><rect class="wr-bar" x="104" y="50" width="64" height="160" rx="8" style="--i:1"/><text class="wr-axis" x="136.0" y="232" text-anchor="middle">Step 2</text><rect class="wr-bar" x="196" y="71" width="64" height="139" rx="8" style="--i:2"/><text class="wr-axis" x="228.0" y="232" text-anchor="middle">Step 3</text><rect class="wr-bar wr-bar--drop" x="288" y="132" width="64" height="78" rx="8" style="--i:3"/><text class="wr-axis" x="320.0" y="232" text-anchor="middle">Select writer</text><rect class="wr-bar" x="380" y="142" width="64" height="68" rx="8" style="--i:4"/><text class="wr-axis" x="412.0" y="232" text-anchor="middle">Step 5</text><rect class="wr-bar" x="472" y="147" width="64" height="63" rx="8" style="--i:5"/><text class="wr-axis" x="504.0" y="232" text-anchor="middle">Step 6</text><g class="wr-callout"><path d="M320 98 L320 70 L352 70" fill="none"/><text x="358" y="74">the biggest drop-off</text></g></svg><figcaption class="hint">Illustrative funnel, not real data</figcaption></figure>
+    </div>
+    <p class="tab__lead" style="margin-top:70px">Context</p>
+    <ol class="numlist">
+      <li><span>01</span>After the order form, a customer receives many bids from writers</li>
+      <li><span>02</span>Writers take orders in any subject, because they work in groups</li>
+      <li><span>03</span>Orders are cheap, so writers need to take a lot of them</li>
+      <li><span>04</span>Choosing a writer is the last step before payment, so it drives the conversion of the whole funnel</li>
+    </ol>
+  </div>
+
+  <hr class="rule" id="wr-research">
+  <div class="tab__section">
+    <h2 class="tab__h">Research &amp; solution</h2>
+    <p class="tab__lead">What the research and a series of in-depth interviews showed, and what we changed</p>
+    <div class="wr-rs">
+      <div class="wr-rs__cards">
+        <p class="wr-group">All writers looked the same</p>
+        <ol class="wr-cards"><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i1" tabindex="0"><span class="wr-pc__k">Insight 01</span><p>Every writer had a huge number of reviews</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d1" tabindex="0"><span class="wr-pc__k">Decision 01</span><p>A rating based on the last 100 orders</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i2" tabindex="0"><span class="wr-pc__k">Insight 02</span><p>Every writer had a high total order count, and it looked inflated</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d2" tabindex="0"><span class="wr-pc__k">Decision 02</span><p>The total order count was removed</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i3" tabindex="0"><span class="wr-pc__k">Insight 03</span><p>Greeting messages were templates and didn&#8217;t help</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d3" tabindex="0"><span class="wr-pc__k">Decision 03</span><p>Collapsed into a message button with a counter</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li></ol>
+        <p class="wr-group">Choosing still felt like a gamble</p>
+        <ol class="wr-cards"><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i4" tabindex="0"><span class="wr-pc__k">Insight 04</span><p>No sign of how deep a writer&#8217;s expertise is in a given subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d4" tabindex="0"><span class="wr-pc__k">Decision 04</span><p>Highlights for each subject, based on the writer&#8217;s past work</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i5" tabindex="0"><span class="wr-pc__k">Insight 05</span><p>Customers worried the writing would look overqualified</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d5" tabindex="0"><span class="wr-pc__k">Decision 05</span><p>Writers can add samples for each subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i6" tabindex="0"><span class="wr-pc__k">Insight 06</span><p>Orders are placed close to the deadline, and customers need time to edit the text themselves</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d6" tabindex="0"><span class="wr-pc__k">Decision 06</span><p>An on-time metric: how often orders are delivered on time</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li></ol>
+      </div>
+      <div class="wr-rs__vis" id="wr-design">
+        <div class="wr-seg" role="tablist" aria-label="Screen version">
+          <button type="button" role="tab" aria-selected="true" data-v="before">Before</button><button type="button" role="tab" aria-selected="false" data-v="after">After</button>
+        </div>
+        <figure class="wr-pane" data-v="after">
+          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-after.png" role="button" aria-label="Zoom: writer cards after the redesign"><img src="assets/wr-after.png" width="740" height="708" alt="Writer cards after: rating from the last 100 reviews, on-time rate, subject highlights, writing samples and a message button" loading="lazy"></a><span class="wr-hl" data-k="d1" style="left:5.54%;top:40.11%;width:20.81%;height:6.21%;--r:7px"></span><span class="wr-hl" data-k="d2" style="left:4.59%;top:40.11%;width:59.46%;height:6.21%;--r:7px"></span><span class="wr-hl" data-k="d3" style="left:53.24%;top:31.07%;width:10.81%;height:6.21%;--r:7px"></span><span class="wr-hl" data-k="d4" style="left:3.78%;top:47.32%;width:56.76%;height:9.32%;--r:8px"></span><span class="wr-hl" data-k="d5" style="left:3.78%;top:78.95%;width:60.81%;height:16.67%;--r:8px"></span><span class="wr-hl" data-k="d6" style="left:32.70%;top:40.11%;width:15.95%;height:6.21%;--r:7px"></span></div>
+          <figcaption class="evo__cap">After: last 100 reviews, on-time rate, subject highlights and samples; the greeting is behind a message button</figcaption>
+        </figure>
+        <figure class="wr-pane is-on" data-v="before">
+          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-before.png" role="button" aria-label="Zoom: writer cards before the redesign"><img src="assets/wr-before.png" width="740" height="620" alt="Writer cards before: 10K+ reviews, 15K+ orders, 100% success and a template greeting" loading="lazy"></a><span class="wr-hl" data-k="i1" style="left:5.54%;top:45.48%;width:20.27%;height:7.10%;--r:7px"></span><span class="wr-hl" data-k="i2" style="left:29.73%;top:45.48%;width:13.92%;height:7.10%;--r:7px"></span><span class="wr-hl" data-k="i3" style="left:4.59%;top:54.19%;width:58.38%;height:8.06%;--r:8px"></span><span class="wr-hl" data-k="i6" style="left:47.70%;top:45.48%;width:15.41%;height:7.10%;--r:7px"></span></div>
+          <figcaption class="evo__cap">Before: every writer looks the same — 10K+ reviews, 15K+ orders, a template greeting</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule" id="wr-results">
+  <div class="tab__section">
+    <h2 class="tab__h">Results</h2>
+    <p class="tab__lead">Measured in an A/B test; every result reached statistical significance</p>
+    <ul class="wr-results"><li class="wr-res"><span class="wr-res__label">Step completion<svg class="wr-res__up" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b class="wr-res__num">+14%</b></li><li class="wr-res"><span class="wr-res__label">First sales<svg class="wr-res__up" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b class="wr-res__num">+6%</b></li><li class="wr-res"><span class="wr-res__label">Repeat sales<svg class="wr-res__up" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M4 2.5h5.5V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b class="wr-res__num">+3.5%</b></li></ul>
+  </div>
+</div>
+<a class="totop" href="#wr-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
 </section><div class="lightbox" id="lightbox" role="dialog" aria-label="Zoomed picture"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><img src="" alt=""></div><button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button><script>
 (function(){
-  var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken',tabletki:'view-tabletki'};
+  var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken',tabletki:'view-tabletki',writers:'view-writers'};
   var all=document.querySelectorAll('.view');
   var current=null, busy=false, pending=null;
   var EASE='cubic-bezier(.65,0,.35,1)';
@@ -920,6 +1066,7 @@ layout();})();</script></section>
     if(views[h]) return {view:h,anchor:null};
     if(/^(rocken-|jobs-|talent-)/.test(h)) return {view:'rocken',anchor:h};
     if(/^(tabletki-|tab-)/.test(h)) return {view:'tabletki',anchor:h};
+    if(/^wr-/.test(h)) return {view:'writers',anchor:h};
     return {view:'home',anchor:null};
   }
   function render(r){
@@ -961,7 +1108,7 @@ layout();})();</script></section>
   }
   function transition(r){
     var from=current, to=r.view;
-    var isCase=function(v){return v==='rocken'||v==='tabletki';};
+    var isCase=function(v){return v==='rocken'||v==='tabletki'||v==='writers';};
     if(reduce||!wide()||from===to||from===null||isCase(to)||isCase(from)){
       if(from&&to!==from&&!reduce&&!isCase(from)&&!isCase(to)){ return crossfade(r); }
       render(r); return Promise.resolve();
@@ -1104,6 +1251,34 @@ layout();})();</script></section>
   });
 })();
 
+// writers case: bars of the funnel rise when the chart scrolls into view
+(function(){
+  var c=document.querySelector('.wr-chart'); if(!c) return;
+  if(!('IntersectionObserver' in window)){ c.classList.add('is-in'); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ c.classList.add('is-in'); io.disconnect(); } }); },{threshold:.4});
+  io.observe(c);
+})();
+
+// writers case: hovering (or focusing) an insight shows Before with the problem outlined,
+// a decision shows After with the change outlined. Nothing moves on its own.
+(function(){
+  var rs=document.querySelector('.wr-rs'); if(!rs) return;
+  var tabs=rs.querySelectorAll('.wr-seg button'), panes=rs.querySelectorAll('.wr-pane'), cards=[].slice.call(rs.querySelectorAll('.wr-pc[data-k]'));
+  var active=null;
+  function show(v){ tabs.forEach(function(t){ t.setAttribute('aria-selected',t.dataset.v===v?'true':'false'); }); panes.forEach(function(p){ p.classList.toggle('is-on',p.dataset.v===v); }); }
+  function paint(){
+    cards.forEach(function(c){ c.classList.toggle('is-on',c.dataset.k===active); });
+    rs.querySelectorAll('.wr-hl').forEach(function(h){ h.classList.toggle('is-on',h.dataset.k===active); });
+  }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ show(t.dataset.v); }); });
+  cards.forEach(function(c){
+    function on(){ active=c.dataset.k; show(active.charAt(0)==='i'?'before':'after'); paint(); }
+    function off(){ if(active===c.dataset.k){ active=null; paint(); } }
+    c.addEventListener('mouseenter',on); c.addEventListener('mouseleave',off);
+    c.addEventListener('focus',on); c.addEventListener('blur',off);
+  });
+})();
+
 (function(){
   // lightbox
   var lb=document.getElementById('lightbox');
@@ -1116,8 +1291,8 @@ layout();})();</script></section>
     lb.addEventListener('click',close);
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
   }
-  var tt=document.querySelector('.totop');
-  if(tt){ var upd=function(){ tt.classList.toggle('show',window.scrollY>600); }; window.addEventListener('scroll',upd,{passive:true}); upd(); }
+  var tts=document.querySelectorAll('.totop');
+  if(tts.length){ var upd=function(){ tts.forEach(function(tt){ tt.classList.toggle('show',window.scrollY>600); }); }; window.addEventListener('scroll',upd,{passive:true}); upd(); }
 
 
 
