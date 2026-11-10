@@ -143,10 +143,10 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project__logo{height:auto;margin-bottom:28px}
 /* Tabletki's logo is taller than the others; at full size it stretched its card past 396px */
 .project__logo[src$="tabletki-logo.svg"]{height:84px;width:auto}
-.project__tag{display:table;padding:5px 12px;border-radius:999px;background:var(--chip-bg);font-size:13px;font-weight:500;line-height:18px;letter-spacing:.02em;color:var(--ink);margin-bottom:22px;transition:background-color .45s,color .45s}
+.project__tag{display:block;font-size:18px;line-height:26px;color:var(--ink-2);margin:0 0 6px}
 .project__role{font-size:18px;line-height:26px;color:var(--ink-2);max-width:200px;margin:0 0 6px}
 .project__year{font-size:16px;line-height:24px;color:var(--muted);margin:0}
-.project__nda{display:flex;width:max-content;align-items:center;justify-content:center;height:44px;padding:0 18px;border:2px solid var(--ink);border-radius:12px;font-size:22px;font-weight:800;letter-spacing:.22em;line-height:1;color:var(--ink);margin-bottom:28px}
+.project__nda{display:flex;width:max-content;align-items:center;justify-content:center;height:44px;padding:0 18px;border-radius:12px;background:rgba(139,144,153,.18);font-size:22px;font-weight:800;letter-spacing:.22em;line-height:1;color:var(--ink);margin-bottom:28px;transition:background-color .45s,color .45s}
 .project__meta a{color:var(--link);text-decoration:underline;text-underline-offset:3px;position:relative;z-index:3}
 .project__img{position:relative;z-index:1;grid-column:2;grid-row:1;align-self:center;justify-self:end;margin-top:0;margin-right:21px;width:min(580px,calc(100% - 21px));max-width:none;aspect-ratio:580/355;overflow:hidden;background:var(--bg);transition:box-shadow .35s ease}
 /* hover: no movement, just a soft shadow */
@@ -192,7 +192,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (min-width:601px) and (max-width:1180px){
   .project__card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:start}
   .project__logo,.project__nda{grid-column:1;grid-row:1/4;margin-bottom:0;max-width:100%;justify-self:start}
-  .project__tag{grid-column:2;grid-row:1;justify-self:start;margin-bottom:12px}
+  .project__tag{grid-column:2;grid-row:1;justify-self:start;margin-bottom:6px}
   .project__role{grid-column:2;grid-row:2;max-width:none}
   .project__year{grid-column:2;grid-row:3}
 }
