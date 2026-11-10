@@ -1139,7 +1139,7 @@ layout();})();</script></section>
           while(j<pts.length-1&&pts[j].l<s) j++;
           var p=pts[j-1],q=pts[j],f=(s-p.l)/Math.max(1e-6,q.l-p.l);
           rx.globalAlpha=Math.min(1,.4+.6*Math.min(1,(head-s)/60+.3));
-          rx.beginPath(); rx.arc(p.x+(q.x-p.x)*f,p.y+(q.y-p.y)*f,1.1,0,6.2832); rx.fill();
+          rx.beginPath(); rx.arc(p.x+(q.x-p.x)*f,p.y+(q.y-p.y)*f,.75,0,6.2832); rx.fill();
         }
         // camps (no labels): pop in with a pulse when the trail reaches them; the summit keeps breathing
         for(var i=0;i<=reached;i++){
