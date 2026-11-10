@@ -150,12 +150,16 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project:hover .project__card,.project:focus-within .project__card{box-shadow:var(--card-shadow)}
 .project:hover .project__img,.project:focus-within .project__img{box-shadow:var(--img-shadow)}
 .project__img img{width:100%;height:100%;object-fit:cover}
-/* hover: frosted glass over the cover + call to action */
-.project__glass{position:absolute;inset:0;display:grid;place-items:center;background:rgba(255,255,255,.16);opacity:0;transition:opacity .35s ease;pointer-events:none}
+/* hover: the cover stays sharp in the middle and blurs progressively toward the edges (two masked backdrop blurs + a soft haze), with the call to action on top */
+.project__glass{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .45s ease;pointer-events:none;background:radial-gradient(ellipse closest-side,transparent 70%,rgba(255,255,255,.16) 120%)}
+.project__glass::before,.project__glass::after{content:"";position:absolute;inset:0}
+.project__glass::before{-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);-webkit-mask-image:radial-gradient(ellipse closest-side,transparent 58%,#000 100%);mask-image:radial-gradient(ellipse closest-side,transparent 58%,#000 100%)}
+.project__glass::after{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);-webkit-mask-image:radial-gradient(ellipse closest-side,transparent 78%,#000 125%);mask-image:radial-gradient(ellipse closest-side,transparent 78%,#000 125%)}
+.project__cta{position:relative;z-index:1}
 .project__cta{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:rgba(23,23,27,.78);color:#fff;font-size:15px;line-height:20px;font-weight:500;transform:translateY(8px);transition:transform .35s ease}
 .project:hover .project__glass,.project:focus-within .project__glass{opacity:1}
 .project__img img{transition:filter .4s ease,transform .5s ease}
-.project:hover .project__img img,.project:focus-within .project__img img{filter:var(--shot-filter) blur(16px) saturate(1.15);transform:scale(1.12)}
+.project:hover .project__img img,.project:focus-within .project__img img{transform:scale(1.04)}
 @media (hover:none){.project:hover .project__img img{filter:var(--shot-filter);transform:none}}
 .project:hover .project__cta,.project:focus-within .project__cta{transform:none}
 @media (hover:none){.project__glass{display:none}}
