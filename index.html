@@ -354,9 +354,9 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-ba .label{margin:0 0 14px}
 .wr-stack{display:flex;flex-direction:column;gap:14px}
 .wr-shot{border-radius:14px;background:transparent}
-.wr-results{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.wr-results{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,max-content);justify-content:start;gap:40px 90px}
 .wr-results li{display:flex;flex-direction:column;align-items:flex-start;gap:16px;font-size:18px}
-.wr-num{height:35px;width:auto;fill:var(--green)}
+.wr-num{height:35px;width:auto;fill:var(--ink);transition:fill .45s}
 @media (prefers-reduced-motion:reduce){.wr-chart .wr-bar,.wr-chart .wr-callout{animation:none!important}}
 @media (max-width:900px){
   .wr-row{grid-template-columns:1fr;gap:10px}
