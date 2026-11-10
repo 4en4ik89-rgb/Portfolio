@@ -143,11 +143,11 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project__logo{height:auto;margin-bottom:28px}
 /* Tabletki's logo is taller than the others; at full size it stretched its card past 396px */
 .project__logo[src$="tabletki-logo.svg"]{height:84px;width:auto}
-.project__brand{height:84px;display:flex;align-items:flex-end;margin-bottom:30px}
+.project__brand{display:flex;align-items:flex-start;margin-bottom:28px}
 .project__brand .project__logo,.project__brand .project__nda{margin:0}
 /* top: logo + domain; bottom: role + year, quieter */
 .project__card{display:flex;flex-direction:column}
-.project__domain{font-size:22px;line-height:30px;font-weight:500;color:var(--ink);margin:0;letter-spacing:-.01em}
+.project__domain{font-size:18px;line-height:26px;color:var(--ink-2);margin:0}
 .project__foot{margin-top:auto;padding-top:28px}
 .project__role{font-size:15px;line-height:22px;color:var(--ink-2);max-width:210px;margin:0 0 2px}
 .project__sub{font-size:15px;line-height:22px;color:var(--muted);margin:0}
@@ -203,7 +203,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   .project__role{max-width:none}
 }
 @media (max-width:600px){
-  .project__brand{height:auto;margin-bottom:20px}
+  .project__brand{margin-bottom:20px}
   .project__foot{padding-top:18px}
   .project__img{margin:0 12px 12px}
   .project__card{padding:32px 24px 24px;min-height:0}
