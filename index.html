@@ -1026,6 +1026,27 @@ layout();})();</script></section>
     go(a.getAttribute('href'));
   });
   function onHash(){ if(busy) return; transition(resolve(location.hash)).then(function(){busy=false;}); }
+  // home: scrolling down (wheel, trackpad, keys or a swipe up) moves on to Projects with the usual transition
+  (function(){
+    var acc=0, last=0, ty=null;
+    function ready(){ return current==='home' && !busy && !document.querySelector('.lightbox.open') && innerHeight+scrollY>=document.documentElement.scrollHeight-2; }
+    window.addEventListener('wheel',function(e){
+      if(!ready()||e.ctrlKey||e.deltaY<=0||Math.abs(e.deltaX)>Math.abs(e.deltaY)) return;
+      var now=performance.now(); if(now-last>350) acc=0; last=now;
+      acc+=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);
+      if(acc>70){ acc=0; go('#projects'); }
+    },{passive:true});
+    window.addEventListener('keydown',function(e){
+      if(!ready()||e.altKey||e.ctrlKey||e.metaKey) return;
+      var t=e.target; if(t&&(/^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(t.tagName)||t.isContentEditable)) return;
+      if(e.key==='ArrowDown'||e.key==='PageDown'||(e.key===' '&&!e.shiftKey)){ e.preventDefault(); go('#projects'); }
+    });
+    window.addEventListener('touchstart',function(e){ ty=e.touches.length===1?e.touches[0].clientY:null; },{passive:true});
+    window.addEventListener('touchend',function(e){
+      if(ty===null) return; var dy=ty-e.changedTouches[0].clientY; ty=null;
+      if(dy>60&&ready()) go('#projects');
+    },{passive:true});
+  })();
   window.addEventListener('hashchange',onHash);
   window.addEventListener('popstate',onHash);
   render(resolve(location.hash));
