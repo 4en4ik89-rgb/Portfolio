@@ -362,7 +362,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-rs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:start;margin-top:10px}
 .wr-rs .wr-group:first-child{margin-top:0}
 .wr-cards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
-.wr-pair{display:flex;flex-direction:column;gap:1px;outline:none;cursor:default}
+.wr-pair{display:flex;flex-direction:column;gap:1px}
 .wr-pc{position:relative;background:var(--panel);padding:24px 56px 26px 30px;transition:background-color .45s,box-shadow .3s}
 .wr-pc--ins{border-radius:16px 16px 4px 4px}
 .wr-pc--dec{border-radius:4px 4px 16px 16px}
@@ -370,11 +370,14 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-pc__k{display:block;font-size:15px;line-height:1.4;margin-bottom:8px}
 .wr-pc--ins .wr-pc__k{color:#A98BE8;transition:color .3s}
 .wr-pc--dec .wr-pc__k{color:#3FB54C}
-.wr-pair__arrow{position:absolute;right:26px;top:28px;width:16px;height:13px;color:#7A45E6;opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s}
-.wr-pair.is-on .wr-pc--ins{box-shadow:0 10px 30px rgba(20,22,40,.12),0 2px 6px rgba(20,22,40,.06);z-index:1}
-.wr-pair.is-on .wr-pc--ins .wr-pc__k{color:#7A45E6}
-.wr-pair.is-on .wr-pair__arrow{opacity:1;transform:none}
-.wr-pair:focus-visible .wr-pc--ins{outline:2px solid #7A45E6;outline-offset:2px}
+.wr-pc{outline:none;cursor:default}
+.wr-pair__arrow{position:absolute;right:26px;top:28px;width:16px;height:13px;opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s}
+.wr-pc--ins .wr-pair__arrow{color:#7A45E6}
+.wr-pc--dec .wr-pair__arrow{color:#3FB54C}
+.wr-pc.is-on{box-shadow:0 10px 30px rgba(20,22,40,.12),0 2px 6px rgba(20,22,40,.06);z-index:1}
+.wr-pc--ins.is-on .wr-pc__k{color:#7A45E6}
+.wr-pc.is-on .wr-pair__arrow{opacity:1;transform:none}
+.wr-pc:focus-visible{outline:2px solid #7A45E6;outline-offset:2px}
 .wr-rs__vis{position:sticky;top:80px}
 .wr-seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--panel);margin-bottom:16px;transition:background-color .45s}
 .wr-seg button{border:0;background:transparent;font:500 14px var(--font);color:var(--muted);padding:8px 18px;border-radius:999px;cursor:pointer;transition:background-color .25s,color .25s}
@@ -384,6 +387,8 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-pane__img{position:relative}
 .wr-hl{position:absolute;border-radius:12px;box-shadow:0 0 0 3px #6A3BD6,0 0 0 11px rgba(106,59,214,.38);opacity:0;transform:scale(1.06);transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 .wr-hl.is-on{opacity:1;transform:none}
+.wr-pane[data-v="before"] .wr-hl{box-shadow:0 0 0 3px #7A45E6,0 0 0 11px rgba(122,69,230,.32)}
+.wr-pane[data-v="after"] .wr-hl{box-shadow:0 0 0 3px #3FB54C,0 0 0 11px rgba(63,181,76,.32)}
 @media (prefers-reduced-motion:reduce){.wr-pane.is-on{animation:none}.wr-hl,.wr-pair__arrow{transition:none}}
 @media (max-width:900px){
   .wr-rs{grid-template-columns:1fr}
@@ -1017,20 +1022,20 @@ layout();})();</script></section>
     <div class="wr-rs">
       <div class="wr-rs__cards">
         <p class="wr-group">All writers looked the same</p>
-        <ol class="wr-cards"><li class="wr-pair" data-n="1" tabindex="0"><div class="wr-pc wr-pc--ins"><span class="wr-pc__k">Insight 01</span><p>Every writer had a huge number of reviews</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec"><span class="wr-pc__k">Decision 01</span><p>A rating based on the last 100 orders</p></div></li><li class="wr-pair" data-n="2" tabindex="0"><div class="wr-pc wr-pc--ins"><span class="wr-pc__k">Insight 02</span><p>Every writer had a high total order count, and it looked inflated</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec"><span class="wr-pc__k">Decision 02</span><p>The total order count was removed</p></div></li><li class="wr-pair" data-n="3" tabindex="0"><div class="wr-pc wr-pc--ins"><span class="wr-pc__k">Insight 03</span><p>Greeting messages were templates and didn&#8217;t help</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec"><span class="wr-pc__k">Decision 03</span><p>Collapsed into a message button with a counter</p></div></li></ol>
+        <ol class="wr-cards"><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i1" tabindex="0"><span class="wr-pc__k">Insight 01</span><p>Every writer had a huge number of reviews</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d1" tabindex="0"><span class="wr-pc__k">Decision 01</span><p>A rating based on the last 100 orders</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i2" tabindex="0"><span class="wr-pc__k">Insight 02</span><p>Every writer had a high total order count, and it looked inflated</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d2" tabindex="0"><span class="wr-pc__k">Decision 02</span><p>The total order count was removed</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i3" tabindex="0"><span class="wr-pc__k">Insight 03</span><p>Greeting messages were templates and didn&#8217;t help</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d3" tabindex="0"><span class="wr-pc__k">Decision 03</span><p>Collapsed into a message button with a counter</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li></ol>
         <p class="wr-group">Choosing still felt like a gamble</p>
-        <ol class="wr-cards"><li class="wr-pair" data-n="4" tabindex="0"><div class="wr-pc wr-pc--ins"><span class="wr-pc__k">Insight 04</span><p>No sign of how deep a writer&#8217;s expertise is in a given subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec"><span class="wr-pc__k">Decision 04</span><p>Highlights for each subject, based on the writer&#8217;s past work</p></div></li><li class="wr-pair" data-n="5" tabindex="0"><div class="wr-pc wr-pc--ins"><span class="wr-pc__k">Insight 05</span><p>Customers worried the writing would look overqualified</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec"><span class="wr-pc__k">Decision 05</span><p>Writers can add samples for each subject</p></div></li><li class="wr-pair" data-n="6" tabindex="0"><div class="wr-pc wr-pc--ins"><span class="wr-pc__k">Insight 06</span><p>Orders are placed close to the deadline, and customers need time to edit the text themselves</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec"><span class="wr-pc__k">Decision 06</span><p>An on-time metric: how often orders are delivered on time</p></div></li></ol>
+        <ol class="wr-cards"><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i4" tabindex="0"><span class="wr-pc__k">Insight 04</span><p>No sign of how deep a writer&#8217;s expertise is in a given subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d4" tabindex="0"><span class="wr-pc__k">Decision 04</span><p>Highlights for each subject, based on the writer&#8217;s past work</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i5" tabindex="0"><span class="wr-pc__k">Insight 05</span><p>Customers worried the writing would look overqualified</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d5" tabindex="0"><span class="wr-pc__k">Decision 05</span><p>Writers can add samples for each subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i6" tabindex="0"><span class="wr-pc__k">Insight 06</span><p>Orders are placed close to the deadline, and customers need time to edit the text themselves</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d6" tabindex="0"><span class="wr-pc__k">Decision 06</span><p>An on-time metric: how often orders are delivered on time</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li></ol>
       </div>
       <div class="wr-rs__vis" id="wr-design">
         <div class="wr-seg" role="tablist" aria-label="Screen version">
-          <button type="button" role="tab" aria-selected="true" data-v="after">After</button><button type="button" role="tab" aria-selected="false" data-v="before">Before</button>
+          <button type="button" role="tab" aria-selected="true" data-v="before">Before</button><button type="button" role="tab" aria-selected="false" data-v="after">After</button>
         </div>
-        <figure class="wr-pane is-on" data-v="after">
-          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-after.png" role="button" aria-label="Zoom: writer cards after the redesign"><img src="assets/wr-after.png" width="740" height="708" alt="Writer cards after: rating from the last 100 reviews, on-time rate, subject highlights, writing samples and a message button" loading="lazy"></a><span class="wr-hl" data-n="1" style="left:4.86%;top:40.11%;width:23.11%;height:6.07%"></span><span class="wr-hl" data-n="6" style="left:28.78%;top:40.11%;width:22.30%;height:6.07%"></span><span class="wr-hl" data-n="3" style="left:52.97%;top:30.93%;width:11.35%;height:6.78%"></span><span class="wr-hl" data-n="4" style="left:4.05%;top:47.88%;width:59.46%;height:8.76%"></span><span class="wr-hl" data-n="5" style="left:4.05%;top:79.10%;width:60.27%;height:17.51%"></span></div>
+        <figure class="wr-pane" data-v="after">
+          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-after.png" role="button" aria-label="Zoom: writer cards after the redesign"><img src="assets/wr-after.png" width="740" height="708" alt="Writer cards after: rating from the last 100 reviews, on-time rate, subject highlights, writing samples and a message button" loading="lazy"></a><span class="wr-hl" data-k="d1" style="left:4.86%;top:40.11%;width:23.11%;height:6.07%"></span><span class="wr-hl" data-k="d2" style="left:4.86%;top:40.11%;width:58.92%;height:6.07%"></span><span class="wr-hl" data-k="d3" style="left:52.97%;top:30.93%;width:11.35%;height:6.78%"></span><span class="wr-hl" data-k="d4" style="left:4.05%;top:47.88%;width:59.46%;height:8.76%"></span><span class="wr-hl" data-k="d5" style="left:4.05%;top:79.10%;width:60.27%;height:17.51%"></span><span class="wr-hl" data-k="d6" style="left:28.78%;top:40.11%;width:22.30%;height:6.07%"></span></div>
           <figcaption class="evo__cap">After: last 100 reviews, on-time rate, subject highlights and samples; the greeting is behind a message button</figcaption>
         </figure>
-        <figure class="wr-pane" data-v="before">
-          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-before.png" role="button" aria-label="Zoom: writer cards before the redesign"><img src="assets/wr-before.png" width="740" height="620" alt="Writer cards before: 10K+ reviews, 15K+ orders, 100% success and a template greeting" loading="lazy"></a><span class="wr-hl" data-n="1" style="left:4.86%;top:45.65%;width:20.27%;height:6.94%"></span><span class="wr-hl" data-n="2" style="left:26.76%;top:45.65%;width:16.22%;height:6.94%"></span><span class="wr-hl" data-n="3" style="left:4.05%;top:53.55%;width:59.46%;height:9.35%"></span></div>
+        <figure class="wr-pane is-on" data-v="before">
+          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-before.png" role="button" aria-label="Zoom: writer cards before the redesign"><img src="assets/wr-before.png" width="740" height="620" alt="Writer cards before: 10K+ reviews, 15K+ orders, 100% success and a template greeting" loading="lazy"></a><span class="wr-hl" data-k="i1" style="left:4.86%;top:45.65%;width:20.27%;height:6.94%"></span><span class="wr-hl" data-k="i2" style="left:26.76%;top:45.65%;width:16.22%;height:6.94%"></span><span class="wr-hl" data-k="i3" style="left:4.05%;top:53.55%;width:59.46%;height:9.35%"></span><span class="wr-hl" data-k="i4" style="left:3.78%;top:32.58%;width:61.08%;height:30.00%"></span><span class="wr-hl" data-k="i5" style="left:3.78%;top:66.45%;width:61.08%;height:30.00%"></span><span class="wr-hl" data-k="i6" style="left:47.03%;top:45.65%;width:16.76%;height:6.94%"></span></div>
           <figcaption class="evo__cap">Before: every writer looks the same — 10K+ reviews, 15K+ orders, a template greeting</figcaption>
         </figure>
       </div>
@@ -1252,35 +1257,29 @@ layout();})();</script></section>
   io.observe(c);
 })();
 
-// writers case: Before/After switch; the active insight pair (by scroll, or hovered) outlines its element on the screen
+// writers case: an insight card outlines the problem on Before, a decision card outlines the change on After.
+// The active card follows the scroll (the one in the middle of the screen) or the hovered/focused card.
 (function(){
   var rs=document.querySelector('.wr-rs'); if(!rs) return;
-  var tabs=rs.querySelectorAll('.wr-seg button'), panes=rs.querySelectorAll('.wr-pane'), pairs=[].slice.call(rs.querySelectorAll('.wr-pair'));
-  var current=null, hover=null, view='after', auto=true;
-  function show(v){ view=v; tabs.forEach(function(t){ t.setAttribute('aria-selected',t.dataset.v===v?'true':'false'); }); panes.forEach(function(p){ p.classList.toggle('is-on',p.dataset.v===v); }); paint(); }
-  tabs.forEach(function(t){ t.addEventListener('click',function(){ auto=false; show(t.dataset.v); }); });
+  var tabs=rs.querySelectorAll('.wr-seg button'), panes=rs.querySelectorAll('.wr-pane'), cards=[].slice.call(rs.querySelectorAll('.wr-pc[data-k]'));
+  var current=cards[0]&&cards[0].dataset.k, hover=null, view=null;
+  function show(v){ if(v===view) return; view=v; tabs.forEach(function(t){ t.setAttribute('aria-selected',t.dataset.v===v?'true':'false'); }); panes.forEach(function(p){ p.classList.toggle('is-on',p.dataset.v===v); }); }
   function paint(){
-    var n=hover||current;
-    pairs.forEach(function(p){ p.classList.toggle('is-on',p.dataset.n===n); });
-    rs.querySelectorAll('.wr-hl').forEach(function(h){ h.classList.toggle('is-on',h.dataset.n===n && h.closest('.wr-pane').dataset.v===view); });
+    var k=hover||current;
+    cards.forEach(function(c){ c.classList.toggle('is-on',c.dataset.k===k); });
+    rs.querySelectorAll('.wr-hl').forEach(function(h){ h.classList.toggle('is-on',h.dataset.k===k && h.closest('.wr-pane').dataset.v===view); });
   }
-  function activate(n){
-    // show the screen that has this element (the removed order count only exists on Before)
-    var onCur=rs.querySelector('.wr-pane[data-v="'+view+'"] .wr-hl[data-n="'+n+'"]');
-    if(!onCur){ var other=rs.querySelector('.wr-pane:not([data-v="'+view+'"]) .wr-hl[data-n="'+n+'"]'); if(other){ show(other.closest('.wr-pane').dataset.v); return; } }
-    else if(auto && view!=='after' && rs.querySelector('.wr-pane[data-v="after"] .wr-hl[data-n="'+n+'"]')){ show('after'); return; }
-    paint();
-  }
-  pairs.forEach(function(p){
-    function on(){ hover=p.dataset.n; activate(hover); }
-    function off(){ hover=null; if(current) activate(current); else paint(); }
-    p.addEventListener('mouseenter',on); p.addEventListener('mouseleave',off);
-    p.addEventListener('focus',on); p.addEventListener('blur',off);
+  function activate(k){ if(k) show(k.charAt(0)==='i'?'before':'after'); paint(); }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ show(t.dataset.v); paint(); }); });
+  cards.forEach(function(c){
+    function on(){ hover=c.dataset.k; activate(hover); }
+    function off(){ hover=null; activate(current); }
+    c.addEventListener('mouseenter',on); c.addEventListener('mouseleave',off);
+    c.addEventListener('focus',on); c.addEventListener('blur',off);
   });
-  current=pairs[0]&&pairs[0].dataset.n;
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ current=e.target.dataset.n; auto=true; if(!hover) activate(current); } }); },{rootMargin:'-45% 0px -45% 0px'});
-    pairs.forEach(function(p){ io.observe(p); });
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ current=e.target.dataset.k; if(!hover) activate(current); } }); },{rootMargin:'-48% 0px -48% 0px'});
+    cards.forEach(function(c){ io.observe(c); });
   }
   activate(current);
 })();
