@@ -385,10 +385,10 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-pane{margin:0;display:none}
 .wr-pane.is-on{display:block;animation:wrfade .35s both}
 .wr-pane__img{position:relative}
-.wr-hl{position:absolute;border-radius:12px;box-shadow:0 0 0 3px #6A3BD6,0 0 0 11px rgba(106,59,214,.38);opacity:0;transform:scale(1.06);transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.wr-hl{position:absolute;border-radius:var(--r,10px);box-shadow:0 0 0 3px #6A3BD6,0 0 0 11px rgba(106,59,214,.38);opacity:0;transform:scale(1.06);transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 .wr-hl.is-on{opacity:1;transform:none}
-.wr-pane[data-v="before"] .wr-hl{box-shadow:0 0 0 3px #7A45E6,0 0 0 11px rgba(122,69,230,.32)}
-.wr-pane[data-v="after"] .wr-hl{box-shadow:0 0 0 3px #3FB54C,0 0 0 11px rgba(63,181,76,.32)}
+.wr-pane[data-v="before"] .wr-hl{box-shadow:0 0 0 2.5px #7A45E6,0 0 0 9px rgba(122,69,230,.3)}
+.wr-pane[data-v="after"] .wr-hl{box-shadow:0 0 0 2.5px #3FB54C,0 0 0 9px rgba(63,181,76,.3)}
 @media (prefers-reduced-motion:reduce){.wr-pane.is-on{animation:none}.wr-hl,.wr-pair__arrow{transition:none}}
 @media (max-width:900px){
   .wr-rs{grid-template-columns:1fr}
@@ -1031,11 +1031,11 @@ layout();})();</script></section>
           <button type="button" role="tab" aria-selected="true" data-v="before">Before</button><button type="button" role="tab" aria-selected="false" data-v="after">After</button>
         </div>
         <figure class="wr-pane" data-v="after">
-          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-after.png" role="button" aria-label="Zoom: writer cards after the redesign"><img src="assets/wr-after.png" width="740" height="708" alt="Writer cards after: rating from the last 100 reviews, on-time rate, subject highlights, writing samples and a message button" loading="lazy"></a><span class="wr-hl" data-k="d1" style="left:4.86%;top:40.11%;width:23.11%;height:6.07%"></span><span class="wr-hl" data-k="d2" style="left:4.86%;top:40.11%;width:58.92%;height:6.07%"></span><span class="wr-hl" data-k="d3" style="left:52.97%;top:30.93%;width:11.35%;height:6.78%"></span><span class="wr-hl" data-k="d4" style="left:4.05%;top:47.88%;width:59.46%;height:8.76%"></span><span class="wr-hl" data-k="d5" style="left:4.05%;top:79.10%;width:60.27%;height:17.51%"></span><span class="wr-hl" data-k="d6" style="left:28.78%;top:40.11%;width:22.30%;height:6.07%"></span></div>
+          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-after.png" role="button" aria-label="Zoom: writer cards after the redesign"><img src="assets/wr-after.png" width="740" height="708" alt="Writer cards after: rating from the last 100 reviews, on-time rate, subject highlights, writing samples and a message button" loading="lazy"></a><span class="wr-hl" data-k="d1" style="left:4.59%;top:40.11%;width:23.78%;height:6.21%;--r:7px"></span><span class="wr-hl" data-k="d2" style="left:4.59%;top:40.11%;width:59.46%;height:6.21%;--r:7px"></span><span class="wr-hl" data-k="d3" style="left:53.24%;top:31.07%;width:10.81%;height:6.21%;--r:7px"></span><span class="wr-hl" data-k="d4" style="left:4.32%;top:48.02%;width:57.30%;height:8.76%;--r:8px"></span><span class="wr-hl" data-k="d5" style="left:4.32%;top:79.66%;width:59.73%;height:17.23%;--r:8px"></span><span class="wr-hl" data-k="d6" style="left:28.38%;top:40.11%;width:23.24%;height:6.21%;--r:7px"></span></div>
           <figcaption class="evo__cap">After: last 100 reviews, on-time rate, subject highlights and samples; the greeting is behind a message button</figcaption>
         </figure>
         <figure class="wr-pane is-on" data-v="before">
-          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-before.png" role="button" aria-label="Zoom: writer cards before the redesign"><img src="assets/wr-before.png" width="740" height="620" alt="Writer cards before: 10K+ reviews, 15K+ orders, 100% success and a template greeting" loading="lazy"></a><span class="wr-hl" data-k="i1" style="left:4.86%;top:45.65%;width:20.27%;height:6.94%"></span><span class="wr-hl" data-k="i2" style="left:26.76%;top:45.65%;width:16.22%;height:6.94%"></span><span class="wr-hl" data-k="i3" style="left:4.05%;top:53.55%;width:59.46%;height:9.35%"></span><span class="wr-hl" data-k="i6" style="left:47.03%;top:45.65%;width:16.76%;height:6.94%"></span></div>
+          <div class="wr-pane__img"><a class="zoom wr-shot" href="assets/wr-before.png" role="button" aria-label="Zoom: writer cards before the redesign"><img src="assets/wr-before.png" width="740" height="620" alt="Writer cards before: 10K+ reviews, 15K+ orders, 100% success and a template greeting" loading="lazy"></a><span class="wr-hl" data-k="i1" style="left:4.59%;top:45.48%;width:21.35%;height:7.10%;--r:7px"></span><span class="wr-hl" data-k="i2" style="left:25.68%;top:45.48%;width:18.38%;height:7.10%;--r:7px"></span><span class="wr-hl" data-k="i3" style="left:4.59%;top:53.55%;width:58.38%;height:7.74%;--r:8px"></span><span class="wr-hl" data-k="i6" style="left:44.32%;top:45.48%;width:19.73%;height:7.10%;--r:7px"></span></div>
           <figcaption class="evo__cap">Before: every writer looks the same — 10K+ reviews, 15K+ orders, a template greeting</figcaption>
         </figure>
       </div>
@@ -1257,31 +1257,24 @@ layout();})();</script></section>
   io.observe(c);
 })();
 
-// writers case: an insight card outlines the problem on Before, a decision card outlines the change on After.
-// The active card follows the scroll (the one in the middle of the screen) or the hovered/focused card.
+// writers case: hovering (or focusing) an insight shows Before with the problem outlined,
+// a decision shows After with the change outlined. Nothing moves on its own.
 (function(){
   var rs=document.querySelector('.wr-rs'); if(!rs) return;
   var tabs=rs.querySelectorAll('.wr-seg button'), panes=rs.querySelectorAll('.wr-pane'), cards=[].slice.call(rs.querySelectorAll('.wr-pc[data-k]'));
-  var current=cards[0]&&cards[0].dataset.k, hover=null, view=null;
-  function show(v){ if(v===view) return; view=v; tabs.forEach(function(t){ t.setAttribute('aria-selected',t.dataset.v===v?'true':'false'); }); panes.forEach(function(p){ p.classList.toggle('is-on',p.dataset.v===v); }); }
+  var active=null;
+  function show(v){ tabs.forEach(function(t){ t.setAttribute('aria-selected',t.dataset.v===v?'true':'false'); }); panes.forEach(function(p){ p.classList.toggle('is-on',p.dataset.v===v); }); }
   function paint(){
-    var k=hover||current;
-    cards.forEach(function(c){ c.classList.toggle('is-on',c.dataset.k===k); });
-    rs.querySelectorAll('.wr-hl').forEach(function(h){ h.classList.toggle('is-on',h.dataset.k===k && h.closest('.wr-pane').dataset.v===view); });
+    cards.forEach(function(c){ c.classList.toggle('is-on',c.dataset.k===active); });
+    rs.querySelectorAll('.wr-hl').forEach(function(h){ h.classList.toggle('is-on',h.dataset.k===active); });
   }
-  function activate(k){ if(k) show(k.charAt(0)==='i'?'before':'after'); paint(); }
-  tabs.forEach(function(t){ t.addEventListener('click',function(){ show(t.dataset.v); paint(); }); });
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ show(t.dataset.v); }); });
   cards.forEach(function(c){
-    function on(){ hover=c.dataset.k; activate(hover); }
-    function off(){ hover=null; activate(current); }
+    function on(){ active=c.dataset.k; show(active.charAt(0)==='i'?'before':'after'); paint(); }
+    function off(){ if(active===c.dataset.k){ active=null; paint(); } }
     c.addEventListener('mouseenter',on); c.addEventListener('mouseleave',off);
     c.addEventListener('focus',on); c.addEventListener('blur',off);
   });
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ current=e.target.dataset.k; if(!hover) activate(current); } }); },{rootMargin:'-48% 0px -48% 0px'});
-    cards.forEach(function(c){ io.observe(c); });
-  }
-  activate(current);
 })();
 
 (function(){
