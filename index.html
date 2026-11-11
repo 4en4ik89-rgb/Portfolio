@@ -339,6 +339,43 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   .tab__lead--big{max-width:none}
 }
 
+/* ---------- case study: Develux, leadership ---------- */
+.project__word{margin:0;font-size:22px;font-weight:800;letter-spacing:.24em;line-height:40px;color:var(--ink)}
+.dx-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:16px 56px}
+.dx-facts li{display:flex;align-items:baseline;gap:12px;font-size:16px;color:var(--ink-2)}
+.dx-facts b{font-size:36px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.dx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 48px;max-width:1160px}
+.dx-steps li{display:flex;gap:20px}
+.dx-step__n{font-size:15px;color:var(--muted);width:24px;flex:none;padding-top:3px}
+.dx-step__t{margin:0 0 6px;font-size:20px;line-height:1.35;color:var(--ink)}
+.dx-step__d{margin:0;font-size:16px;line-height:1.55;color:var(--ink-2)}
+.dx-org{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,2fr);gap:28px;align-items:center;margin-top:64px}
+.dx-org__k{margin:0 0 12px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dx-org__box{background:var(--panel);border-radius:16px;padding:18px 20px;border-top:3px solid var(--c,var(--tint-12));transition:background-color .45s}
+.dx-org__t{margin:0 0 4px;font-size:17px;color:var(--ink)}
+.dx-org__d{margin:0;font-size:14px;color:var(--muted)}
+.dx-org__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dx-org__arrow{font-size:28px;color:var(--drop);padding-top:28px}
+.dx-pills{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dx-pills li{background:var(--panel);border-radius:16px;padding:22px 22px 24px;transition:background-color .45s}
+.dx-pill__t{margin:0 0 10px;font-size:18px;color:var(--ink)}
+.dx-pill__d{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.dx-h3{font-size:20px;font-weight:500;margin:56px 0 18px}
+.dx-cascade{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
+.dx-cascade li{position:relative;padding:10px 18px;border-radius:999px;background:var(--panel);font-size:16px;color:var(--ink);transition:background-color .45s}
+.dx-cascade li:not(:last-child)::after{content:"\2192";position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-52%);color:var(--muted)}
+.dx-cascade li:last-child{background:var(--drop);color:#fff}
+.dx-met{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dx-met li{background:var(--panel);border-radius:16px;padding:20px 22px 22px;border-top:3px solid var(--c);transition:background-color .45s}
+.dx-met__t{margin:0 0 8px;font-size:17px;color:var(--ink)}
+.dx-met__d{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.dx-lessons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.dx-lessons .wr-why{margin-top:0;max-width:none}
+.dx-more{display:flex;flex-direction:column;gap:10px}
+.dx-more__link{font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--tint-12);align-self:flex-start;padding-bottom:4px;transition:border-color .2s}
+.dx-more__link:hover{border-color:var(--ink)}
+@media (max-width:900px){.dx-steps,.dx-lessons{grid-template-columns:minmax(0,1fr)}.dx-pills,.dx-met{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-org{grid-template-columns:minmax(0,1fr)}.dx-org__arrow{transform:rotate(90deg);padding:0;justify-self:start}}
+@media (max-width:600px){.dx-pills,.dx-met,.dx-org__grid{grid-template-columns:minmax(0,1fr)}}
 /* ---------- case study: student writing freelance marketplace (NDA) ---------- */
 .wr{--green:#2FBF8A;--drop:#FF7A2F}
 .wr-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 9px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.14em;line-height:1.3;color:var(--muted)}
@@ -594,6 +631,15 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 <section class="view shell" id="view-projects">
   <div class="pblur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <main class="main"><div class="main__inner"><h1 class="sr">Projects</h1><div class="projects">
+<article class="project">
+  <div class="project__card">
+    <div class="project__brand"><p class="project__word">DEVELUX</p></div>
+    <p class="project__domain">Building a design &amp; research function</p>
+    <div class="project__foot"><p class="project__role">Chief Design Officer</p><p class="project__sub">2023 &#8211; 2026</p></div>
+  </div>
+  <div class="project__img"><img src="assets/cover-develux.jpg" width="580" height="355" alt="Develux — building a design and research function, leadership case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+  <a class="project__link" href="#develux" aria-label="Develux — building a design and research function, leadership case"></a>
+</article>
 <article class="project">
   <div class="project__card">
     <div class="project__brand"><span class="project__nda" aria-label="Under NDA">NDA</span></div>
@@ -1101,7 +1147,81 @@ layout();})();</script></section>
 </div>
 <a class="totop" href="#tabletki-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
 </section>
-<section class="view" id="view-writers" hidden>
+<section class="view" id="view-develux" hidden>
+<div class="case tab wr dx" id="dx-top">
+  <a class="back" href="#projects"><svg viewBox="0 0 108 12" fill="none" aria-hidden="true"><path d="M1 6h107M1 6l5.984-5M1 6l5.984 5" stroke="currentColor"/></svg>projects</a>
+  <div class="wr-head"><p class="wr-head__name">Building a design &amp; research function</p><span class="wr-tag">DEVELUX · EDTECH</span></div>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Lead Product Designer &#8594; Chief Design Officer</dd></div>
+    <div><dt>Team</dt><dd>Up to 17 people in four disciplines</dd></div>
+    <div><dt>Period of time</dt><dd>Mar 2023 &#8211; Apr 2026</dd></div>
+  </dl>
+  <div class="wr-sum">
+    <p class="wr-sum__k">In short</p>
+    <p class="wr-sum__text">When I joined Develux&#8217;s EdTech direction, design was a service: two designers turned product managers&#8217; requests into mockups, and few initiatives paid off. Over three years I turned it into a design and research function of up to 17 people, with goals tied to the success of the product teams.</p>
+    <ul class="dx-facts"><li><b>2 &#8594; 17</b>people</li><li><b>4</b>disciplines</li><li><b>Lead &#8594; CDO</b>role</li></ul>
+  </div>
+
+  <hr class="rule" id="dx-context">
+  <div class="tab__section">
+    <h2 class="tab__h">Starting point</h2>
+    <p class="wr-note">EdTech products of a multiproduct company: a freelance marketplace for student writing, AI humanizers and writers, citation generators</p>
+    <ol class="numlist">
+      <li><span>01</span>Two designers worked as executors, drawing what product managers asked for</li>
+      <li><span>02</span>Hypotheses rested on product managers&#8217; personal research that nobody fact-checked</li>
+      <li><span>03</span>Few initiatives brought measurable value</li>
+    </ol>
+  </div>
+
+  <hr class="rule" id="dx-transformation">
+  <div class="tab__section">
+    <h2 class="tab__h">How the function grew</h2>
+    <ol class="dx-steps"><li><span class="dx-step__n">01</span><div><p class="dx-step__t">Designers as product partners</p><p class="dx-step__d">Moved designers from drawing what PMs asked for to owning the solution together with them: problem, research, business metrics. I showed the approach hands-on first.</p></div></li><li><span class="dx-step__n">02</span><div><p class="dx-step__t">A stronger base for hypotheses</p><p class="dx-step__d">PM hypotheses rested on trust and personal research. I brought in surveys, funnel analysis and UX audits of the current experience.</p></div></li><li><span class="dx-step__n">03</span><div><p class="dx-step__t">A new generation of designers</p><p class="dx-step__d">Once the approach proved itself, I got the green light to hire designers who work through research, user tests and surveys.</p></div></li><li><span class="dx-step__n">04</span><div><p class="dx-step__t">Research instead of more designers</p><p class="dx-step__d">When demand grew, we hired researchers, not designers. The first UX researcher started with user tests, then generative artefacts: JTBD, opportunity solution trees, archetypes. That grew into a research team with its own lead and a shared insight hub that PMs use before forming ideas.</p></div></li><li><span class="dx-step__n">05</span><div><p class="dx-step__t">UX writing</p><p class="dx-step__d">I took over the content team to build UX writing: fast delivery with minimal developer time, consistent naming and an editorial policy that supports conversion.</p></div></li><li><span class="dx-step__n">06</span><div><p class="dx-step__t">Web &amp; marketing design: rebuilt the team</p><p class="dx-step__d">The web team scaled work instead of optimising it: every new need meant more tasks and more hires. We rebuilt it around speed and templating: from 7 people to a lead and three designers.</p></div></li></ol>
+    <div class="dx-org">
+      <div class="dx-org__col"><p class="dx-org__k">Before</p><div class="dx-org__box"><p class="dx-org__t">2 designers</p><p class="dx-org__d">Executors, working from product managers&#8217; requests</p></div></div>
+      <div class="dx-org__arrow" aria-hidden="true">&#8594;</div>
+      <div class="dx-org__col"><p class="dx-org__k">After</p><div class="dx-org__grid">
+        <div class="dx-org__box" style="--c:#5873FF"><p class="dx-org__t">Product Design</p><p class="dx-org__d">3 designers</p></div>
+        <div class="dx-org__box" style="--c:#81DA88"><p class="dx-org__t">UX Research</p><p class="dx-org__d">Lead + 5 researchers</p></div>
+        <div class="dx-org__box" style="--c:#B58CF5"><p class="dx-org__t">UX Writing</p><p class="dx-org__d">Lead + 3 writers</p></div>
+        <div class="dx-org__box" style="--c:#FF8F51"><p class="dx-org__t">Web &amp; Marketing Design</p><p class="dx-org__d">Lead + 3 designers</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <hr class="rule" id="dx-leading">
+  <div class="tab__section">
+    <h2 class="tab__h">How I led the function</h2>
+    <ul class="dx-pills"><li><p class="dx-pill__t">Quality &amp; standards</p><p class="dx-pill__d">What quality means, how we track it and reach it. Agreed standards and working principles in every discipline.</p></li><li><p class="dx-pill__t">Delivery</p><p class="dx-pill__d">What each team gets as input and gives as output, and the processes inside the function and with other teams.</p></li><li><p class="dx-pill__t">People &amp; culture</p><p class="dx-pill__d">Hiring, communication, capacity and skills. How we learn, argue, present and facilitate.</p></li><li><p class="dx-pill__t">Goals &amp; vision</p><p class="dx-pill__d">What we want to achieve as a function, and what each person wants to achieve. Turned into clear goals for every team.</p></li></ul>
+    <h3 class="dx-h3">Goal cascade</h3>
+    <ol class="dx-cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
+    <p class="wr-note" style="margin-top:14px">Leads proposed initiatives to reach their department goals, and those became the roadmaps</p>
+  </div>
+
+  <hr class="rule" id="dx-metrics">
+  <div class="tab__section">
+    <h2 class="tab__h">Success metrics</h2>
+    <p class="wr-note">Each discipline&#8217;s goals were tied to the results of the cross-functional teams, not to its own output</p>
+    <ul class="dx-met"><li style="--c:#5873FF"><p class="dx-met__t">Product design</p><p class="dx-met__d">Share of the cross-functional team&#8217;s initiatives that succeeded</p></li><li style="--c:#81DA88"><p class="dx-met__t">UX research</p><p class="dx-met__d">Hypotheses built on research that delivered value</p></li><li style="--c:#B58CF5"><p class="dx-met__t">UX writing</p><p class="dx-met__d">Speed of delivery with minimal developer time, consistent product language</p></li><li style="--c:#FF8F51"><p class="dx-met__t">Web &amp; marketing design</p><p class="dx-met__d">Conversion and time to market</p></li></ul>
+  </div>
+
+  <hr class="rule" id="dx-lessons">
+  <div class="tab__section">
+    <h2 class="tab__h">What didn&#8217;t work</h2>
+    <div class="dx-lessons">
+      <div class="wr-why"><p class="wr-why__k">Not every designer wants to own a feature</p><p>I set up a Research &amp; Design track so designers could run initiatives without product managers. They did great research and owned their solutions, but inventing and owning a feature from scratch didn&#8217;t work. I had projected my own profile onto the team.</p></div>
+      <div class="wr-why"><p class="wr-why__k">Interesting data is not useful data</p><p>To fill the information gap at strategy sessions with the board, we tried market research through UX research. The findings were interesting, but the board kept its own sources and nothing was taken into work. Now I check who will act on a new type of research before starting it.</p></div>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <div class="tab__section dx-more">
+    <p class="wr-note" style="margin:0">See the approach in practice</p>
+    <a class="dx-more__link" href="#writers">Choosing a writer: +14% chose a writer, A/B tested <span aria-hidden="true">&#8594;</span></a>
+  </div>
+</div>
+<a class="totop" href="#dx-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
+</section><section class="view" id="view-writers" hidden>
 <div class="case tab wr" id="wr-top">
   <a class="back" href="#projects"><svg viewBox="0 0 108 12" fill="none" aria-hidden="true"><path d="M1 6h107M1 6l5.984-5M1 6l5.984 5" stroke="currentColor"/></svg>projects</a>
   <div class="wr-head"><p class="wr-head__name">Freelance marketplace for student writing</p><span class="wr-tag">NDA</span></div>
@@ -1186,7 +1306,7 @@ layout();})();</script></section>
 <a class="totop" href="#wr-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
 </section><div class="lightbox" id="lightbox" role="dialog" aria-label="Zoomed picture"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><img src="" alt=""></div><button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button><script>
 (function(){
-  var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken',tabletki:'view-tabletki',writers:'view-writers'};
+  var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken',tabletki:'view-tabletki',writers:'view-writers',develux:'view-develux'};
   var all=document.querySelectorAll('.view');
   var current=null, busy=false, pending=null;
   var EASE='cubic-bezier(.65,0,.35,1)';
@@ -1199,6 +1319,7 @@ layout();})();</script></section>
     if(/^(rocken-|jobs-|talent-)/.test(h)) return {view:'rocken',anchor:h};
     if(/^(tabletki-|tab-)/.test(h)) return {view:'tabletki',anchor:h};
     if(/^wr-/.test(h)) return {view:'writers',anchor:h};
+    if(/^dx-/.test(h)) return {view:'develux',anchor:h};
     return {view:'home',anchor:null};
   }
   function render(r){
@@ -1240,7 +1361,7 @@ layout();})();</script></section>
   }
   function transition(r){
     var from=current, to=r.view;
-    var isCase=function(v){return v==='rocken'||v==='tabletki'||v==='writers';};
+    var isCase=function(v){return v==='rocken'||v==='tabletki'||v==='writers'||v==='develux';};
     if(reduce||!wide()||from===to||from===null||isCase(to)||isCase(from)){
       if(from&&to!==from&&!reduce&&!isCase(from)&&!isCase(to)){ return crossfade(r); }
       render(r); return Promise.resolve();
