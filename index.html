@@ -399,6 +399,18 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-res{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;background:var(--panel);border-radius:16px;padding:22px 22px 24px;min-height:92px;transition:background-color .45s}
 .wr-res__label{display:inline-flex;align-items:center;gap:8px;font-size:16px;line-height:1.3;color:var(--ink)}
 .wr-res__up{width:12px;height:12px;color:var(--green);flex:none}
+/* Talent monetisation: plans */
+.plans{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.plan{position:relative;background:var(--panel);border-radius:16px;padding:22px 24px 24px;overflow:hidden;transition:background-color .45s}
+.plan::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--plan)}
+.plan--free{--plan:#81DA88}.plan--credits{--plan:#B58CF5}.plan--month{--plan:#5873FF}
+.plan__k{margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.plan__t{margin:0 0 14px;font-size:18px;line-height:1.35;font-weight:500;color:var(--ink)}
+.block .plan__list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.45;color:var(--ink-2)}
+.block .plan__list li{position:relative;padding-left:16px;margin:0}
+.plan__list li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--plan)}
+.plan-logic{margin-top:24px}
+@media (max-width:900px){.plans{grid-template-columns:minmax(0,1fr)}}
 .block .goal-key{list-style:none;margin:6px 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--ink-2)}
 .block .goal-key li{display:flex;align-items:center;gap:8px;margin:0}
 .goal-key{transition:opacity .3s}.goal-key.is-off{opacity:0}
@@ -906,8 +918,29 @@ layout();})();</script></section>
 
       <div class="block" id="talent-monetization">
         <h2 class="h2">Monetisation model</h2>
-        <p class="text">Monetisation is closely tied to UX: customers are willing to pay for convenience, so some inconvenience has to be designed in on purpose.</p>
-        <div class="fig fig--wide" style="margin-top:30px"><a class="zoom" href="assets/monetization.jpg" role="button" aria-label="Zoom: Monetisation flow: free publications and profiles, paid push-ups, unlimited publications, internal currency and monthly unlock"><img src="assets/monetization.jpg" width="1415" height="706" alt="Monetisation flow: free publications and profiles, paid push-ups, unlimited publications, internal currency and monthly unlock" loading="lazy"></a></div>
+        <p class="text">Candidates use ROCKEN Talent for free. The service earns from employers and recruiters, who pay for access to candidates.<br>Monetisation is closely tied to UX: customers pay for convenience, so some inconvenience has to be designed in on purpose.</p>
+        <ul class="plans">
+          <li class="plan plan--free">
+            <p class="plan__k">Free</p>
+            <p class="plan__t">Enough to see the value</p>
+            <ul class="plan__list"><li>3 vacancy publications</li><li>Candidate profiles without details, in one category</li><li>4 requests asking candidates to share their details</li></ul>
+          </li>
+          <li class="plan plan--credits">
+            <p class="plan__k">Pay as you go</p>
+            <p class="plan__t">Internal currency for one-off needs</p>
+            <ul class="plan__list"><li>Filters by years of experience and salary expectations</li><li>Extra requests to candidates</li><li>Push a vacancy up in its category</li></ul>
+          </li>
+          <li class="plan plan--month">
+            <p class="plan__k">Monthly</p>
+            <p class="plan__t">Everything, for active hiring</p>
+            <ul class="plan__list"><li>Unlimited vacancy publications</li><li>All features unlocked for a month</li></ul>
+          </li>
+        </ul>
+        <ul class="text plan-logic">
+          <li>The free plan is enough to see that the right candidates are there</li>
+          <li>Limits kick in at the moment of highest interest: the 4th vacancy, the 5th request, filtering a long list</li>
+          <li>Credits suit occasional hiring; the monthly plan is better value for recruiters who hire all the time</li>
+        </ul>
       </div>
     </div>
   </div>
