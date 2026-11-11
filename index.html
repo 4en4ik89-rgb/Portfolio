@@ -366,26 +366,50 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .dx-mv__n{font-size:15px;color:var(--muted)}
 .dx-mv__t{font-size:20px;line-height:1.35;color:var(--ink)}
 .dx-mv__d{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:560px}
-.dx-tm{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.dx-tm li{display:flex;flex-direction:column;background:var(--panel);border-radius:16px;padding:20px 22px 22px;border-top:3px solid var(--c);transition:background-color .45s}
-.dx-tm p{margin:0}
-.dx-tm__t{font-size:15px;color:var(--muted)}
-.dx-tm__n{font-size:30px;line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin:6px 0 18px!important}
-.dx-tm__d{font-size:15px;line-height:1.5;color:var(--ink-2);margin-top:auto!important}
+.dx{--s-blue:#E5E8FF;--s-mint:#DFF5EC;--s-pink:#FBE4F1;--s-peach:#FFE8DB}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx{--s-blue:#272C55;--s-mint:#1E3B34;--s-pink:#3B2539;--s-peach:#412B20}:root[data-site-theme="dark"] .dx{--s-blue:#272C55;--s-mint:#1E3B34;--s-pink:#3B2539;--s-peach:#412B20}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx{--s-blue:#272C55;--s-mint:#1E3B34;--s-pink:#3B2539;--s-peach:#412B20}}
+.dx-c-blue{--c:var(--s-blue);--c2:#7F8BFF}.dx-c-mint{--c:var(--s-mint);--c2:#4CC9A4}.dx-c-pink{--c:var(--s-pink);--c2:#E07BB8}.dx-c-peach{--c:var(--s-peach);--c2:#FF9A63}
+.dx-k{margin:0 0 6px!important;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dx-org__top{width:230px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:16px;padding:13px 18px 14px;text-align:center;font-size:16px;transition:background-color .45s,color .45s}
+.dx-org__top small{display:block;font-size:12px;opacity:.7;margin-top:2px}
+.dx-org__ln{display:block;width:100%;height:46px;color:var(--muted);opacity:.6}
+.dx-teams{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dx-team{display:flex;flex-direction:column;background:var(--panel);border-radius:22px;padding:8px;transition:background-color .45s}
+.dx-team p{margin:0}
+.dx-team__h{padding:14px 16px 18px}
+.dx-team__t{font-size:17px;color:var(--ink);margin-bottom:12px!important}
+.dx-pp{display:flex;flex-wrap:wrap;gap:6px}
+.dx-pp i{width:18px;height:18px;border-radius:50%;background:var(--c2)}
+.dx-pp i.is-lead{position:relative;background:none;box-shadow:inset 0 0 0 2px var(--c2)}
+.dx-pp i.is-lead::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--c2)}
+.dx-team__n{margin-top:8px!important;font-size:13px;color:var(--muted)}
+.dx-team__m{flex:1;border-radius:15px;background:var(--c);padding:14px 16px 16px;font-size:15px;line-height:1.45;color:var(--ink);transition:background-color .45s}
+.dx-qd{position:relative;max-width:900px}
+.dx-qd ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dx-qd li{background:var(--panel);border-radius:20px;padding:24px 70px 28px 26px;min-height:92px;transition:background-color .45s}
+.dx-qd li:nth-child(even){padding:24px 26px 28px 74px}
+.dx-qd p{margin:0}
+.dx-qd__t{font-size:19px;color:var(--ink);margin-bottom:6px!important}
+.dx-qd__d{font-size:15px;line-height:1.45;color:var(--ink-2);max-width:300px}
+.dx-qd__me{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:15px;box-shadow:0 0 0 10px var(--bg);transition:background-color .45s,color .45s,box-shadow .45s}
+.dx-ls{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dx-ls li{display:flex;flex-direction:column;background:var(--panel);border-radius:22px;padding:8px;transition:background-color .45s}
+.dx-ls p{margin:0}
+.dx-ls__h{padding:16px 18px 20px}
+.dx-ls__t{display:flex;align-items:center;gap:12px;font-size:19px;color:var(--ink);margin-bottom:16px!important}
+.dx-ls__x{width:26px;height:26px;flex:none;border-radius:50%;background:var(--s-peach);color:var(--drop);display:grid;place-items:center}
+.dx-ls__x svg{width:12px;height:12px}
+.dx-ls__d{font-size:15px;line-height:1.5;color:var(--ink-2)}
+.dx-ls__l{flex:1;border-radius:15px;background:var(--s-peach);padding:16px 18px 18px;font-size:16px;line-height:1.45;color:var(--ink);transition:background-color .45s}
 .dx-cascade{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
 .dx-cascade li{position:relative;padding:8px 16px;border-radius:999px;background:var(--panel);font-size:15px;color:var(--ink);transition:background-color .45s}
 .dx-cascade li:not(:last-child)::after{content:"\2192";position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-52%);color:var(--muted)}
-.dx-pl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 32px}
-.dx-pl p{margin:0}
-.dx-pl__t{font-size:20px;color:var(--ink);margin-bottom:8px!important}
-.dx-pl__d{font-size:16px;line-height:1.5;color:var(--ink-2)}
-.dx-lessons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
-.dx-lessons .wr-why{margin-top:0;max-width:none}
 .dx-more{display:flex;flex-direction:column;gap:10px}
 .dx-more__link{font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--tint-12);align-self:flex-start;padding-bottom:4px;transition:border-color .2s}
 .dx-more__link:hover{border-color:var(--ink)}
-@media (max-width:900px){.dx-lessons{grid-template-columns:minmax(0,1fr)}.dx-tm,.dx-pl{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-mv li{grid-template-columns:36px minmax(0,1fr)}.dx-mv__d{grid-column:2;margin-top:6px!important}.dx-chs{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.dx-tm,.dx-pl{grid-template-columns:minmax(0,1fr)}.dx-chs{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.dx-ls{grid-template-columns:minmax(0,1fr)}.dx-teams{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-org__ln{display:none}.dx-org__top{margin:0 0 16px}.dx-mv li{grid-template-columns:36px minmax(0,1fr)}.dx-mv__d{grid-column:2;margin-top:6px!important}.dx-chs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.dx-teams,.dx-qd ul{grid-template-columns:minmax(0,1fr)}.dx-qd__me{display:none}.dx-qd li,.dx-qd li:nth-child(even){padding:22px 22px 24px;min-height:0}.dx-chs{grid-template-columns:minmax(0,1fr)}}
 /* ---------- case study: student writing freelance marketplace (NDA) ---------- */
 .wr{--green:#2FBF8A;--drop:#FF7A2F}
 .wr-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 9px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.14em;line-height:1.3;color:var(--muted)}
@@ -1187,23 +1211,24 @@ layout();})();</script></section>
   <div class="tab__section">
     <h2 class="tab__h">Teams and what they answered for</h2>
     <p class="wr-note">Every team&#8217;s goals were tied to the results of the product teams, not to its own output</p>
-    <ul class="dx-tm"><li style="--c:#5873FF"><p class="dx-tm__t">Product Design</p><p class="dx-tm__n">3</p><p class="dx-tm__d">Share of product teams&#8217; initiatives that succeed</p></li><li style="--c:#81DA88"><p class="dx-tm__t">UX Research</p><p class="dx-tm__n">5 + lead</p><p class="dx-tm__d">Hypotheses built on research that brought value</p></li><li style="--c:#B58CF5"><p class="dx-tm__t">UX Writing</p><p class="dx-tm__n">3 + lead</p><p class="dx-tm__d">Fast delivery with minimal developer time, consistent language</p></li><li style="--c:#FF8F51"><p class="dx-tm__t">Web &amp; Marketing Design</p><p class="dx-tm__n">3 + lead</p><p class="dx-tm__d">Conversion and time to market</p></li></ul>
+    <div class="dx-org">
+      <div class="dx-org__top">Chief Design Officer<small>17 people</small></div>
+      <svg class="dx-org__ln" viewBox="0 0 1000 46" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M500 0v22M120 46V22h760v24M373 22v24M627 22v24" stroke="currentColor" vector-effect="non-scaling-stroke"/></svg>
+      <ul class="dx-teams"><li class="dx-team dx-c-blue"><div class="dx-team__h"><p class="dx-team__t">Product Design</p><div class="dx-pp" aria-hidden="true"><i></i><i></i><i></i></div><p class="dx-team__n">3 designers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Share of product teams&#8217; initiatives that succeed</p></div></li><li class="dx-team dx-c-mint"><div class="dx-team__h"><p class="dx-team__t">UX Research</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 5 researchers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Hypotheses built on research that brought value</p></div></li><li class="dx-team dx-c-pink"><div class="dx-team__h"><p class="dx-team__t">UX Writing</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 3 writers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Fast delivery, minimal developer time, consistent language</p></div></li><li class="dx-team dx-c-peach"><div class="dx-team__h"><p class="dx-team__t">Web &amp; Marketing Design</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 3 designers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Conversion and time to market</p></div></li></ul>
+    </div>
     <ol class="dx-cascade" aria-label="Goal cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
   </div>
 
   <hr class="rule" id="dx-leading">
   <div class="tab__section">
     <h2 class="tab__h">What I was responsible for</h2>
-    <ul class="dx-pl"><li><p class="dx-pl__t">Quality &amp; standards</p><p class="dx-pl__d">What quality means and how we track it</p></li><li><p class="dx-pl__t">Delivery</p><p class="dx-pl__d">Clear inputs, outputs and processes with other teams</p></li><li><p class="dx-pl__t">People &amp; culture</p><p class="dx-pl__d">Hiring, capacity, skills, how we argue and present</p></li><li><p class="dx-pl__t">Goals &amp; vision</p><p class="dx-pl__d">Company strategy turned into goals for every team</p></li></ul>
+    <div class="dx-qd"><ul><li><p class="dx-qd__t">Quality &amp; standards</p><p class="dx-qd__d">What quality means and how we track it</p></li><li><p class="dx-qd__t">Delivery</p><p class="dx-qd__d">Clear inputs, outputs and processes with other teams</p></li><li><p class="dx-qd__t">People &amp; culture</p><p class="dx-qd__d">Hiring, capacity, skills, how we argue and present</p></li><li><p class="dx-qd__t">Goals &amp; vision</p><p class="dx-qd__d">Company strategy turned into goals for every team</p></li></ul><span class="dx-qd__me" aria-hidden="true">CDO</span></div>
   </div>
 
   <hr class="rule" id="dx-lessons">
   <div class="tab__section">
     <h2 class="tab__h">What didn&#8217;t work</h2>
-    <div class="dx-lessons">
-      <div class="wr-why"><p class="wr-why__k">Not every designer wants to own a feature</p><p>I set up a track for designers to run initiatives without product managers. Research and solutions were strong, but owning a feature from scratch didn&#8217;t work. I had projected my own profile onto the team.</p></div>
-      <div class="wr-why"><p class="wr-why__k">Interesting data is not useful data</p><p>We tried market research for strategy sessions with the board. The findings were interesting, but nobody acted on them. Now I check who will use a new type of research before starting it.</p></div>
-    </div>
+    <ul class="dx-ls"><li><div class="dx-ls__h"><p class="dx-ls__t"><span class="dx-ls__x" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Designers as feature owners</p><p class="dx-k">Tried</p><p class="dx-ls__d">A track for designers to run initiatives without product managers. Research and solutions were strong, owning a feature from scratch wasn&#8217;t.</p></div><div class="dx-ls__l"><p class="dx-k">Learned</p><p>I had projected my own profile onto the team. Designers are strongest owning the solution next to a product manager.</p></div></li><li><div class="dx-ls__h"><p class="dx-ls__t"><span class="dx-ls__x" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Market research for the board</p><p class="dx-k">Tried</p><p class="dx-ls__d">Market research through UX research for strategy sessions. The findings were interesting, but nobody acted on them.</p></div><div class="dx-ls__l"><p class="dx-k">Learned</p><p>Check who will use a new type of research before starting it.</p></div></li></ul>
   </div>
 
   <hr class="rule">
