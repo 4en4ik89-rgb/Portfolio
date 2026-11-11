@@ -345,14 +345,21 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .dx-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:16px 56px}
 .dx-facts li{display:flex;align-items:baseline;gap:12px;font-size:16px;color:var(--ink-2)}
 .dx-facts b{font-size:36px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
-.dx-ba{display:flex;flex-direction:column;gap:10px;max-width:1160px}
-.dx-ba__row{display:grid;grid-template-columns:180px minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:stretch}
-.dx-ba__row p{margin:0}
-.dx-ba__head p{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 22px}
-.dx-ba__k{align-self:center;font-size:16px;color:var(--muted)}
-.dx-ba__b,.dx-ba__a{padding:18px 22px;border-radius:14px;font-size:18px;line-height:1.4}
-.dx-ba__b{color:var(--muted);box-shadow:inset 0 0 0 1px var(--tint-12)}
-.dx-ba__a{background:var(--panel);color:var(--ink);transition:background-color .45s}
+.dx-chs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dx-ch{position:relative;display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0;border-radius:20px;box-shadow:inset 0 0 0 1px var(--tint-12);overflow:hidden}
+.dx-ch p{margin:0}
+.dx-ch__b{padding:22px 24px 36px}
+.dx-ch__k{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dx-ch__ico{width:22px;height:22px;flex:none;color:var(--muted);opacity:.8}
+.dx-ch__o{margin-top:14px!important;font-size:15px;line-height:1.45;color:var(--muted)}
+.dx-ch__ar{position:absolute;left:24px;top:-16px;width:32px;height:32px;border-radius:50%;background:var(--drop);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 5px var(--bg);z-index:1}
+.dx-ch__ar svg{width:16px;height:16px}
+.dx-ch__a{position:relative;background:var(--panel);padding:36px 24px 28px;transition:background-color .45s}
+.dx-ch__n{font-size:21px;line-height:1.3;color:var(--ink)}
+.dx-chs.dx-anim .dx-ch__n{opacity:0;transform:translateY(10px)}
+.dx-chs.dx-anim .dx-ch__ar{transform:scale(0)}
+.dx-chs.dx-anim.is-in .dx-ch__n{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i)*140ms + 250ms)}
+.dx-chs.dx-anim.is-in .dx-ch__ar{transform:none;transition:transform .4s cubic-bezier(.3,1.5,.5,1);transition-delay:calc(var(--i)*140ms + 100ms)}
 .dx-mv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px;max-width:1160px}
 .dx-mv li{display:grid;grid-template-columns:44px minmax(0,340px) minmax(0,1fr);gap:0 24px;align-items:baseline}
 .dx-mv p{margin:0}
@@ -377,8 +384,8 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .dx-more{display:flex;flex-direction:column;gap:10px}
 .dx-more__link{font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--tint-12);align-self:flex-start;padding-bottom:4px;transition:border-color .2s}
 .dx-more__link:hover{border-color:var(--ink)}
-@media (max-width:900px){.dx-lessons{grid-template-columns:minmax(0,1fr)}.dx-tm,.dx-pl{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-mv li{grid-template-columns:36px minmax(0,1fr)}.dx-mv__d{grid-column:2;margin-top:6px!important}.dx-ba__row{grid-template-columns:120px minmax(0,1fr) minmax(0,1fr)}}
-@media (max-width:600px){.dx-tm,.dx-pl{grid-template-columns:minmax(0,1fr)}.dx-ba__head{display:none}.dx-ba__row{grid-template-columns:minmax(0,1fr);gap:6px;margin-bottom:14px}.dx-ba__b,.dx-ba__a{font-size:16px;padding:14px 16px}}
+@media (max-width:900px){.dx-lessons{grid-template-columns:minmax(0,1fr)}.dx-tm,.dx-pl{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-mv li{grid-template-columns:36px minmax(0,1fr)}.dx-mv__d{grid-column:2;margin-top:6px!important}.dx-chs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.dx-tm,.dx-pl{grid-template-columns:minmax(0,1fr)}.dx-chs{grid-template-columns:minmax(0,1fr)}}
 /* ---------- case study: student writing freelance marketplace (NDA) ---------- */
 .wr{--green:#2FBF8A;--drop:#FF7A2F}
 .wr-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 9px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.14em;line-height:1.3;color:var(--muted)}
@@ -1167,10 +1174,7 @@ layout();})();</script></section>
   <hr class="rule" id="dx-change">
   <div class="tab__section">
     <h2 class="tab__h">What changed</h2>
-    <div class="dx-ba">
-      <div class="dx-ba__row dx-ba__head"><p></p><p>Before</p><p>After</p></div>
-      <div class="dx-ba__row"><p class="dx-ba__k">Role of design</p><p class="dx-ba__b">Executors of product managers&#8217; requests</p><p class="dx-ba__a">Partners who own the solution</p></div><div class="dx-ba__row"><p class="dx-ba__k">Hypotheses</p><p class="dx-ba__b">Built on product managers&#8217; personal research</p><p class="dx-ba__a">Built on a shared insight hub: JTBD, opportunity trees, interviews</p></div><div class="dx-ba__row"><p class="dx-ba__k">Team</p><p class="dx-ba__b">2 designers</p><p class="dx-ba__a">17 people in four disciplines</p></div><div class="dx-ba__row"><p class="dx-ba__k">Outcome</p><p class="dx-ba__b">Few initiatives paid off</p><p class="dx-ba__a">A growing share of initiatives pays off</p></div>
-    </div>
+    <ul class="dx-chs"><li class="dx-ch" style="--i:0"><div class="dx-ch__b"><p class="dx-ch__k">Role of design<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Executors of product managers&#8217; requests</p></div><div class="dx-ch__a"><span class="dx-ch__ar" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="dx-ch__n"><span class="sr">After: </span>Partners who own the solution</p></div></li><li class="dx-ch" style="--i:1"><div class="dx-ch__b"><p class="dx-ch__k">Hypotheses<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Product managers&#8217; personal research</p></div><div class="dx-ch__a"><span class="dx-ch__ar" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="dx-ch__n"><span class="sr">After: </span>A shared insight hub: JTBD, opportunity trees, interviews</p></div></li><li class="dx-ch" style="--i:2"><div class="dx-ch__b"><p class="dx-ch__k">Team<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>2 designers</p></div><div class="dx-ch__a"><span class="dx-ch__ar" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="dx-ch__n"><span class="sr">After: </span>17 people in four disciplines</p></div></li><li class="dx-ch" style="--i:3"><div class="dx-ch__b"><p class="dx-ch__k">Outcome<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Few initiatives paid off</p></div><div class="dx-ch__a"><span class="dx-ch__ar" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="dx-ch__n"><span class="sr">After: </span>A growing share of initiatives pays off</p></div></li></ul>
   </div>
 
   <hr class="rule" id="dx-moves">
@@ -1472,6 +1476,14 @@ layout();})();</script></section>
   var mq=matchMedia('(prefers-reduced-motion: reduce)');
   function apply(){ document.querySelectorAll('svg.ill').forEach(function(svg){ try{ if(mq.matches){ svg.pauseAnimations(); svg.setCurrentTime(1.2); } else svg.unpauseAnimations(); }catch(e){} }); }
   apply(); if(mq.addEventListener) mq.addEventListener('change',apply);
+})();
+
+// develux case: "what changed" cards — the new state appears card by card when the block scrolls into view
+(function(){
+  var el=document.querySelector('.dx-chs'); if(!el||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  el.classList.add('dx-anim');
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ el.classList.add('is-in'); io.disconnect(); } }); },{threshold:.35});
+  io.observe(el);
 })();
 
 // project covers: glass rim copy of the cover + highlight and tilt that follow the pointer
