@@ -384,7 +384,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-sum__res li{display:flex;align-items:baseline;gap:12px;font-size:16px;color:var(--ink-2)}
 .wr-sum__res b{font-size:40px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
 /* summary numbers as a dot-matrix display, same 5x7 round dots as the name in the header */
-.wr-dots{display:block;height:34px;width:auto;fill:currentColor;overflow:visible}
+.wr-dots{display:block;height:35px;width:auto;shape-rendering:geometricPrecision;fill:currentColor;overflow:visible}
 .wr-dots circle{opacity:0}
 .wr-sum.is-lit .wr-dots circle{animation:dotin .5s var(--d,0ms) both}
 .wr-sum__res li:has(.wr-dots){align-items:flex-end}
@@ -1346,6 +1346,11 @@ layout();})();</script></section>
     var sr=document.createElement('span'); sr.className='sr'; sr.textContent=t;
     b.textContent=''; b.appendChild(svg); b.appendChild(sr);
   });
+  // keep each display on whole pixels so the 5px dot grid doesn't land between pixels and blur
+  function snap(){ box.querySelectorAll('.wr-dots').forEach(function(svg){ svg.style.transform=''; var r=svg.getBoundingClientRect(), sy=window.scrollY||0;
+    svg.style.transform='translate('+(Math.round(r.left)-r.left).toFixed(3)+'px,'+(Math.round(r.top+sy)-(r.top+sy)).toFixed(3)+'px)'; }); }
+  snap(); addEventListener('resize',snap); addEventListener('load',snap); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(snap);
+  window.addEventListener('hashchange',function(){ setTimeout(snap,900); });
   if(!('IntersectionObserver' in window)){ box.classList.add('is-lit'); return; }
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ box.classList.add('is-lit'); io.disconnect(); } }); },{threshold:.4});
   io.observe(box);
