@@ -344,38 +344,40 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .dx-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:16px 56px}
 .dx-facts li{display:flex;align-items:baseline;gap:12px;font-size:16px;color:var(--ink-2)}
 .dx-facts b{font-size:36px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
-.dx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 48px;max-width:1160px}
-.dx-steps li{display:flex;gap:20px}
-.dx-step__n{font-size:15px;color:var(--muted);width:24px;flex:none;padding-top:3px}
-.dx-step__t{margin:0 0 6px;font-size:20px;line-height:1.35;color:var(--ink)}
-.dx-step__d{margin:0;font-size:16px;line-height:1.55;color:var(--ink-2)}
-.dx-org{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,2fr);gap:28px;align-items:center;margin-top:64px}
-.dx-org__k{margin:0 0 12px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.dx-org__box{background:var(--panel);border-radius:16px;padding:18px 20px;border-top:3px solid var(--c,var(--tint-12));transition:background-color .45s}
-.dx-org__t{margin:0 0 4px;font-size:17px;color:var(--ink)}
-.dx-org__d{margin:0;font-size:14px;color:var(--muted)}
-.dx-org__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.dx-org__arrow{font-size:28px;color:var(--drop);padding-top:28px}
-.dx-pills{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.dx-pills li{background:var(--panel);border-radius:16px;padding:22px 22px 24px;transition:background-color .45s}
-.dx-pill__t{margin:0 0 10px;font-size:18px;color:var(--ink)}
-.dx-pill__d{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
-.dx-h3{font-size:20px;font-weight:500;margin:56px 0 18px}
-.dx-cascade{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
-.dx-cascade li{position:relative;padding:10px 18px;border-radius:999px;background:var(--panel);font-size:16px;color:var(--ink);transition:background-color .45s}
+.dx-ba{display:flex;flex-direction:column;gap:10px;max-width:1160px}
+.dx-ba__row{display:grid;grid-template-columns:180px minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:stretch}
+.dx-ba__row p{margin:0}
+.dx-ba__head p{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 22px}
+.dx-ba__k{align-self:center;font-size:16px;color:var(--muted)}
+.dx-ba__b,.dx-ba__a{padding:18px 22px;border-radius:14px;font-size:18px;line-height:1.4}
+.dx-ba__b{color:var(--muted);box-shadow:inset 0 0 0 1px var(--tint-12)}
+.dx-ba__a{background:var(--panel);color:var(--ink);transition:background-color .45s}
+.dx-mv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px;max-width:1160px}
+.dx-mv li{display:grid;grid-template-columns:44px minmax(0,340px) minmax(0,1fr);gap:0 24px;align-items:baseline}
+.dx-mv p{margin:0}
+.dx-mv__n{font-size:15px;color:var(--muted)}
+.dx-mv__t{font-size:20px;line-height:1.35;color:var(--ink)}
+.dx-mv__d{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:560px}
+.dx-tm{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dx-tm li{display:flex;flex-direction:column;background:var(--panel);border-radius:16px;padding:20px 22px 22px;border-top:3px solid var(--c);transition:background-color .45s}
+.dx-tm p{margin:0}
+.dx-tm__t{font-size:15px;color:var(--muted)}
+.dx-tm__n{font-size:30px;line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin:6px 0 18px!important}
+.dx-tm__d{font-size:15px;line-height:1.5;color:var(--ink-2);margin-top:auto!important}
+.dx-cascade{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
+.dx-cascade li{position:relative;padding:8px 16px;border-radius:999px;background:var(--panel);font-size:15px;color:var(--ink);transition:background-color .45s}
 .dx-cascade li:not(:last-child)::after{content:"\2192";position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-52%);color:var(--muted)}
-.dx-cascade li:last-child{background:var(--drop);color:#fff}
-.dx-met{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.dx-met li{background:var(--panel);border-radius:16px;padding:20px 22px 22px;border-top:3px solid var(--c);transition:background-color .45s}
-.dx-met__t{margin:0 0 8px;font-size:17px;color:var(--ink)}
-.dx-met__d{margin:0;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.dx-pl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 32px}
+.dx-pl p{margin:0}
+.dx-pl__t{font-size:20px;color:var(--ink);margin-bottom:8px!important}
+.dx-pl__d{font-size:16px;line-height:1.5;color:var(--ink-2)}
 .dx-lessons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
 .dx-lessons .wr-why{margin-top:0;max-width:none}
 .dx-more{display:flex;flex-direction:column;gap:10px}
 .dx-more__link{font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--tint-12);align-self:flex-start;padding-bottom:4px;transition:border-color .2s}
 .dx-more__link:hover{border-color:var(--ink)}
-@media (max-width:900px){.dx-steps,.dx-lessons{grid-template-columns:minmax(0,1fr)}.dx-pills,.dx-met{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-org{grid-template-columns:minmax(0,1fr)}.dx-org__arrow{transform:rotate(90deg);padding:0;justify-self:start}}
-@media (max-width:600px){.dx-pills,.dx-met,.dx-org__grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.dx-lessons{grid-template-columns:minmax(0,1fr)}.dx-tm,.dx-pl{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-mv li{grid-template-columns:36px minmax(0,1fr)}.dx-mv__d{grid-column:2;margin-top:6px!important}.dx-ba__row{grid-template-columns:120px minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:600px){.dx-tm,.dx-pl{grid-template-columns:minmax(0,1fr)}.dx-ba__head{display:none}.dx-ba__row{grid-template-columns:minmax(0,1fr);gap:6px;margin-bottom:14px}.dx-ba__b,.dx-ba__a{font-size:16px;padding:14px 16px}}
 /* ---------- case study: student writing freelance marketplace (NDA) ---------- */
 .wr{--green:#2FBF8A;--drop:#FF7A2F}
 .wr-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 9px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.14em;line-height:1.3;color:var(--muted)}
@@ -1153,71 +1155,57 @@ layout();})();</script></section>
   <div class="wr-head"><p class="wr-head__name">Building a design &amp; research function</p><span class="wr-tag">DEVELUX · EDTECH</span></div>
   <dl class="meta">
     <div><dt>Role</dt><dd>Lead Product Designer &#8594; Chief Design Officer</dd></div>
-    <div><dt>Team</dt><dd>Up to 17 people in four disciplines</dd></div>
+    <div><dt>Team</dt><dd>17 people in four disciplines</dd></div>
     <div><dt>Period of time</dt><dd>Mar 2023 &#8211; Apr 2026</dd></div>
   </dl>
   <div class="wr-sum">
     <p class="wr-sum__k">In short</p>
-    <p class="wr-sum__text">When I joined Develux&#8217;s EdTech direction, design was a service: two designers turned product managers&#8217; requests into mockups, and few initiatives paid off. Over three years I turned it into a design and research function of up to 17 people, with goals tied to the success of the product teams.</p>
-    <ul class="dx-facts"><li><b>2 &#8594; 17</b>people</li><li><b>4</b>disciplines</li><li><b>Lead &#8594; CDO</b>role</li></ul>
+    <p class="wr-sum__text">Design in Develux&#8217;s EdTech products was a service: two designers drew what product managers asked for, and few initiatives paid off. In three years I rebuilt it into a design and research function whose goals are tied to the success of the product teams.</p>
+    <ul class="dx-facts"><li><b>2 &#8594; 17</b>people</li><li><b>4</b>disciplines</li><li><b>Lead &#8594; CDO</b>my role</li></ul>
   </div>
 
-  <hr class="rule" id="dx-context">
+  <hr class="rule" id="dx-change">
   <div class="tab__section">
-    <h2 class="tab__h">Starting point</h2>
-    <p class="wr-note">EdTech products of a multiproduct company: a freelance marketplace for student writing, AI humanizers and writers, citation generators</p>
-    <ol class="numlist">
-      <li><span>01</span>Two designers worked as executors, drawing what product managers asked for</li>
-      <li><span>02</span>Hypotheses rested on product managers&#8217; personal research that nobody fact-checked</li>
-      <li><span>03</span>Few initiatives brought measurable value</li>
-    </ol>
-  </div>
-
-  <hr class="rule" id="dx-transformation">
-  <div class="tab__section">
-    <h2 class="tab__h">How the function grew</h2>
-    <ol class="dx-steps"><li><span class="dx-step__n">01</span><div><p class="dx-step__t">Designers as product partners</p><p class="dx-step__d">Moved designers from drawing what PMs asked for to owning the solution together with them: problem, research, business metrics. I showed the approach hands-on first.</p></div></li><li><span class="dx-step__n">02</span><div><p class="dx-step__t">A stronger base for hypotheses</p><p class="dx-step__d">PM hypotheses rested on trust and personal research. I brought in surveys, funnel analysis and UX audits of the current experience.</p></div></li><li><span class="dx-step__n">03</span><div><p class="dx-step__t">A new generation of designers</p><p class="dx-step__d">Once the approach proved itself, I got the green light to hire designers who work through research, user tests and surveys.</p></div></li><li><span class="dx-step__n">04</span><div><p class="dx-step__t">Research instead of more designers</p><p class="dx-step__d">When demand grew, we hired researchers, not designers. The first UX researcher started with user tests, then generative artefacts: JTBD, opportunity solution trees, archetypes. That grew into a research team with its own lead and a shared insight hub that PMs use before forming ideas.</p></div></li><li><span class="dx-step__n">05</span><div><p class="dx-step__t">UX writing</p><p class="dx-step__d">I took over the content team to build UX writing: fast delivery with minimal developer time, consistent naming and an editorial policy that supports conversion.</p></div></li><li><span class="dx-step__n">06</span><div><p class="dx-step__t">Web &amp; marketing design: rebuilt the team</p><p class="dx-step__d">The web team scaled work instead of optimising it: every new need meant more tasks and more hires. We rebuilt it around speed and templating: from 7 people to a lead and three designers.</p></div></li></ol>
-    <div class="dx-org">
-      <div class="dx-org__col"><p class="dx-org__k">Before</p><div class="dx-org__box"><p class="dx-org__t">2 designers</p><p class="dx-org__d">Executors, working from product managers&#8217; requests</p></div></div>
-      <div class="dx-org__arrow" aria-hidden="true">&#8594;</div>
-      <div class="dx-org__col"><p class="dx-org__k">After</p><div class="dx-org__grid">
-        <div class="dx-org__box" style="--c:#5873FF"><p class="dx-org__t">Product Design</p><p class="dx-org__d">3 designers</p></div>
-        <div class="dx-org__box" style="--c:#81DA88"><p class="dx-org__t">UX Research</p><p class="dx-org__d">Lead + 5 researchers</p></div>
-        <div class="dx-org__box" style="--c:#B58CF5"><p class="dx-org__t">UX Writing</p><p class="dx-org__d">Lead + 3 writers</p></div>
-        <div class="dx-org__box" style="--c:#FF8F51"><p class="dx-org__t">Web &amp; Marketing Design</p><p class="dx-org__d">Lead + 3 designers</p></div>
-      </div></div>
+    <h2 class="tab__h">What changed</h2>
+    <div class="dx-ba">
+      <div class="dx-ba__row dx-ba__head"><p></p><p>Before</p><p>After</p></div>
+      <div class="dx-ba__row"><p class="dx-ba__k">Role of design</p><p class="dx-ba__b">Executors of product managers&#8217; requests</p><p class="dx-ba__a">Partners who own the solution</p></div><div class="dx-ba__row"><p class="dx-ba__k">Hypotheses</p><p class="dx-ba__b">Built on product managers&#8217; personal research</p><p class="dx-ba__a">Built on a shared insight hub: JTBD, opportunity trees, interviews</p></div><div class="dx-ba__row"><p class="dx-ba__k">Team</p><p class="dx-ba__b">2 designers</p><p class="dx-ba__a">17 people in four disciplines</p></div><div class="dx-ba__row"><p class="dx-ba__k">Outcome</p><p class="dx-ba__b">Few initiatives paid off</p><p class="dx-ba__a">A growing share of initiatives pays off</p></div>
     </div>
+  </div>
+
+  <hr class="rule" id="dx-moves">
+  <div class="tab__section">
+    <h2 class="tab__h">How I got there</h2>
+    <ol class="dx-mv"><li><span class="dx-mv__n">01</span><p class="dx-mv__t">Led by example</p><p class="dx-mv__d">Worked hands-on with product managers to show a different approach: problem first, research, business metrics.</p></li><li><span class="dx-mv__n">02</span><p class="dx-mv__t">Hired designers who research</p><p class="dx-mv__d">Once the approach proved itself, I hired designers who run user tests and surveys themselves.</p></li><li><span class="dx-mv__n">03</span><p class="dx-mv__t">Bet on research, not on more designers</p><p class="dx-mv__d">When demand grew, I hired a UX researcher instead. It became a team of six with an insight hub that product managers start from.</p></li><li><span class="dx-mv__n">04</span><p class="dx-mv__t">Built research into the process</p><p class="dx-mv__d">With the CPO and Ops, made it part of how product teams work, including ideation sessions based on insights.</p></li><li><span class="dx-mv__n">05</span><p class="dx-mv__t">Added UX writing, rebuilt web design</p><p class="dx-mv__d">The content team became UX writing. The web team went from 7 people to 4, focused on speed and templates.</p></li></ol>
+  </div>
+
+  <hr class="rule" id="dx-teams">
+  <div class="tab__section">
+    <h2 class="tab__h">Teams and what they answered for</h2>
+    <p class="wr-note">Every team&#8217;s goals were tied to the results of the product teams, not to its own output</p>
+    <ul class="dx-tm"><li style="--c:#5873FF"><p class="dx-tm__t">Product Design</p><p class="dx-tm__n">3</p><p class="dx-tm__d">Share of product teams&#8217; initiatives that succeed</p></li><li style="--c:#81DA88"><p class="dx-tm__t">UX Research</p><p class="dx-tm__n">5 + lead</p><p class="dx-tm__d">Hypotheses built on research that brought value</p></li><li style="--c:#B58CF5"><p class="dx-tm__t">UX Writing</p><p class="dx-tm__n">3 + lead</p><p class="dx-tm__d">Fast delivery with minimal developer time, consistent language</p></li><li style="--c:#FF8F51"><p class="dx-tm__t">Web &amp; Marketing Design</p><p class="dx-tm__n">3 + lead</p><p class="dx-tm__d">Conversion and time to market</p></li></ul>
+    <ol class="dx-cascade" aria-label="Goal cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
   </div>
 
   <hr class="rule" id="dx-leading">
   <div class="tab__section">
-    <h2 class="tab__h">How I led the function</h2>
-    <ul class="dx-pills"><li><p class="dx-pill__t">Quality &amp; standards</p><p class="dx-pill__d">What quality means, how we track it and reach it. Agreed standards and working principles in every discipline.</p></li><li><p class="dx-pill__t">Delivery</p><p class="dx-pill__d">What each team gets as input and gives as output, and the processes inside the function and with other teams.</p></li><li><p class="dx-pill__t">People &amp; culture</p><p class="dx-pill__d">Hiring, communication, capacity and skills. How we learn, argue, present and facilitate.</p></li><li><p class="dx-pill__t">Goals &amp; vision</p><p class="dx-pill__d">What we want to achieve as a function, and what each person wants to achieve. Turned into clear goals for every team.</p></li></ul>
-    <h3 class="dx-h3">Goal cascade</h3>
-    <ol class="dx-cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
-    <p class="wr-note" style="margin-top:14px">Leads proposed initiatives to reach their department goals, and those became the roadmaps</p>
-  </div>
-
-  <hr class="rule" id="dx-metrics">
-  <div class="tab__section">
-    <h2 class="tab__h">Success metrics</h2>
-    <p class="wr-note">Each discipline&#8217;s goals were tied to the results of the cross-functional teams, not to its own output</p>
-    <ul class="dx-met"><li style="--c:#5873FF"><p class="dx-met__t">Product design</p><p class="dx-met__d">Share of the cross-functional team&#8217;s initiatives that succeeded</p></li><li style="--c:#81DA88"><p class="dx-met__t">UX research</p><p class="dx-met__d">Hypotheses built on research that delivered value</p></li><li style="--c:#B58CF5"><p class="dx-met__t">UX writing</p><p class="dx-met__d">Speed of delivery with minimal developer time, consistent product language</p></li><li style="--c:#FF8F51"><p class="dx-met__t">Web &amp; marketing design</p><p class="dx-met__d">Conversion and time to market</p></li></ul>
+    <h2 class="tab__h">What I was responsible for</h2>
+    <ul class="dx-pl"><li><p class="dx-pl__t">Quality &amp; standards</p><p class="dx-pl__d">What quality means and how we track it</p></li><li><p class="dx-pl__t">Delivery</p><p class="dx-pl__d">Clear inputs, outputs and processes with other teams</p></li><li><p class="dx-pl__t">People &amp; culture</p><p class="dx-pl__d">Hiring, capacity, skills, how we argue and present</p></li><li><p class="dx-pl__t">Goals &amp; vision</p><p class="dx-pl__d">Company strategy turned into goals for every team</p></li></ul>
   </div>
 
   <hr class="rule" id="dx-lessons">
   <div class="tab__section">
     <h2 class="tab__h">What didn&#8217;t work</h2>
     <div class="dx-lessons">
-      <div class="wr-why"><p class="wr-why__k">Not every designer wants to own a feature</p><p>I set up a Research &amp; Design track so designers could run initiatives without product managers. They did great research and owned their solutions, but inventing and owning a feature from scratch didn&#8217;t work. I had projected my own profile onto the team.</p></div>
-      <div class="wr-why"><p class="wr-why__k">Interesting data is not useful data</p><p>To fill the information gap at strategy sessions with the board, we tried market research through UX research. The findings were interesting, but the board kept its own sources and nothing was taken into work. Now I check who will act on a new type of research before starting it.</p></div>
+      <div class="wr-why"><p class="wr-why__k">Not every designer wants to own a feature</p><p>I set up a track for designers to run initiatives without product managers. Research and solutions were strong, but owning a feature from scratch didn&#8217;t work. I had projected my own profile onto the team.</p></div>
+      <div class="wr-why"><p class="wr-why__k">Interesting data is not useful data</p><p>We tried market research for strategy sessions with the board. The findings were interesting, but nobody acted on them. Now I check who will use a new type of research before starting it.</p></div>
     </div>
   </div>
 
   <hr class="rule">
   <div class="tab__section dx-more">
-    <p class="wr-note" style="margin:0">See the approach in practice</p>
-    <a class="dx-more__link" href="#writers">Choosing a writer: +14% chose a writer, A/B tested <span aria-hidden="true">&#8594;</span></a>
+    <p class="wr-note" style="margin:0">The approach in practice</p>
+    <a class="dx-more__link" href="#writers">Choosing a writer: +14% in an A/B test <span aria-hidden="true">&#8594;</span></a>
   </div>
 </div>
 <a class="totop" href="#dx-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
