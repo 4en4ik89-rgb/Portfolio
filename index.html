@@ -369,12 +369,17 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-did__list b{font-weight:500;font-size:16px;line-height:1.4;color:var(--ink)}
 .wr-did__list span{font-size:15px;line-height:1.5;color:var(--muted)}
 @media (max-width:900px){.wr-did__list{grid-template-columns:1fr;gap:18px}.wr-did__list li{padding:0 0 0 40px}.wr-did__list li::after{display:none}.wr-did__list li::before{top:2px}}
-/* context: order flow */
-.wr-flow{list-style:none;margin:0 0 44px;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
-.wr-flow li{position:relative;padding:10px 18px;border-radius:999px;background:var(--panel);font-size:16px;line-height:1.3;color:var(--ink);white-space:nowrap;transition:background-color .45s}
+/* context: order flow as cards with icons */
+.wr-flow{list-style:none;margin:0 0 48px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;max-width:1160px}
+.wr-flow li{position:relative;display:flex;flex-direction:column;gap:18px;padding:22px 24px 24px;border-radius:18px;background:var(--panel);font-size:17px;line-height:1.35;color:var(--ink);transition:background-color .45s}
+.wr-flow__ico{width:26px;height:26px;color:#73809A;flex:none}
 .wr-flow li b{font-weight:600}
 .wr-flow li.is-drop{background:var(--drop);color:#fff}
-.wr-flow li:not(:last-child)::after{content:"";position:absolute;left:calc(100% + 8px);top:50%;width:22px;height:1px;background:var(--muted)}
+.wr-flow li.is-drop .wr-flow__ico{color:#fff!important}
+.wr-flow li:not(:last-child)::after{content:"";position:absolute;left:calc(100% + 8px);top:50%;width:20px;height:1px;background:var(--muted);opacity:.7}
+:root[data-site-theme="dark"] .wr-flow__ico{color:var(--muted)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .wr-flow__ico{color:var(--muted)}}
+@media (max-width:900px){.wr-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.wr-flow li::after{display:none}}
 /* summary */
 .wr-sum{margin:48px 0 0;padding:40px 44px 36px;border-radius:24px;background-color:var(--panel);transition:background-color .45s;
   background-image:radial-gradient(75% 95% at 106% 112%,rgba(255,122,47,calc(.22 - var(--is-dark)*.08)) 0%,rgba(255,122,47,calc(.09 - var(--is-dark)*.03)) 40%,rgba(255,122,47,0) 75%)}
@@ -393,7 +398,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-core__t{font-size:22px;line-height:1.35;margin:0 0 8px}
 .wr-core__d{font-size:16px;line-height:1.5;color:var(--ink-2);margin:0}
 @media (max-width:900px){.wr-core{grid-template-columns:1fr}.wr-sum{padding:30px 26px}.wr-sum__res b{font-size:32px}}
-@media (max-width:600px){.wr-flow{flex-direction:column;align-items:flex-start;gap:22px}.wr-flow li:not(:last-child)::after{left:28px;top:calc(100% + 4px);width:1px;height:14px}.wr-sum__res{flex-direction:column;gap:14px}}
+@media (max-width:600px){.wr-sum__res{flex-direction:column;gap:14px}}
 
 .wr-row__k{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .wr-row__k--ok{color:var(--green)}
@@ -1081,10 +1086,10 @@ layout();})();</script></section>
     <h2 class="tab__h">Context</h2>
     <p class="tab__lead">Like on any freelance marketplace, a customer posts an order, and writers compete for it with offers</p>
     <ol class="wr-flow" aria-label="How an order works">
-      <li>Post an order</li>
-      <li><b>30+</b> offers from writers</li>
-      <li class="is-drop">Choose a writer</li>
-      <li>Pay</li>
+      <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Post an order</span></li>
+      <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><b>30+</b> offers from writers</span></li>
+      <li class="is-drop"><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg><span>Choose a writer</span></li>
+      <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg><span>Pay</span></li>
     </ol>
     <ol class="numlist">
       <li><span>01</span>A writer profile is rarely one person: usually it&#8217;s a small company, so it takes orders in any subject</li>
