@@ -360,7 +360,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-group{font-size:22px;margin:50px 0 6px}
 .wr-group span{color:var(--muted);font-size:15px;margin-right:14px;vertical-align:2px}
 /* context: order flow as cards with icons */
-.wr-flow{list-style:none;margin:0 0 48px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;max-width:1160px}
+.wr-flow{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;max-width:1160px}
 .wr-flow li{position:relative;display:flex;flex-direction:column;gap:18px;padding:22px 24px 24px;border-radius:18px;background:var(--panel);font-size:17px;line-height:1.35;color:var(--ink);transition:background-color .45s}
 .wr-flow__ico{width:26px;height:26px;color:#73809A;flex:none}
 .wr-flow li>span{margin-top:auto}
@@ -1069,16 +1069,16 @@ layout();})();</script></section>
   <hr class="rule" id="wr-context">
   <div class="tab__section">
     <h2 class="tab__h">Context</h2>
+    <ol class="numlist">
+      <li><span>01</span>A writer profile is rarely one person: usually it&#8217;s a small company, so it takes orders in any subject</li>
+      <li><span>02</span>Orders are cheap, so writers take a lot of them, and every profile shows thousands of orders and reviews</li>
+      <li><span>03</span>Choosing a writer is the last step before payment, so it drives the conversion of the whole funnel</li>
+    </ol>
     <ol class="wr-flow" aria-label="How an order works">
       <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Post an order</span></li>
       <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><b>30+</b> offers from writers</span></li>
       <li class="is-drop"><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg><span>Choose a writer</span></li>
       <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg><span>Pay</span></li>
-    </ol>
-    <ol class="numlist">
-      <li><span>01</span>A writer profile is rarely one person: usually it&#8217;s a small company, so it takes orders in any subject</li>
-      <li><span>02</span>Orders are cheap, so writers take a lot of them, and every profile shows thousands of orders and reviews</li>
-      <li><span>03</span>Choosing a writer is the last step before payment, so it drives the conversion of the whole funnel</li>
     </ol>
   </div>
   <hr class="rule" id="wr-problem">
