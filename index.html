@@ -376,7 +376,8 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-flow li.is-drop{background:var(--drop);color:#fff}
 .wr-flow li:not(:last-child)::after{content:"";position:absolute;left:calc(100% + 8px);top:50%;width:22px;height:1px;background:var(--muted)}
 /* summary */
-.wr-sum{margin:48px 0 0;padding:40px 44px 36px;border-radius:24px;background:var(--panel);transition:background-color .45s}
+.wr-sum{margin:48px 0 0;padding:40px 44px 36px;border-radius:24px;background-color:var(--panel);transition:background-color .45s;
+  background-image:radial-gradient(75% 95% at 106% 112%,rgba(255,122,47,calc(.22 - var(--is-dark)*.08)) 0%,rgba(255,122,47,calc(.09 - var(--is-dark)*.03)) 40%,rgba(255,122,47,0) 75%)}
 .wr-sum__k{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
 .wr-sum__text{font-size:18px;line-height:1.5;margin:0 0 30px;max-width:760px}
 .wr-sum__res{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:16px 56px}
