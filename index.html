@@ -1350,7 +1350,7 @@ layout();})();</script></section>
   var spr=null, pitch=0, dot=0, off=0;
   function layout(){
     var dpr=window.devicePixelRatio||1, cssH=parseFloat(getComputedStyle(items[0].cv).height)||35;
-    pitch=Math.max(3,Math.round(cssH/7*dpr)); dot=Math.max(2,Math.min(pitch-1,Math.round(pitch*.9))); off=Math.floor((pitch-dot)/2);
+    pitch=Math.max(3,Math.round(cssH/7*dpr)); dot=pitch; off=Math.floor((pitch-dot)/2);
     spr=sprite(dot,getComputedStyle(box).color);
     items.forEach(function(it){ it.cv.width=it.cols*pitch; it.cv.height=7*pitch; it.cv.style.width=(it.cols*pitch/dpr)+'px'; it.cv.style.height=(7*pitch/dpr)+'px'; });
     snap(); draw();
