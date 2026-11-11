@@ -359,18 +359,8 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @keyframes wrfade{from{opacity:0}}
 .wr-group{font-size:22px;margin:50px 0 6px}
 .wr-group span{color:var(--muted);font-size:15px;margin-right:14px;vertical-align:2px}
-/* header: what I did */
-.wr-did{margin-top:44px;max-width:1160px}
-.wr-did__k{font-weight:700;margin:0 0 14px}
-.wr-did__list{margin:0;padding:0;list-style:none;counter-reset:did;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 28px}
-.wr-did__list li{counter-increment:did;position:relative;padding-top:34px;display:flex;flex-direction:column;gap:6px}
-.wr-did__list li::before{content:counter(did,decimal-leading-zero);position:absolute;left:0;top:0;padding-right:12px;background:var(--bg);font-size:13px;line-height:18px;color:var(--muted);z-index:1;transition:background-color .45s}
-.wr-did__list li:not(:last-child)::after{content:"";position:absolute;left:0;right:-28px;top:9px;height:1px;background:var(--tint-12)}
-.wr-did__list b{font-weight:500;font-size:16px;line-height:1.4;color:var(--ink)}
-.wr-did__list span{font-size:15px;line-height:1.5;color:var(--muted)}
-@media (max-width:900px){.wr-did__list{grid-template-columns:1fr;gap:18px}.wr-did__list li{padding:0 0 0 40px}.wr-did__list li::after{display:none}.wr-did__list li::before{top:2px}}
 /* context: order flow as cards with icons */
-.wr-flow{list-style:none;margin:0 0 48px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;max-width:1160px}
+.wr-flow{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;max-width:1160px}
 .wr-flow li{position:relative;display:flex;flex-direction:column;gap:18px;padding:22px 24px 24px;border-radius:18px;background:var(--panel);font-size:17px;line-height:1.35;color:var(--ink);transition:background-color .45s}
 .wr-flow__ico{width:26px;height:26px;color:#73809A;flex:none}
 .wr-flow li>span{margin-top:auto}
@@ -392,17 +382,12 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-sum__res b{font-size:40px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
 
 .wr-sum__note{margin:22px 0 0;font-size:14px;color:var(--muted)}
-/* research methods */
-.wr-method{list-style:none;margin:0 0 48px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.wr-method li{display:flex;flex-direction:column;gap:8px;padding-right:24px}
-.wr-method b{font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
-.wr-method span{font-size:15px;line-height:1.5;color:var(--ink-2)}
-@media (max-width:900px){.wr-method{grid-template-columns:1fr;gap:20px}}
+.wr-note{font-size:15px;line-height:1.5;color:var(--muted);margin:-18px 0 24px;max-width:560px}
 /* core problems */
-.wr-core{list-style:none;margin:10px 0 40px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.wr-core{list-style:none;margin:10px 0 40px;padding:0}
 .wr-core li{padding:26px 28px 28px;border-radius:16px;border:1px solid var(--tint-12)}
 .wr-core__k{display:block;font-size:13px;color:var(--muted);margin-bottom:10px}
-.wr-core__t{font-size:22px;line-height:1.35;margin:0 0 8px}
+.wr-core__t{font-size:22px;line-height:1.35;margin:0}
 .wr-core__d{font-size:16px;line-height:1.5;color:var(--ink-2);margin:0}
 @media (max-width:900px){.wr-core{grid-template-columns:1fr}.wr-sum{padding:30px 26px}.wr-sum__res b{font-size:32px}}
 @media (max-width:600px){.wr-sum__res{flex-direction:column;gap:14px}}
@@ -1081,31 +1066,19 @@ layout();})();</script></section>
     </ul>
     <p class="wr-sum__note">A/B test, all results statistically significant</p>
   </div>
-  <div class="wr-did">
-    <p class="wr-did__k">What I did</p>
-    <ol class="wr-did__list">
-      <li><b>Spotted the pattern</b><span>in regular customer interviews, explaining the drop-off at this step</span></li>
-      <li><b>Ran follow-up research</b><span>7 user tests and 5 in-depth interviews, organised with a UX researcher</span></li>
-      <li><b>Formulated the hypothesis</b><span>based on what the research showed</span></li>
-      <li><b>Designed the solution</b><span>the new offer card</span></li>
-      <li><b>Launched the A/B test</b><span>designed it together with the product manager and analyst</span></li>
-    </ol>
-  </div>
-
   <hr class="rule" id="wr-context">
   <div class="tab__section">
     <h2 class="tab__h">Context</h2>
-    <p class="tab__lead">Like on any freelance marketplace, a customer posts an order, and writers compete for it with offers</p>
+    <ol class="numlist">
+      <li><span>01</span>A writer profile is rarely one person: usually it&#8217;s a small company, so it takes orders in any subject</li>
+      <li><span>02</span>Orders are cheap, so writers take a lot of them, and every profile shows thousands of orders and reviews</li>
+      <li><span>03</span>Choosing a writer is the last step before payment, so it drives the conversion of the whole funnel</li>
+    </ol>
     <ol class="wr-flow" aria-label="How an order works">
       <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span>Post an order</span></li>
       <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><b>30+</b> offers from writers</span></li>
       <li class="is-drop"><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg><span>Choose a writer</span></li>
       <li><svg class="wr-flow__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg><span>Pay</span></li>
-    </ol>
-    <ol class="numlist">
-      <li><span>01</span>A writer profile is rarely one person: usually it&#8217;s a small company, so it takes orders in any subject</li>
-      <li><span>02</span>Orders are cheap, so writers take a lot of them, and every profile shows thousands of orders and reviews</li>
-      <li><span>03</span>Choosing a writer is the last step before payment, so it drives the conversion of the whole funnel</li>
     </ol>
   </div>
   <hr class="rule" id="wr-problem">
@@ -1120,15 +1093,9 @@ layout();})();</script></section>
   <hr class="rule" id="wr-research">
   <div class="tab__section">
     <h2 class="tab__h">Research &amp; solution</h2>
-    <p class="tab__lead">What the research showed, and what we changed</p>
-    <ul class="wr-method">
-      <li><b>Ongoing</b><span>Regular in-depth interviews with customers, where the first patterns came from</span></li>
-      <li><b>7</b><span>User tests: screened respondents went through the flow with a UX researcher</span></li>
-      <li><b>5</b><span>In-depth interviews with customers about choosing a writer</span></li>
-    </ul>
+    <p class="wr-note">Based on regular customer interviews, 7 user tests and 5 in-depth interviews</p>
     <ol class="wr-core">
-      <li><span class="wr-core__k">Core problem 01</span><p class="wr-core__t">All writers looked the same</p><p class="wr-core__d">Huge review and order counts and template greetings on every profile, so nothing set one writer apart</p></li>
-      <li><span class="wr-core__k">Core problem 02</span><p class="wr-core__t">Nothing showed who fits this order</p><p class="wr-core__d">Customers choose for a specific task: its subject, their level, their deadline. Profiles said nothing about any of it</p></li>
+      <li><span class="wr-core__k">Core problem</span><p class="wr-core__t">All writers looked the same, and nothing showed who fits this particular order</p></li>
     </ol>
     <div class="wr-rs">
       <div class="wr-rs__cards">
