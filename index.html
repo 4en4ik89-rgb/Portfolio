@@ -358,6 +358,36 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @keyframes wrbar{from{transform:scaleY(0)}}
 @keyframes wrfade{from{opacity:0}}
 .wr-group{font-size:22px;margin:50px 0 6px}
+.wr-group span{color:var(--muted);font-size:15px;margin-right:14px;vertical-align:2px}
+/* header: what I did */
+.wr-did{margin-top:44px;max-width:1160px}
+.wr-did__k{font-weight:700;margin:0 0 14px}
+.wr-did__list{margin:0;padding:0;list-style:none;counter-reset:did;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px;max-width:900px}
+.wr-did__list li{counter-increment:did;display:flex;gap:16px;line-height:1.5;color:var(--ink-2)}
+.wr-did__list li::before{content:counter(did,decimal-leading-zero);color:var(--muted);font-size:14px;flex:none;width:20px;padding-top:1px}
+/* context: order flow */
+.wr-flow{list-style:none;margin:0 0 44px;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
+.wr-flow li{position:relative;padding:10px 18px;border-radius:999px;background:var(--panel);font-size:16px;line-height:1.3;color:var(--ink);white-space:nowrap;transition:background-color .45s}
+.wr-flow li b{font-weight:600}
+.wr-flow li.is-drop{background:var(--drop);color:#fff}
+.wr-flow li:not(:last-child)::after{content:"";position:absolute;left:calc(100% + 8px);top:50%;width:22px;height:1px;background:var(--muted)}
+/* summary */
+.wr-sum{margin:90px 0 0;padding:40px 44px 36px;border-radius:24px;background:var(--panel);transition:background-color .45s}
+.wr-sum__k{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.wr-sum__text{font-size:22px;line-height:1.5;margin:0 0 32px;max-width:820px}
+.wr-sum__res{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:16px 56px}
+.wr-sum__res li{display:flex;align-items:baseline;gap:12px;font-size:16px;color:var(--ink-2)}
+.wr-sum__res b{font-size:40px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.wr-sum__note{margin:22px 0 0;font-size:14px;color:var(--muted)}
+/* core problems */
+.wr-core{list-style:none;margin:10px 0 40px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.wr-core li{padding:26px 28px 28px;border-radius:16px;border:1px solid var(--tint-12)}
+.wr-core__k{display:block;font-size:13px;color:var(--muted);margin-bottom:10px}
+.wr-core__t{font-size:22px;line-height:1.35;margin:0 0 8px}
+.wr-core__d{font-size:16px;line-height:1.5;color:var(--ink-2);margin:0}
+@media (max-width:900px){.wr-did__list,.wr-core{grid-template-columns:1fr}.wr-sum{padding:30px 26px}.wr-sum__text{font-size:19px}.wr-sum__res b{font-size:32px}}
+@media (max-width:600px){.wr-flow{flex-direction:column;align-items:flex-start;gap:22px}.wr-flow li:not(:last-child)::after{left:28px;top:calc(100% + 4px);width:1px;height:14px}.wr-sum__res{flex-direction:column;gap:14px}}
+
 .wr-row__k{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .wr-row__k--ok{color:var(--green)}
 .wr-shot{border-radius:14px;background:transparent}
@@ -1014,10 +1044,48 @@ layout();})();</script></section>
   <a class="back" href="#projects"><svg viewBox="0 0 108 12" fill="none" aria-hidden="true"><path d="M1 6h107M1 6l5.984-5M1 6l5.984 5" stroke="currentColor"/></svg>projects</a>
   <div class="wr-head"><p class="wr-head__name">Academic writing marketplace</p><span class="wr-tag">NDA</span></div>
   <dl class="meta">
-    <div><dt>Category</dt><dd>Marketplace for academic writing</dd></div>
     <div><dt>Role</dt><dd>Feature owner, product designer</dd></div>
+    <div><dt>Team</dt><dd>Product manager, analyst, UX researcher</dd></div>
     <div><dt>Period of time</dt><dd>2025</dd></div>
   </dl>
+  <div class="wr-did">
+    <p class="wr-did__k">What I did</p>
+    <ol class="wr-did__list">
+      <li>Spotted patterns in UX research reports that explained the drop-off at this step</li>
+      <li>Initiated and organised follow-up research with a UX researcher</li>
+      <li>Formulated the hypothesis</li>
+      <li>Designed the solution</li>
+      <li>Designed and launched the A/B test together with the product manager and analyst</li>
+    </ol>
+  </div>
+
+  <hr class="rule" id="wr-context">
+  <div class="tab__section">
+    <h2 class="tab__h">Context</h2>
+    <p class="tab__lead">It works like a freelance marketplace, only for academic writing: a customer posts an order, and writers compete for it with offers</p>
+    <ol class="wr-flow" aria-label="How an order works">
+      <li>Post an order</li>
+      <li><b>30+</b> offers from writers</li>
+      <li class="is-drop">Choose a writer</li>
+      <li>Pay</li>
+    </ol>
+    <ol class="numlist">
+      <li><span>01</span>A writer profile is rarely one person: usually it&#8217;s a small company, so it takes orders in any subject</li>
+      <li><span>02</span>Orders are cheap, so writers take a lot of them, and every profile shows thousands of orders and reviews</li>
+      <li><span>03</span>Choosing a writer is the last step before payment, so it drives the conversion of the whole funnel</li>
+    </ol>
+  </div>
+
+  <div class="wr-sum">
+    <p class="wr-sum__k">In short</p>
+    <p class="wr-sum__text">Customers got 30+ offers that all looked the same and couldn&#8217;t tell who to trust, so choosing a writer was the biggest drop-off in the funnel. I rebuilt the writer card around the signals customers actually rely on: a recent rating, subject expertise, writing samples and an on-time rate.</p>
+    <ul class="wr-sum__res">
+      <li><b>+14%</b>step completion</li>
+      <li><b>+6%</b>first sales</li>
+      <li><b>+3.5%</b>repeat sales</li>
+    </ul>
+    <p class="wr-sum__note">A/B test, all results statistically significant</p>
+  </div>
 
   <hr class="rule" id="wr-problem">
   <div class="tab__section">
@@ -1026,25 +1094,22 @@ layout();})();</script></section>
       <p class="tab__lead tab__lead--big">Too many customers dropped off at the step where they choose a writer</p>
       <figure class="wr-chart"><svg class="wr-funnel" viewBox="0 0 560 240" role="img" aria-label="Illustrative funnel: the step where customers choose a writer loses the most users"><line class="wr-base" x1="0" y1="210.5" x2="560" y2="210.5"/><rect class="wr-bar" x="12" y="20" width="64" height="190" rx="8" style="--i:0"/><text class="wr-axis" x="44.0" y="232" text-anchor="middle">Step 1</text><rect class="wr-bar" x="104" y="50" width="64" height="160" rx="8" style="--i:1"/><text class="wr-axis" x="136.0" y="232" text-anchor="middle">Step 2</text><rect class="wr-bar" x="196" y="71" width="64" height="139" rx="8" style="--i:2"/><text class="wr-axis" x="228.0" y="232" text-anchor="middle">Step 3</text><rect class="wr-bar wr-bar--drop" x="288" y="132" width="64" height="78" rx="8" style="--i:3"/><text class="wr-axis" x="320.0" y="232" text-anchor="middle">Select writer</text><rect class="wr-bar" x="380" y="142" width="64" height="68" rx="8" style="--i:4"/><text class="wr-axis" x="412.0" y="232" text-anchor="middle">Step 5</text><rect class="wr-bar" x="472" y="147" width="64" height="63" rx="8" style="--i:5"/><text class="wr-axis" x="504.0" y="232" text-anchor="middle">Step 6</text><g class="wr-callout"><path d="M320 98 L320 70 L352 70" fill="none"/><text x="358" y="74">the biggest drop-off</text></g></svg><figcaption class="hint">Illustrative funnel, not real data</figcaption></figure>
     </div>
-    <p class="tab__lead" style="margin-top:70px">Context</p>
-    <ol class="numlist">
-      <li><span>01</span>After the order form, a customer receives many bids from writers</li>
-      <li><span>02</span>Writers take orders in any subject, because they work in groups</li>
-      <li><span>03</span>Orders are cheap, so writers need to take a lot of them</li>
-      <li><span>04</span>Choosing a writer is the last step before payment, so it drives the conversion of the whole funnel</li>
-    </ol>
   </div>
 
   <hr class="rule" id="wr-research">
   <div class="tab__section">
     <h2 class="tab__h">Research &amp; solution</h2>
     <p class="tab__lead">What the research and a series of in-depth interviews showed, and what we changed</p>
+    <ol class="wr-core">
+      <li><span class="wr-core__k">Core problem 01</span><p class="wr-core__t">All writers looked the same</p><p class="wr-core__d">Huge review and order counts on every profile, so nothing set one writer apart</p></li>
+      <li><span class="wr-core__k">Core problem 02</span><p class="wr-core__t">Choosing felt like a gamble</p><p class="wr-core__d">Nothing showed whether a writer knew the subject, would match the customer&#8217;s level and deliver on time</p></li>
+    </ol>
     <div class="wr-rs">
       <div class="wr-rs__cards">
-        <p class="wr-group">All writers looked the same</p>
+        <p class="wr-group"><span>01</span>All writers looked the same</p>
         <ol class="wr-cards"><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i1" tabindex="0"><span class="wr-pc__k">Insight 01</span><p>Every writer had a huge number of reviews</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d1" tabindex="0"><span class="wr-pc__k">Decision 01</span><p>A rating based on the last 100 orders</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i2" tabindex="0"><span class="wr-pc__k">Insight 02</span><p>Every writer had a high total order count, and it looked inflated</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d2" tabindex="0"><span class="wr-pc__k">Decision 02</span><p>The total order count was removed</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i3" tabindex="0"><span class="wr-pc__k">Insight 03</span><p>Greeting messages were templates and didn&#8217;t help</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d3" tabindex="0"><span class="wr-pc__k">Decision 03</span><p>Collapsed into a message button with a counter</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li></ol>
-        <p class="wr-group">Choosing still felt like a gamble</p>
-        <ol class="wr-cards"><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i4" tabindex="0"><span class="wr-pc__k">Insight 04</span><p>No sign of how deep a writer&#8217;s expertise is in a given subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d4" tabindex="0"><span class="wr-pc__k">Decision 04</span><p>Highlights for each subject, based on the writer&#8217;s past work</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i5" tabindex="0"><span class="wr-pc__k">Insight 05</span><p>Customers worried the writing would look overqualified</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d5" tabindex="0"><span class="wr-pc__k">Decision 05</span><p>Writers can add samples for each subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i6" tabindex="0"><span class="wr-pc__k">Insight 06</span><p>Orders are placed close to the deadline, and customers need time to edit the text themselves</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d6" tabindex="0"><span class="wr-pc__k">Decision 06</span><p>An on-time metric: how often orders are delivered on time</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li></ol>
+        <p class="wr-group"><span>02</span>Choosing felt like a gamble</p>
+        <ol class="wr-cards"><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i4" tabindex="0"><span class="wr-pc__k">Insight 04</span><p>No sign of how deep a writer&#8217;s expertise is in a given subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d4" tabindex="0"><span class="wr-pc__k">Decision 04</span><p>Highlights for each subject, based on the writer&#8217;s past work</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i5" tabindex="0"><span class="wr-pc__k">Insight 05</span><p>Customers worried the writing would look too professional for them, or not professional enough</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d5" tabindex="0"><span class="wr-pc__k">Decision 05</span><p>Writers can add samples for each subject</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li><li class="wr-pair"><div class="wr-pc wr-pc--ins" data-k="i6" tabindex="0"><span class="wr-pc__k">Insight 06</span><p>Orders are placed close to the deadline, and customers need time to edit the text themselves</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wr-pc wr-pc--dec" data-k="d6" tabindex="0"><span class="wr-pc__k">Decision 06</span><p>An on-time metric: how often orders are delivered on time</p><svg class="wr-pair__arrow" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M1 6.5h13.5M9 1l5.5 5.5L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></li></ol>
       </div>
       <div class="wr-rs__vis" id="wr-design">
         <div class="wr-seg" role="tablist" aria-label="Screen version">
