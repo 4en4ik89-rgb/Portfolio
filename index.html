@@ -359,14 +359,6 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @keyframes wrfade{from{opacity:0}}
 .wr-group{font-size:22px;margin:50px 0 6px}
 .wr-group span{color:var(--muted);font-size:15px;margin-right:14px;vertical-align:2px}
-/* header: what I did */
-.wr-did{margin-top:44px;max-width:1160px}
-.wr-did__k{font-weight:700;margin:0 0 14px}
-.wr-did__list{margin:0;padding:0;list-style:none;counter-reset:did;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 28px}
-.wr-did__list li{counter-increment:did;position:relative;padding-top:34px;font-size:16px;line-height:1.5;color:var(--ink-2)}
-.wr-did__list li::before{content:counter(did,decimal-leading-zero);position:absolute;left:0;top:0;padding-right:12px;background:var(--bg);font-size:13px;line-height:18px;color:var(--muted);z-index:1;transition:background-color .45s}
-.wr-did__list li:not(:last-child)::after{content:"";position:absolute;left:0;right:-28px;top:9px;height:1px;background:var(--tint-12)}
-@media (max-width:900px){.wr-did__list{grid-template-columns:1fr;gap:18px}.wr-did__list li{padding:0 0 0 40px}.wr-did__list li::after{display:none}.wr-did__list li::before{top:2px}}
 /* context: order flow as cards with icons */
 .wr-flow{list-style:none;margin:0 0 48px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;max-width:1160px}
 .wr-flow li{position:relative;display:flex;flex-direction:column;gap:18px;padding:22px 24px 24px;border-radius:18px;background:var(--panel);font-size:17px;line-height:1.35;color:var(--ink);transition:background-color .45s}
@@ -1079,17 +1071,6 @@ layout();})();</script></section>
     </ul>
     <p class="wr-sum__note">A/B test, all results statistically significant</p>
   </div>
-  <div class="wr-did">
-    <p class="wr-did__k">What I did</p>
-    <ol class="wr-did__list">
-      <li>Found the drop-off pattern</li>
-      <li>Ran follow-up user research</li>
-      <li>Formulated the hypothesis</li>
-      <li>Designed the new offer card</li>
-      <li>Launched the A/B test</li>
-    </ol>
-  </div>
-
   <hr class="rule" id="wr-context">
   <div class="tab__section">
     <h2 class="tab__h">Context</h2>
