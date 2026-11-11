@@ -346,28 +346,20 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .dx-facts li{display:flex;align-items:baseline;gap:12px;font-size:16px;color:var(--ink-2)}
 .dx-facts b{font-size:36px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
 .dx-chs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.dx-ch{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0}
+.dx-ch{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0;background:var(--panel);border-radius:22px;padding:8px;transition:background-color .45s}
 .dx-ch p{margin:0}
-.dx-ch__b{background:var(--panel);border-radius:22px;padding:22px 24px 28px;transition:background-color .45s}
+.dx-ch__b{padding:16px 18px 24px}
 .dx-ch__k{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .dx-ch__ico{width:22px;height:22px;flex:none;color:var(--muted)}
 .dx-ch__o{margin-top:16px!important;font-size:18px;line-height:1.4;color:var(--ink)}
-.dx-chs{--tx:var(--ink);--dt:rgba(60,60,90,.5);--hl:rgba(255,255,255,.8);--bl:26px;--in:22px 18px 18px}
-.dx-ch__a{position:relative;overflow:hidden;border-radius:22px;padding:24px 24px 30px;color:var(--tx);
-  background:linear-gradient(180deg,var(--g1) 0%,var(--g2) 100%);box-shadow:inset 0 1px 0 var(--hl)}
-.dx-ch__a::before{content:"";position:absolute;inset:var(--in);border-radius:18px;background:var(--g0);filter:blur(var(--bl))}
-.dx-ch__a::after{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--dt) 1px,transparent 1.2px);background-size:12px 12px;-webkit-mask-image:radial-gradient(75% 65% at 50% 55%,#000 0%,transparent 75%);mask-image:radial-gradient(75% 65% at 50% 55%,#000 0%,transparent 75%);opacity:.5;pointer-events:none}
-.dx-ch__a>*{position:relative;z-index:1}
-.dx-ch:nth-child(1){--g0:#FFF9FD;--g1:#F9CBE6;--g2:#DCCBFA}
-.dx-ch:nth-child(2){--g0:#F8F9FF;--g1:#CDD3FF;--g2:#C6CBFA}
-.dx-ch:nth-child(3){--g0:#FFFAF6;--g1:#FFD6BD;--g2:#FBC6BD}
-.dx-ch:nth-child(4){--g0:#F7FDFA;--g1:#BFEFE5;--g2:#DCF0BB}
-:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-chs{--tx:#fff;--lb:rgba(255,255,255,.8);--dt:rgba(255,255,255,.22);--hl:rgba(255,255,255,.12);--bl:26px;--in:22px 18px 18px}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch{--lb:rgba(255,255,255,.8)}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(1){--g0:#1D1722;--g1:#5E2A55;--g2:#43296C}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(2){--g0:#16182B;--g1:#333F92;--g2:#2A2F7C}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(3){--g0:#211713;--g1:#7C4024;--g2:#6C2E26}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(4){--g0:#121D1B;--g1:#22695D;--g2:#4B6B28}
-:root[data-site-theme="dark"] .dx-chs{--tx:#fff;--lb:rgba(255,255,255,.8);--dt:rgba(255,255,255,.22);--hl:rgba(255,255,255,.12);--bl:26px;--in:22px 18px 18px}:root[data-site-theme="dark"] .dx-ch{--lb:rgba(255,255,255,.8)}:root[data-site-theme="dark"] .dx-ch:nth-child(1){--g0:#1D1722;--g1:#5E2A55;--g2:#43296C}:root[data-site-theme="dark"] .dx-ch:nth-child(2){--g0:#16182B;--g1:#333F92;--g2:#2A2F7C}:root[data-site-theme="dark"] .dx-ch:nth-child(3){--g0:#211713;--g1:#7C4024;--g2:#6C2E26}:root[data-site-theme="dark"] .dx-ch:nth-child(4){--g0:#121D1B;--g1:#22695D;--g2:#4B6B28}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-chs{--tx:#fff;--lb:rgba(255,255,255,.8);--dt:rgba(255,255,255,.22);--hl:rgba(255,255,255,.12);--bl:26px;--in:22px 18px 18px}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch{--lb:rgba(255,255,255,.8)}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(1){--g0:#1D1722;--g1:#5E2A55;--g2:#43296C}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(2){--g0:#16182B;--g1:#333F92;--g2:#2A2F7C}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(3){--g0:#211713;--g1:#7C4024;--g2:#6C2E26}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(4){--g0:#121D1B;--g1:#22695D;--g2:#4B6B28}}
-.dx-ch__n{font-size:18px;line-height:1.4;color:var(--tx)}
-.dx-chs.dx-anim .dx-ch__a{opacity:0;transform:translateY(-14px)}
-.dx-chs.dx-anim.is-in .dx-ch__a{opacity:1;transform:none;transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.3,1);transition-delay:calc(var(--i)*140ms + 150ms)}
+.dx-ch__a{border-radius:15px;padding:18px 18px 22px;background:var(--c);transition:background-color .45s}
+.dx-ch__n{font-size:18px;line-height:1.4;color:var(--ink)}
+.dx-ch:nth-child(1){--c:#FBE4F1}.dx-ch:nth-child(2){--c:#E5E8FF}.dx-ch:nth-child(3){--c:#FFE8DB}.dx-ch:nth-child(4){--c:#DFF5EC}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}
+:root[data-site-theme="dark"] .dx-ch:nth-child(1){--c:#3B2539}:root[data-site-theme="dark"] .dx-ch:nth-child(2){--c:#272C55}:root[data-site-theme="dark"] .dx-ch:nth-child(3){--c:#412B20}:root[data-site-theme="dark"] .dx-ch:nth-child(4){--c:#1E3B34}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}}
+.dx-chs.dx-anim .dx-ch__a{opacity:0;transform:translateY(8px)}
+.dx-chs.dx-anim.is-in .dx-ch__a{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,background-color .45s;transition-delay:calc(var(--i)*140ms + 150ms)}
 .dx-mv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px;max-width:1160px}
 .dx-mv li{display:grid;grid-template-columns:44px minmax(0,340px) minmax(0,1fr);gap:0 24px;align-items:baseline}
 .dx-mv p{margin:0}
