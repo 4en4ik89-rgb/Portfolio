@@ -392,6 +392,12 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-sum__res b{font-size:40px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
 
 .wr-sum__note{margin:22px 0 0;font-size:14px;color:var(--muted)}
+/* research methods */
+.wr-method{list-style:none;margin:0 0 48px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.wr-method li{display:flex;flex-direction:column;gap:8px;padding:0 0 0 18px;border-left:1px solid var(--tint-12)}
+.wr-method b{font-size:28px;font-weight:400;line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
+.wr-method span{font-size:15px;line-height:1.5;color:var(--ink-2)}
+@media (max-width:900px){.wr-method{grid-template-columns:1fr;gap:20px}}
 /* core problems */
 .wr-core{list-style:none;margin:10px 0 40px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .wr-core li{padding:26px 28px 28px;border-radius:16px;border:1px solid var(--tint-12)}
@@ -1078,8 +1084,8 @@ layout();})();</script></section>
   <div class="wr-did">
     <p class="wr-did__k">What I did</p>
     <ol class="wr-did__list">
-      <li><b>Spotted the pattern</b><span>in UX research reports that explained the drop-off at this step</span></li>
-      <li><b>Ran follow-up research</b><span>initiated and organised it with a UX researcher</span></li>
+      <li><b>Spotted the pattern</b><span>in regular customer interviews, explaining the drop-off at this step</span></li>
+      <li><b>Ran follow-up research</b><span>7 user tests and 5 in-depth interviews, organised with a UX researcher</span></li>
       <li><b>Formulated the hypothesis</b><span>based on what the research showed</span></li>
       <li><b>Designed the solution</b><span>the new offer card</span></li>
       <li><b>Launched the A/B test</b><span>designed it together with the product manager and analyst</span></li>
@@ -1114,7 +1120,12 @@ layout();})();</script></section>
   <hr class="rule" id="wr-research">
   <div class="tab__section">
     <h2 class="tab__h">Research &amp; solution</h2>
-    <p class="tab__lead">What the research and a series of in-depth interviews showed, and what we changed</p>
+    <p class="tab__lead">What the research showed, and what we changed</p>
+    <ul class="wr-method">
+      <li><b>Ongoing</b><span>Regular in-depth interviews with customers, where the first patterns came from</span></li>
+      <li><b>7</b><span>User tests: screened respondents went through the flow with a UX researcher</span></li>
+      <li><b>5</b><span>In-depth interviews with customers about choosing a writer</span></li>
+    </ul>
     <ol class="wr-core">
       <li><span class="wr-core__k">Core problem 01</span><p class="wr-core__t">All writers looked the same</p><p class="wr-core__d">Huge review and order counts and template greetings on every profile, so nothing set one writer apart</p></li>
       <li><span class="wr-core__k">Core problem 02</span><p class="wr-core__t">Nothing showed who fits this order</p><p class="wr-core__d">Customers choose for a specific task: its subject, their level, their deadline. Profiles said nothing about any of it</p></li>
