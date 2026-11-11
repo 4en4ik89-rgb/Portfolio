@@ -399,16 +399,20 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .wr-res{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;background:var(--panel);border-radius:16px;padding:22px 22px 24px;min-height:92px;transition:background-color .45s}
 .wr-res__label{display:inline-flex;align-items:center;gap:8px;font-size:16px;line-height:1.3;color:var(--ink)}
 .wr-res__up{width:12px;height:12px;color:var(--green);flex:none}
-/* Talent monetisation: plans */
-.plans{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.plan{position:relative;background:var(--panel);border-radius:16px;padding:22px 24px 24px;overflow:hidden;transition:background-color .45s}
-.plan::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--plan)}
-.plan--free{--plan:#81DA88}.plan--credits{--plan:#B58CF5}.plan--month{--plan:#5873FF}
-.plan__k{margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.plan__t{margin:0 0 14px;font-size:18px;line-height:1.35;font-weight:500;color:var(--ink)}
-.block .plan__list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.45;color:var(--ink-2)}
-.block .plan__list li{position:relative;padding-left:16px;margin:0}
-.plan__list li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--plan)}
+/* Talent monetisation: plans as pricing cards */
+.plans{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.plan{display:flex;flex-direction:column;background:var(--panel);border-radius:20px;padding:24px 24px 26px;box-shadow:0 1px 0 var(--tint-05);transition:background-color .45s}
+.plan--free{--plan:#2FA84F;--plan-bg:rgba(129,218,136,.22)}
+.plan--credits{--plan:#8A5CF0;--plan-bg:rgba(181,140,245,.2)}
+.plan--month{--plan:#fff;--plan-bg:rgba(255,255,255,.18);background:linear-gradient(150deg,#3A3FD9 0%,#4C6BF0 55%,#43B6F0 100%);color:#fff}
+.plan__k{align-self:flex-start;margin:0 0 22px;padding:5px 11px;border-radius:999px;background:var(--plan-bg);color:var(--plan);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:1.2}
+.plan__v{margin:0;font-size:32px;line-height:1.1;font-weight:500;letter-spacing:-.02em;color:var(--ink)}
+.plan__t{margin:6px 0 20px;padding-bottom:20px;border-bottom:1px solid var(--tint-12);font-size:15px;color:var(--muted)}
+.plan--month .plan__v{color:#fff}.plan--month .plan__t{color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.22)}
+.block .plan__list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.4;color:var(--ink-2)}
+.block .plan__list li{display:flex;align-items:flex-start;gap:10px;margin:0}
+.plan--month .plan__list{color:#fff!important}
+.plan__ck{width:16px;height:16px;flex:none;margin-top:1px;color:var(--plan)}
 .plan-logic{margin-top:24px}
 @media (max-width:900px){.plans{grid-template-columns:minmax(0,1fr)}}
 .block .goal-key{list-style:none;margin:6px 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--ink-2)}
@@ -922,18 +926,21 @@ layout();})();</script></section>
         <ul class="plans">
           <li class="plan plan--free">
             <p class="plan__k">Free</p>
+            <p class="plan__v">€0</p>
             <p class="plan__t">See the value</p>
-            <ul class="plan__list"><li>3 vacancies</li><li>Basic profiles, one category</li><li>4 contact requests</li></ul>
+            <ul class="plan__list"><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>3 vacancies</li><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Basic profiles, one category</li><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>4 contact requests</li></ul>
           </li>
           <li class="plan plan--credits">
             <p class="plan__k">Pay as you go</p>
+            <p class="plan__v">Credits</p>
             <p class="plan__t">Pay per need</p>
-            <ul class="plan__list"><li>Experience and salary filters</li><li>Extra contact requests</li><li>Vacancy boost</li></ul>
+            <ul class="plan__list"><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Experience and salary filters</li><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Extra contact requests</li><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Vacancy boost</li></ul>
           </li>
           <li class="plan plan--month">
             <p class="plan__k">Monthly</p>
+            <p class="plan__v">Subscription</p>
             <p class="plan__t">Hire at scale</p>
-            <ul class="plan__list"><li>Unlimited vacancies</li><li>All features</li></ul>
+            <ul class="plan__list"><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited vacancies</li><li><svg class="plan__ck" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>All features</li></ul>
           </li>
         </ul>
         <ul class="text plan-logic">
