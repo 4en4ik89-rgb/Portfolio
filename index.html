@@ -352,9 +352,7 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}}
 .dx-chs.dx-anim .dx-ch__a{opacity:0;transform:translateY(8px)}
 .dx-chs.dx-anim.is-in .dx-ch__a{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,background-color .45s;transition-delay:calc(var(--i)*140ms + 150ms)}
-.dx-ph{--fn:#5D00FF;display:flex;flex-direction:column;gap:16px;max-width:1160px}
-:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ph,:root[data-site-theme="dark"] .dx-ph{--fn:#9B6CED}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ph{--fn:#9B6CED}}
+.dx-ph{display:flex;flex-direction:column;gap:16px;max-width:1160px}
 .dx-ph p,.dx-ph ul{margin:0}
 .dx-ph__row{background:var(--panel);border-radius:24px;padding:26px 32px 34px;transition:background-color .45s}
 .dx-ph__h{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:26px!important}
@@ -370,8 +368,10 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (min-width:901px){.dx-ph__grid>.dx-ph__m:nth-child(3){grid-column:3 / -1}}
 .dx-ph ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px}
 .dx-ph li{margin:0;font-size:16px;line-height:22px;color:var(--ink-2)}
-.dx-ph li.is-fn{color:var(--fn)}
-.dx-ph__ml{font-size:16px;line-height:22px;color:var(--ink)}
+.dx-ph li{display:flex;align-items:center;gap:10px;padding-left:18px}
+.dx-ph li.is-fn{padding-left:0;color:var(--ink)}
+.dx-ph__f{width:8px;height:8px;border-radius:50%;background:var(--drop);flex:none}
+.dx-ph__ml{font-size:16px;line-height:22px;color:var(--ink);padding-left:18px}
 @media (max-width:1100px){.dx-ph__grid{grid-template-columns:repeat(3,minmax(0,1fr)) 190px}.dx-ph__t{font-size:20px;line-height:26px}}
 @media (max-width:900px){
   .dx-ph__row{padding:22px 22px 24px}
@@ -1229,7 +1229,7 @@ layout();})();</script></section>
   <hr class="rule" id="dx-process">
   <div class="tab__section">
     <h2 class="tab__h">How the process changed</h2>
-    <div class="dx-ph"><div class="dx-ph__row"><p class="dx-ph__h">Before</p><div class="dx-ph__grid"><div class="dx-ph__st"><p class="dx-ph__t">Discovery &amp; Initiation</p><div class="dx-ph__rl"><ul><li>Product Manager</li></ul></div></div><div class="dx-ph__st"><p class="dx-ph__t">Delivery</p><div class="dx-ph__rl"><ul><li class="is-fn">UX/UI Design<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-ph__st dx-ph__m"><p class="dx-ph__v">9<small>%</small></p><div class="dx-ph__rl"><p class="dx-ph__ml">Initiative success rate</p></div></div></div></div><div class="dx-ph__row"><p class="dx-ph__h">After</p><div class="dx-ph__grid"><div class="dx-ph__st"><p class="dx-ph__t">Discovery</p><div class="dx-ph__rl"><ul><li class="is-fn">UX Research<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li></ul></div></div><div class="dx-ph__st"><p class="dx-ph__t">Ideation &amp; Filtering</p><div class="dx-ph__rl"><ul><li class="is-fn">Product Designer<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li><li class="is-fn">UX Research<span class="sr"> (design &amp; research function)</span></li></ul></div></div><div class="dx-ph__st"><p class="dx-ph__t">Delivery</p><div class="dx-ph__rl"><ul><li class="is-fn">Product Designer<span class="sr"> (design &amp; research function)</span></li><li class="is-fn">UX Writer<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-ph__st dx-ph__m"><p class="dx-ph__v">12<small>%</small></p><div class="dx-ph__rl"><p class="dx-ph__ml">Initiative success rate</p></div></div></div></div></div>
+    <div class="dx-ph"><div class="dx-ph__row"><p class="dx-ph__h">Before</p><div class="dx-ph__grid"><div class="dx-ph__st"><p class="dx-ph__t">Discovery &amp; Initiation</p><div class="dx-ph__rl"><ul><li>Product Manager</li></ul></div></div><div class="dx-ph__st"><p class="dx-ph__t">Delivery</p><div class="dx-ph__rl"><ul><li class="is-fn"><span class="dx-ph__f" aria-hidden="true"></span>UX/UI Design<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-ph__st dx-ph__m"><p class="dx-ph__v">9<small>%</small></p><div class="dx-ph__rl"><p class="dx-ph__ml">Initiative success rate</p></div></div></div></div><div class="dx-ph__row"><p class="dx-ph__h">After</p><div class="dx-ph__grid"><div class="dx-ph__st"><p class="dx-ph__t">Discovery</p><div class="dx-ph__rl"><ul><li class="is-fn"><span class="dx-ph__f" aria-hidden="true"></span>UX Research<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li></ul></div></div><div class="dx-ph__st"><p class="dx-ph__t">Ideation &amp; Filtering</p><div class="dx-ph__rl"><ul><li class="is-fn"><span class="dx-ph__f" aria-hidden="true"></span>Product Designer<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li><li class="is-fn"><span class="dx-ph__f" aria-hidden="true"></span>UX Research<span class="sr"> (design &amp; research function)</span></li></ul></div></div><div class="dx-ph__st"><p class="dx-ph__t">Delivery</p><div class="dx-ph__rl"><ul><li class="is-fn"><span class="dx-ph__f" aria-hidden="true"></span>Product Designer<span class="sr"> (design &amp; research function)</span></li><li class="is-fn"><span class="dx-ph__f" aria-hidden="true"></span>UX Writer<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-ph__st dx-ph__m"><p class="dx-ph__v">12<small>%</small></p><div class="dx-ph__rl"><p class="dx-ph__ml">Initiative success rate</p></div></div></div></div></div>
   </div>
 
   <hr class="rule" id="dx-moves">
