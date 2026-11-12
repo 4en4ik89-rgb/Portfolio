@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Pavlo Chenchyk — Design Leader &amp; Product Founder</title><link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png"><link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta name="description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:type" content="website"><meta property="og:url" content="https://4en4ik89-rgb.github.io/Portfolio/"><meta property="og:title" content="Pavlo Chenchyk — Design Leader &amp; Product Founder"><meta property="og:description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:image" content="https://4en4ik89-rgb.github.io/Portfolio/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"><style>
+<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}/* case scroll reveal */
+@keyframes rvUp{from{opacity:0;translate:0 34px}to{opacity:1;translate:0 0}}
+.rv:not(.rv-done){opacity:0}
+.rv-go{animation:rvUp .95s cubic-bezier(.22,.61,.36,1) var(--rd,0ms) backwards}
+</style>
+<title>Pavlo Chenchyk — Design Leader &amp; Product Founder</title><link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png"><link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta name="description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:type" content="website"><meta property="og:url" content="https://4en4ik89-rgb.github.io/Portfolio/"><meta property="og:title" content="Pavlo Chenchyk — Design Leader &amp; Product Founder"><meta property="og:description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:image" content="https://4en4ik89-rgb.github.io/Portfolio/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,700;1,400&display=swap"><style>
 /* Layout: inner pages = grey canvas with a fixed white column on the right (Tilda "Pavel Chen" portfolio); home = 50/50 split. */
 :root{
   --bg:#EDF0F5;        /* page canvas */
@@ -352,6 +356,46 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}}
 .dx-chs.dx-anim .dx-ch__a{opacity:0;transform:translateY(8px)}
 .dx-chs.dx-anim.is-in .dx-ch__a{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,background-color .45s;transition-delay:calc(var(--i)*140ms + 150ms)}
+.dx-ph{display:flex;flex-direction:column;gap:48px;max-width:1160px}
+.dx-ph p,.dx-ph ul{margin:0}
+.dx-ph__sec{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.dx-ph__h{display:inline-flex;align-items:center;height:43px;padding:0 30px;border:1px solid color-mix(in srgb,var(--ink) 21%,transparent);border-radius:60px;font-size:16px;line-height:1;color:var(--ink)}
+.dx-ph__grid{align-self:stretch;display:grid;grid-auto-flow:column;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto;gap:0 13px}
+.dx-ph__st{position:relative;grid-row:span 2;display:grid;grid-template-rows:subgrid;background:var(--panel);border-radius:21px;padding:24px 24px 34px;min-height:300px;transition:background-color .45s}
+.dx-ph__st{transform:perspective(1400px) rotateY(0);transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.75,.25,1),background-color .45s;outline:none}
+.dx-ph__st>:not(.dx-ph__bk){-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.dx-ph__bk{position:absolute;inset:0;z-index:1;border-radius:inherit;background:var(--panel);padding:24px 24px 30px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;transform:rotateY(180deg) translateZ(1px);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:background-color .45s}
+.dx-ph__bt{font-size:13px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dx-ph__bx{font-size:16px;line-height:24px;color:var(--ink)}
+@media (hover:hover){.dx-ph__st:hover{transform:perspective(1400px) rotateY(180deg)}}
+.dx-ph__st:focus-visible,.dx-ph__st.is-flip{transform:perspective(1400px) rotateY(180deg)}
+@media (prefers-reduced-motion:reduce){.dx-ph__st{transition:none}}
+.dx-ph__dots{position:absolute;top:24px;right:26px;display:grid;grid-template-columns:repeat(2,8px);gap:3px}
+.dx-ph__dots i{width:8px;height:8px;border-radius:50%;background:#FF8D28}
+.dx-ph__dots[data-n="1"] i{grid-column:2}
+.dx-ph__sec--before .dx-ph__dots i{background:#B792EB}
+.dx-ph__v small{font-size:.48em;letter-spacing:0;margin-left:2px}
+.dx-ph__up{display:inline-block;margin-left:14px;padding:4px 10px;border-radius:99px;background:#E4F5E3;color:#2E9B3A;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0;white-space:nowrap}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ph__up,:root[data-site-theme="dark"] .dx-ph__up{background:rgba(70,200,95,.16);color:#6FD486}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ph__up{background:rgba(70,200,95,.16);color:#6FD486}}
+.dx-ph__t{align-self:end;padding:53px 0 20px;border-bottom:1px solid var(--tint-12);font-size:26px;line-height:30px;letter-spacing:-.01em;color:var(--ink)}
+.dx-ph__rl{padding-top:17px}
+.dx-ph ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:13px}
+.dx-ph li{margin:0;font-size:17px;line-height:28px;color:var(--ink)}
+.dx-ph__m{display:flex;flex-direction:column;justify-content:flex-end}
+.dx-ph__v{font-size:100px;line-height:.9;font-weight:200;letter-spacing:-.03em;color:var(--ink);margin-bottom:12px!important}
+.dx-ph__ml{font-size:17px;line-height:28px;color:var(--ink)}
+@media (max-width:1100px){.dx-ph__t{font-size:22px;line-height:28px}.dx-ph__v{font-size:80px}}
+@media (max-width:900px){
+  .dx-ph{gap:36px}.dx-ph__sec{gap:20px}
+  .dx-ph__grid{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:12px}
+  .dx-ph__st{grid-row:auto;display:flex;flex-direction:column;min-height:0;padding:22px 22px 26px}
+  .dx-ph__t{align-self:stretch;padding-top:40px;font-size:22px;line-height:28px}
+  .dx-ph__m{justify-content:flex-end;min-height:220px}
+  .dx-ph__v{font-size:72px}
+  .dx-ph__grid>.dx-ph__m:nth-child(3){grid-column:1 / -1;min-height:200px}
+}
+@media (max-width:560px){.dx-ph__grid{grid-template-columns:minmax(0,1fr)}.dx-ph__m{min-height:180px}}
 .dx-mv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px;max-width:1160px}
 .dx-mv li{display:grid;grid-template-columns:44px minmax(0,340px) minmax(0,1fr);gap:0 24px;align-items:baseline}
 .dx-mv p{margin:0}
@@ -1193,6 +1237,12 @@ layout();})();</script></section>
     <ul class="dx-chs"><li class="dx-ch" style="--i:0"><div class="dx-ch__b"><p class="dx-ch__k">Role of design<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Executors of product managers&#8217; requests</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>Partners who own the solution</p></div></li><li class="dx-ch" style="--i:1"><div class="dx-ch__b"><p class="dx-ch__k">Hypotheses<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Product managers&#8217; personal research</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>A shared insight hub: JTBD, opportunity trees, interviews</p></div></li><li class="dx-ch" style="--i:2"><div class="dx-ch__b"><p class="dx-ch__k">Team<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>2 designers</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>17 people in four disciplines</p></div></li><li class="dx-ch" style="--i:3"><div class="dx-ch__b"><p class="dx-ch__k">Outcome<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Few initiatives paid off</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>A growing share of initiatives pays off</p></div></li></ul>
   </div>
 
+  <hr class="rule" id="dx-process">
+  <div class="tab__section">
+    <h2 class="tab__h">How the process changed</h2>
+    <div class="dx-ph"><div class="dx-ph__sec dx-ph__sec--before"><p class="dx-ph__h">Before</p><div class="dx-ph__grid"><div class="dx-ph__st" tabindex="0"><div class="dx-ph__bk" aria-hidden="true"><span class="dx-ph__dots" data-n="1"><i></i></span><p class="dx-ph__bt">Discovery &amp; Initiation</p><p class="dx-ph__bx">Initiatives came top-down from stakeholders. The PM turned them into requirements alone — no research, no validation before work started.</p></div><span class="dx-ph__dots" data-n="1" aria-hidden="true"><i></i></span><p class="dx-ph__t">Discovery &amp; Initiation</p><div class="dx-ph__rl"><ul><li>Product Manager</li></ul></div></div><div class="dx-ph__st" tabindex="0"><div class="dx-ph__bk" aria-hidden="true"><span class="dx-ph__dots" data-n="2"><i></i><i></i></span><p class="dx-ph__bt">Delivery</p><p class="dx-ph__bx">Design joined only at delivery, to draw screens for solutions that were already decided. Problems surfaced after release, when fixing them was expensive.</p></div><span class="dx-ph__dots" data-n="2" aria-hidden="true"><i></i><i></i></span><p class="dx-ph__t">Delivery</p><div class="dx-ph__rl"><ul><li>UX/UI Design</li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-ph__st dx-ph__m" tabindex="0"><div class="dx-ph__bk" aria-hidden="true"><span class="dx-ph__dots" data-n="3"><i></i><i></i><i></i></span><p class="dx-ph__bt">9%</p><p class="dx-ph__bx">Only 9% of shipped initiatives hit their success metric. Most of the effort went into ideas nobody had validated.</p></div><span class="dx-ph__dots" data-n="3" aria-hidden="true"><i></i><i></i><i></i></span><p class="dx-ph__v">9<small>%</small></p><p class="dx-ph__ml">Initiative success rate</p></div></div></div><div class="dx-ph__sec"><p class="dx-ph__h">After</p><div class="dx-ph__grid"><div class="dx-ph__st" tabindex="0"><div class="dx-ph__bk" aria-hidden="true"><span class="dx-ph__dots" data-n="1"><i></i></span><p class="dx-ph__bt">Discovery</p><p class="dx-ph__bx">UX Research joined the PM upfront. Every initiative started from a validated problem, backed by insights from the shared research hub.</p></div><span class="dx-ph__dots" data-n="1" aria-hidden="true"><i></i></span><p class="dx-ph__t">Discovery</p><div class="dx-ph__rl"><ul><li>UX Research</li><li>Product Manager</li></ul></div></div><div class="dx-ph__st" tabindex="0"><div class="dx-ph__bk" aria-hidden="true"><span class="dx-ph__dots" data-n="2"><i></i><i></i></span><p class="dx-ph__bt">Ideation &amp; Filtering</p><p class="dx-ph__bx">A new stage. Designers, PM and research explored options and dropped weak ones on prototypes — before a single line of code.</p></div><span class="dx-ph__dots" data-n="2" aria-hidden="true"><i></i><i></i></span><p class="dx-ph__t">Ideation &amp; Filtering</p><div class="dx-ph__rl"><ul><li>Product Designer</li><li>Product Manager</li><li>UX Research</li></ul></div></div><div class="dx-ph__st" tabindex="0"><div class="dx-ph__bk" aria-hidden="true"><span class="dx-ph__dots" data-n="3"><i></i><i></i><i></i></span><p class="dx-ph__bt">Delivery</p><p class="dx-ph__bx">Product designers and UX writers worked inside cross-functional teams and shared their KPIs with development and analytics.</p></div><span class="dx-ph__dots" data-n="3" aria-hidden="true"><i></i><i></i><i></i></span><p class="dx-ph__t">Delivery</p><div class="dx-ph__rl"><ul><li>Product Designer</li><li>UX Writer</li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-ph__st dx-ph__m" tabindex="0"><div class="dx-ph__bk" aria-hidden="true"><span class="dx-ph__dots" data-n="4"><i></i><i></i><i></i><i></i></span><p class="dx-ph__bt">12%</p><p class="dx-ph__bx">A third more initiatives hit their goals. Fewer features shipped just to be quietly rolled back.</p></div><span class="dx-ph__dots" data-n="4" aria-hidden="true"><i></i><i></i><i></i><i></i></span><p class="dx-ph__v">12<small>%</small><span class="dx-ph__up">+33%</span></p><p class="dx-ph__ml">Initiative success rate</p></div></div></div></div>
+  </div>
+
   <hr class="rule" id="dx-moves">
   <div class="tab__section">
     <h2 class="tab__h">How I got there</h2>
@@ -1769,6 +1819,73 @@ layout();})();</script></section>
       function fallback(){var el=document.getElementById(b.getAttribute('data-target'));if(el){var r=document.createRange();r.selectNodeContents(el);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);}}
     });
   });
+})();
+</script>
+<script>document.querySelectorAll(".dx-ph__st").forEach(function(c){c.addEventListener("click",function(){if(!matchMedia("(hover:hover)").matches)c.classList.toggle("is-flip")})})</script>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var CASES=['rocken','tabletki','develux','writers'];
+  function vis(el){ return el.getClientRects().length>0; }
+  function skip(el){
+    if(/^(HR|SCRIPT|STYLE|TEMPLATE|BR)$/.test(el.tagName)) return true;
+    if(el.matches('.back,.totop,.sr')) return true;
+    var cs=getComputedStyle(el);
+    return cs.display==='none'||/fixed|absolute|sticky/.test(cs.position)||el.getBoundingClientRect().height<2;
+  }
+  function kids(el){ return [].filter.call(el.children,function(c){ return !skip(c); }); }
+  function isRow(el){
+    var cs=getComputedStyle(el); if(!/flex|grid/.test(cs.display)) return false;
+    var k=kids(el); if(k.length<2||k.length>12) return false;
+    var a=k[0].getBoundingClientRect(), b=k[1].getBoundingClientRect();
+    return Math.abs(a.top-b.top)<6 && Math.abs(a.left-b.left)>20;
+  }
+  function rowDelays(el,base){
+    var k=kids(el), ls=[], ts=[];
+    k.forEach(function(c){ var r=c.getBoundingClientRect(); var l=Math.round(r.left/8), t=Math.round(r.top/8); if(ls.indexOf(l)<0) ls.push(l); if(ts.indexOf(t)<0) ts.push(t); });
+    ls.sort(function(x,y){return x-y}); ts.sort(function(x,y){return x-y});
+    return k.map(function(c){ var r=c.getBoundingClientRect(); return [c, base+Math.min(ls.indexOf(Math.round(r.left/8))*110+ts.indexOf(Math.round(r.top/8))*90, 800)]; });
+  }
+  function units(el){
+    if(isRow(el)) return rowDelays(el,0);
+    var k=kids(el), hasRow=k.some(isRow);
+    if(!hasRow) return [[el,0]];
+    var out=[]; k.forEach(function(c){ if(isRow(c)) out=out.concat(rowDelays(c,80)); else out.push([c,0]); }); return out;
+  }
+  function go(el,d){
+    el.style.setProperty('--rd',d+'ms'); el.classList.add('rv-go');
+    el.addEventListener('animationend',function f(e){ if(e.target!==el||e.animationName!=='rvUp') return; el.classList.remove('rv-go'); el.removeEventListener('animationend',f); });
+  }
+  var io=new IntersectionObserver(function(es){
+    var ins=es.filter(function(e){ return e.isIntersecting; }).map(function(e){ return e.target; });
+    ins.sort(function(a,b){ var x=a.getBoundingClientRect(), y=b.getBoundingClientRect(); return (x.top-y.top)||(x.left-y.left); });
+    ins.forEach(function(el,i){
+      io.unobserve(el);
+      var base=Math.min(i*90,450);
+      units(el).forEach(function(u){ go(u[0], u[1]+base); });
+      el.classList.add('rv-done');
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0});
+  var vh=function(){ return Math.max(window.innerHeight,600); };
+  function collect(el,dep,out){
+    kids(el).forEach(function(c){
+      var ox=getComputedStyle(c).overflowX, wrap=ox==='visible'&&(c.matches('.tab__section,.section,.sub')||c.getBoundingClientRect().height>vh()*.85);
+      if(wrap&&dep<4&&kids(c).length) collect(c,dep+1,out); else out.push(c);
+    });
+    return out;
+  }
+  function setup(){
+    CASES.forEach(function(id){
+      var v=document.getElementById('view-'+id); if(!v||v.dataset.rv||!vis(v)) return;
+      var root=v.querySelector('.case'); if(!root) return;
+      v.dataset.rv='1';
+      collect(root,0,[]).forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+    });
+  }
+  function later(){ setTimeout(setup,30); }
+  window.addEventListener('hashchange',later); window.addEventListener('popstate',later);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',later); else later();
+  document.addEventListener('click',function(){ setTimeout(setup,60); });
 })();
 </script>
 </body>
