@@ -352,6 +352,38 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}}
 .dx-chs.dx-anim .dx-ch__a{opacity:0;transform:translateY(8px)}
 .dx-chs.dx-anim.is-in .dx-ch__a{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,background-color .45s;transition-delay:calc(var(--i)*140ms + 150ms)}
+.dx-pr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,auto);column-gap:48px;max-width:1160px}
+.dx-pr__col{display:grid;grid-row:span 5;grid-template-rows:subgrid}
+.dx-pr p,.dx-pr ul{margin:0}
+.dx-pr__h{margin:0 0 22px 0!important;padding-left:calc(var(--st) + 28px);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dx-pr{--st:230px}
+.dx-pr__row{display:grid;grid-template-columns:var(--st) minmax(0,1fr);column-gap:28px}
+.dx-pr__st{text-align:right;font-size:24px;line-height:1.15;letter-spacing:-.01em;color:var(--ink);padding:0 0 30px}
+.dx-pr__rl{position:relative;box-shadow:-1px 0 0 var(--tint-12);padding:4px 0 30px 22px}
+.dx-pr__rl::before{content:"";position:absolute;left:-3px;top:13px;width:5px;height:5px;border-radius:50%;background:var(--muted)}
+.dx-pr__rl ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+.dx-pr__rl li{display:flex;align-items:center;gap:10px;font-size:16px;line-height:1.35;color:var(--ink-2);margin:0}
+.dx-pr__rl li:not(.is-fn){padding-left:18px}
+.dx-pr__rl li.is-fn{color:var(--ink)}
+.dx-pr__f{width:8px;height:8px;border-radius:50%;background:var(--drop);flex:none}
+.dx-pr__key{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted);margin:-8px 0 32px!important}
+.dx-pr__new{display:inline-block;vertical-align:middle;margin-left:10px;padding:3px 9px;border-radius:999px;background:var(--drop);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transform:translateY(-3px)}
+.dx-pr__row.is-new .dx-pr__rl{background:linear-gradient(90deg,rgba(255,122,47,.08),rgba(255,122,47,0) 85%);border-radius:0 12px 12px 0;padding-top:12px;padding-bottom:22px;}
+.dx-pr__row.is-new .dx-pr__st{padding-top:8px}
+.dx-pr__row.is-new .dx-pr__rl::before{top:21px}
+.dx-pr__row.is-new + .dx-pr__row .dx-pr__rl{border-top:0}
+.dx-pr__row.is-empty .dx-pr__st{color:var(--muted);opacity:.55}
+.dx-pr__none{font-size:15px;color:var(--muted);padding-top:4px}
+.dx-pr__row--m .dx-pr__st{padding-bottom:0}
+.dx-pr__row--m .dx-pr__rl{padding-bottom:4px}
+.dx-pr__row--m .dx-pr__rl::before{top:22px}
+.dx-pr__v{font-size:44px!important;line-height:1!important}
+.dx-pr__v small{font-size:16px;margin-left:2px;color:var(--muted)}
+.dx-pr__ml{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:16px;color:var(--ink);padding-top:12px}
+.dx-pr__chip{padding:3px 10px;border-radius:999px;background:var(--s-mint);color:#1E7A5E;font-size:13px;font-weight:600}
+@media (max-width:1180px){.dx-pr{--st:170px;column-gap:28px}.dx-pr__st{font-size:22px}}
+@media (max-width:900px){.dx-pr{grid-template-columns:minmax(0,1fr);grid-template-rows:none;row-gap:48px}.dx-pr__col{grid-row:auto;grid-template-rows:none}}
+@media (max-width:600px){.dx-pr{--st:118px}.dx-pr__st{font-size:18px}.dx-pr__v{font-size:34px!important}.dx-pr__row{column-gap:16px}.dx-pr__rl{padding-left:16px}}
 .dx-mv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px;max-width:1160px}
 .dx-mv li{display:grid;grid-template-columns:44px minmax(0,340px) minmax(0,1fr);gap:0 24px;align-items:baseline}
 .dx-mv p{margin:0}
@@ -1191,6 +1223,13 @@ layout();})();</script></section>
   <div class="tab__section">
     <h2 class="tab__h">What changed</h2>
     <ul class="dx-chs"><li class="dx-ch" style="--i:0"><div class="dx-ch__b"><p class="dx-ch__k">Role of design<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Executors of product managers&#8217; requests</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>Partners who own the solution</p></div></li><li class="dx-ch" style="--i:1"><div class="dx-ch__b"><p class="dx-ch__k">Hypotheses<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Product managers&#8217; personal research</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>A shared insight hub: JTBD, opportunity trees, interviews</p></div></li><li class="dx-ch" style="--i:2"><div class="dx-ch__b"><p class="dx-ch__k">Team<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>2 designers</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>17 people in four disciplines</p></div></li><li class="dx-ch" style="--i:3"><div class="dx-ch__b"><p class="dx-ch__k">Outcome<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Few initiatives paid off</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>A growing share of initiatives pays off</p></div></li></ul>
+  </div>
+
+  <hr class="rule" id="dx-process">
+  <div class="tab__section">
+    <h2 class="tab__h">How the process changed</h2>
+    <p class="dx-pr__key"><span class="dx-pr__f" aria-hidden="true"></span>Design &amp; research function</p>
+    <div class="dx-pr"><div class="dx-pr__col"><p class="dx-pr__h">Before</p><div class="dx-pr__row "><p class="dx-pr__st">Discovery &amp; Initiation</p><div class="dx-pr__rl"><ul><li>Product Manager</li></ul></div></div><div class="dx-pr__row is-empty"><p class="dx-pr__st">Ideation &amp; Filtering</p><div class="dx-pr__rl"><p class="dx-pr__none">No such stage</p></div></div><div class="dx-pr__row "><p class="dx-pr__st">Delivery</p><div class="dx-pr__rl"><ul><li class="is-fn"><span class="dx-pr__f" aria-hidden="true"></span>UX/UI Design<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-pr__row dx-pr__row--m"><p class="dx-pr__st dx-pr__v">9<small>%</small></p><div class="dx-pr__rl"><p class="dx-pr__ml">Initiative success rate</p></div></div></div><div class="dx-pr__col"><p class="dx-pr__h">After</p><div class="dx-pr__row "><p class="dx-pr__st">Discovery</p><div class="dx-pr__rl"><ul><li class="is-fn"><span class="dx-pr__f" aria-hidden="true"></span>UX Research<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li></ul></div></div><div class="dx-pr__row is-new"><p class="dx-pr__st">Ideation &amp; Filtering<span class="dx-pr__new">New</span></p><div class="dx-pr__rl"><ul><li class="is-fn"><span class="dx-pr__f" aria-hidden="true"></span>Product Designer<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li><li class="is-fn"><span class="dx-pr__f" aria-hidden="true"></span>UX Research<span class="sr"> (design &amp; research function)</span></li></ul></div></div><div class="dx-pr__row "><p class="dx-pr__st">Delivery</p><div class="dx-pr__rl"><ul><li class="is-fn"><span class="dx-pr__f" aria-hidden="true"></span>Product Designer<span class="sr"> (design &amp; research function)</span></li><li class="is-fn"><span class="dx-pr__f" aria-hidden="true"></span>UX Writer<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div></div><div class="dx-pr__row dx-pr__row--m"><p class="dx-pr__st dx-pr__v">12<small>%</small></p><div class="dx-pr__rl"><p class="dx-pr__ml">Initiative success rate<span class="dx-pr__chip">+33%</span></p></div></div></div></div>
   </div>
 
   <hr class="rule" id="dx-moves">
