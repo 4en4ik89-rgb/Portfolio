@@ -21,17 +21,16 @@
   --logo-filter:none;        /* dark-ink logos and line art */
   --shot-filter:brightness(1);--tab-active:#fff;--sk-designer:rgba(59,130,246,.10);--sk-manager:rgba(236,72,153,.09);--sk-founder:rgba(139,92,246,.10);--chip-bg:rgba(0,0,0,.05);--card-shadow:0 14px 40px rgba(23,23,27,.07);--img-shadow:0 10px 28px rgba(23,23,27,.12);        /* screenshots */
   --is-dark:0;
-  --glass-line:.35;--glass-hi:.65;--glass-glow:.2;--glass-spec:.38;--glass-sheen:.22;
   --show-moon:block; --show-sun:none;
   color-scheme:light;
 }
 /* dark: follows the system unless the site toggle (data-site-theme) or the host (data-theme) says otherwise; the site toggle wins */
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]){--bg:#14161A;--panel:#1C1F25;--ink:#E4E6EA;--ink-2:#C5C8CE;--muted:#868B95;--link:#A3A3F2;--black:#0C0D10;--tint-05:rgba(255,255,255,.06);--tint-12:rgba(255,255,255,.13);--logo-filter:invert(1) hue-rotate(180deg);--shot-filter:brightness(.9);--tab-active:#3A3F4A;--sk-designer:rgba(96,165,250,.16);--sk-manager:rgba(244,114,182,.15);--sk-founder:rgba(167,139,250,.16);--chip-bg:rgba(255,255,255,.05);--card-shadow:0 14px 40px rgba(0,0,0,.35);--img-shadow:0 10px 28px rgba(0,0,0,.45);--is-dark:1;--glass-line:.06;--glass-hi:.12;--glass-glow:.05;--glass-spec:.14;--glass-sheen:.07;--show-moon:none;--show-sun:block;color-scheme:dark}}
-:root[data-theme="dark"]:not([data-site-theme="light"]),:root[data-site-theme="dark"]{--bg:#14161A;--panel:#1C1F25;--ink:#E4E6EA;--ink-2:#C5C8CE;--muted:#868B95;--link:#A3A3F2;--black:#0C0D10;--tint-05:rgba(255,255,255,.06);--tint-12:rgba(255,255,255,.13);--logo-filter:invert(1) hue-rotate(180deg);--shot-filter:brightness(.9);--tab-active:#3A3F4A;--sk-designer:rgba(96,165,250,.16);--sk-manager:rgba(244,114,182,.15);--sk-founder:rgba(167,139,250,.16);--chip-bg:rgba(255,255,255,.05);--card-shadow:0 14px 40px rgba(0,0,0,.35);--img-shadow:0 10px 28px rgba(0,0,0,.45);--is-dark:1;--glass-line:.06;--glass-hi:.12;--glass-glow:.05;--glass-spec:.14;--glass-sheen:.07;--show-moon:none;--show-sun:block;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]){--bg:#14161A;--panel:#1C1F25;--ink:#E4E6EA;--ink-2:#C5C8CE;--muted:#868B95;--link:#A3A3F2;--black:#0C0D10;--tint-05:rgba(255,255,255,.06);--tint-12:rgba(255,255,255,.13);--logo-filter:invert(1) hue-rotate(180deg);--shot-filter:brightness(.9);--tab-active:#3A3F4A;--sk-designer:rgba(96,165,250,.16);--sk-manager:rgba(244,114,182,.15);--sk-founder:rgba(167,139,250,.16);--chip-bg:rgba(255,255,255,.05);--card-shadow:0 14px 40px rgba(0,0,0,.35);--img-shadow:0 10px 28px rgba(0,0,0,.45);--is-dark:1;--show-moon:none;--show-sun:block;color-scheme:dark}}
+:root[data-theme="dark"]:not([data-site-theme="light"]),:root[data-site-theme="dark"]{--bg:#14161A;--panel:#1C1F25;--ink:#E4E6EA;--ink-2:#C5C8CE;--muted:#868B95;--link:#A3A3F2;--black:#0C0D10;--tint-05:rgba(255,255,255,.06);--tint-12:rgba(255,255,255,.13);--logo-filter:invert(1) hue-rotate(180deg);--shot-filter:brightness(.9);--tab-active:#3A3F4A;--sk-designer:rgba(96,165,250,.16);--sk-manager:rgba(244,114,182,.15);--sk-founder:rgba(167,139,250,.16);--chip-bg:rgba(255,255,255,.05);--card-shadow:0 14px 40px rgba(0,0,0,.35);--img-shadow:0 10px 28px rgba(0,0,0,.45);--is-dark:1;--show-moon:none;--show-sun:block;color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.56;overflow-x:hidden;transition:background-color .45s,color .45s}
-.home__left,.home__right,.side,.project__card,.quote,.case .back,.totop,.theme-toggle{transition:background-color .45s,color .45s,border-color .45s}
+.home__left,.home__right,.side,.project__card,.quote,.case .back,.totop{transition:background-color .45s,color .45s,border-color .45s}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 p{margin:0}
@@ -80,9 +79,10 @@ strong{font-weight:700}
 img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordmark.svg"],img[src*="assets/rocken-"][src$=".png"],img[src$="tab-appstore.png"],img[src$="tab-googleplay.png"],img[src$="tab-offline.png"],img[src$="tab-online.png"],img[src$="personas-shapes.svg"],img[src$="profile-nav.jpg"]{filter:var(--logo-filter);transition:filter .45s}
 .zoom img,.fig img,.product img,.project__img img,.annot img,.stack img{filter:var(--shot-filter);transition:filter .45s}
 /* theme toggle */
-.theme-toggle{position:fixed;left:max(24px,env(safe-area-inset-left,0px));bottom:max(24px,env(safe-area-inset-bottom,0px));z-index:30;width:56px;height:56px;border-radius:50%;border:0;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;opacity:.5;transition:opacity .3s}
-.theme-toggle:hover,.theme-toggle:focus-visible{opacity:.9}
-.theme-toggle svg{width:36px;height:36px}
+.theme-toggle{position:fixed;left:max(24px,env(safe-area-inset-left,0px));bottom:max(24px,env(safe-area-inset-bottom,0px));z-index:30;width:56px;height:56px;border-radius:50%;border:0;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;opacity:.55;transition:opacity .3s,color .45s}
+.theme-toggle:hover,.theme-toggle:focus-visible{opacity:.95}
+.theme-toggle svg{width:30px;height:30px;fill:currentColor;overflow:visible;flex:none}
+.theme-toggle svg.i-moon{width:36px;height:36px}
 .theme-toggle .i-moon{display:var(--show-moon)} .theme-toggle .i-sun{display:var(--show-sun)}
 
 /* ---------- inner pages ---------- */
@@ -166,25 +166,17 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .project__img img{width:100%;height:100%;object-fit:cover}
 /* hover: a thick glass pane over the cover — bevelled rim (light top-left, shade bottom-right), refraction along the edge,
    a specular highlight that follows the cursor, and a slight 3D tilt of the cover toward the pointer */
-.project__img{--mx:50%;--my:30%;--rx:0deg;--ry:0deg;transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transition:box-shadow .35s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.project__img{--rx:0deg;--ry:0deg;transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transition:box-shadow .35s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
 .project__img.is-tilting{transition:box-shadow .35s ease,transform .12s linear}
-.project__glass{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .4s ease;
-  background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,var(--glass-spec)),rgba(255,255,255,calc(var(--glass-spec)*.2)) 28%,transparent 55%),linear-gradient(135deg,rgba(255,255,255,var(--glass-sheen)) 0%,rgba(255,255,255,0) 38%,rgba(255,255,255,0) 70%,rgba(255,255,255,calc(var(--glass-sheen)*.45)) 100%)}
-.project__glass::before{content:"";position:absolute;inset:0;border-radius:inherit;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,var(--glass-line)),inset 2px 2px 1px rgba(255,255,255,var(--glass-hi)),inset -2px -2px 3px rgba(0,0,0,.22),inset 0 0 28px rgba(255,255,255,var(--glass-glow)),inset -10px -14px 30px rgba(0,0,0,.12)}
+.project__glass{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .4s ease}
 .project:hover .project__glass,.project:focus-within .project__glass{opacity:1}
-/* edge thickness: the cover seen through a 14px rim of glass is magnified, blurred and more saturated */
-.project__rim{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;overflow:hidden;
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:14px}
-.project__rim img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.1);filter:var(--shot-filter) blur(2.5px) saturate(1.35) brightness(1.06)}
-.project:hover .project__rim,.project:focus-within .project__rim{opacity:1}
 .project__cta{position:relative;z-index:1}
 .project__cta{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:rgba(23,23,27,.78);color:#fff;font-size:15px;line-height:20px;font-weight:500;transform:translateY(8px);transition:transform .35s ease,opacity .35s ease}
 .project__img img{transition:filter .4s ease,transform .5s ease}
 .project:hover .project__img>img,.project:focus-within .project__img>img{transform:scale(1.03)}
 @media (hover:none){.project:hover .project__img img{filter:var(--shot-filter);transform:none}}
 .project:hover .project__cta,.project:focus-within .project__cta{transform:none}
-@media (hover:none){.project__glass,.project__rim{display:none}.project__img{transform:none}}
+@media (hover:none){.project__glass{display:none}.project__img{transform:none}}
 @media (prefers-reduced-motion:reduce){.project__cta{transform:none}.project__img{transform:none!important}}
 .project__link{position:absolute;inset:0;z-index:2}
 /* rounded cards and previews */
@@ -339,6 +331,77 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   .tab__lead--big{max-width:none}
 }
 
+/* ---------- case study: Develux, leadership ---------- */
+.dx .wr-sum__text{margin-bottom:0}
+.project__word{margin:0;font-size:22px;font-weight:800;letter-spacing:.24em;line-height:40px;color:var(--ink)}
+.dx-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:16px 56px}
+.dx-facts li{display:flex;align-items:baseline;gap:12px;font-size:16px;color:var(--ink-2)}
+.dx-facts b{font-size:36px;font-weight:400;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.dx-chs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dx-ch{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0;background:var(--panel);border-radius:22px;padding:8px;transition:background-color .45s}
+.dx-ch p{margin:0}
+.dx-ch__b{padding:16px 18px 24px}
+.dx-ch__k{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dx-ch__ico{width:22px;height:22px;flex:none;color:var(--muted)}
+.dx-ch__o{margin-top:16px!important;font-size:18px;line-height:1.4;color:var(--ink)}
+.dx-ch__a{border-radius:15px;padding:18px 18px 22px;background:var(--c);transition:background-color .45s}
+.dx-ch__n{font-size:18px;line-height:1.4;color:var(--ink)}
+.dx-ch:nth-child(1){--c:#FBE4F1}.dx-ch:nth-child(2){--c:#E5E8FF}.dx-ch:nth-child(3){--c:#FFE8DB}.dx-ch:nth-child(4){--c:#DFF5EC}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}
+:root[data-site-theme="dark"] .dx-ch:nth-child(1){--c:#3B2539}:root[data-site-theme="dark"] .dx-ch:nth-child(2){--c:#272C55}:root[data-site-theme="dark"] .dx-ch:nth-child(3){--c:#412B20}:root[data-site-theme="dark"] .dx-ch:nth-child(4){--c:#1E3B34}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}}
+.dx-chs.dx-anim .dx-ch__a{opacity:0;transform:translateY(8px)}
+.dx-chs.dx-anim.is-in .dx-ch__a{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,background-color .45s;transition-delay:calc(var(--i)*140ms + 150ms)}
+.dx-mv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px;max-width:1160px}
+.dx-mv li{display:grid;grid-template-columns:44px minmax(0,340px) minmax(0,1fr);gap:0 24px;align-items:baseline}
+.dx-mv p{margin:0}
+.dx-mv__n{font-size:15px;color:var(--muted)}
+.dx-mv__t{font-size:20px;line-height:1.35;color:var(--ink)}
+.dx-mv__d{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:560px}
+.dx{--s-blue:#E5E8FF;--s-mint:#DFF5EC;--s-pink:#FBE4F1;--s-peach:#FFE8DB}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx{--s-blue:#272C55;--s-mint:#1E3B34;--s-pink:#3B2539;--s-peach:#412B20}:root[data-site-theme="dark"] .dx{--s-blue:#272C55;--s-mint:#1E3B34;--s-pink:#3B2539;--s-peach:#412B20}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx{--s-blue:#272C55;--s-mint:#1E3B34;--s-pink:#3B2539;--s-peach:#412B20}}
+.dx-c-blue{--c:var(--s-blue);--c2:#7F8BFF}.dx-c-mint{--c:var(--s-mint);--c2:#4CC9A4}.dx-c-pink{--c:var(--s-pink);--c2:#E07BB8}.dx-c-peach{--c:var(--s-peach);--c2:#FF9A63}
+.dx-k{margin:0 0 6px!important;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dx-org__top{width:230px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:16px;padding:13px 18px 14px;text-align:center;font-size:16px;transition:background-color .45s,color .45s}
+.dx-org__top small{display:block;font-size:12px;opacity:.7;margin-top:2px}
+.dx-org__ln{display:block;width:100%;height:46px;color:var(--muted);opacity:.6}
+.dx-teams{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dx-team{display:flex;flex-direction:column;background:var(--panel);border-radius:22px;padding:8px;transition:background-color .45s}
+.dx-team p{margin:0}
+.dx-team__h{padding:14px 16px 18px}
+.dx-team__t{font-size:17px;color:var(--ink);margin-bottom:12px!important}
+.dx-pp{display:flex;flex-wrap:wrap;gap:6px}
+.dx-pp i{width:18px;height:18px;border-radius:50%;background:var(--c2)}
+.dx-pp i.is-lead{position:relative;background:none;box-shadow:inset 0 0 0 2px var(--c2)}
+.dx-pp i.is-lead::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--c2)}
+.dx-team__n{margin-top:8px!important;font-size:13px;color:var(--muted)}
+.dx-team__m{flex:1;border-radius:15px;background:var(--c);padding:14px 16px 16px;font-size:15px;line-height:1.45;color:var(--ink);transition:background-color .45s}
+.dx-qd{position:relative;max-width:900px}
+.dx-qd ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dx-qd li{background:var(--panel);border-radius:20px;padding:24px 70px 28px 26px;min-height:92px;transition:background-color .45s}
+.dx-qd li:nth-child(even){padding:24px 26px 28px 74px}
+.dx-qd p{margin:0}
+.dx-qd__t{font-size:19px;color:var(--ink);margin-bottom:6px!important}
+.dx-qd__d{font-size:15px;line-height:1.45;color:var(--ink-2);max-width:300px}
+.dx-qd__me{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:15px;box-shadow:0 0 0 10px var(--bg);transition:background-color .45s,color .45s,box-shadow .45s}
+.dx-ls{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dx-ls li{display:flex;flex-direction:column;background:var(--panel);border-radius:22px;padding:8px;transition:background-color .45s}
+.dx-ls p{margin:0}
+.dx-ls__h{padding:16px 18px 20px}
+.dx-ls__t{display:flex;align-items:center;gap:12px;font-size:19px;color:var(--ink);margin-bottom:16px!important}
+.dx-ls__x{width:26px;height:26px;flex:none;border-radius:50%;background:var(--s-peach);color:var(--drop);display:grid;place-items:center}
+.dx-ls__x svg{width:12px;height:12px}
+.dx-ls__d{font-size:15px;line-height:1.5;color:var(--ink-2)}
+.dx-ls__l{flex:1;border-radius:15px;background:var(--s-peach);padding:16px 18px 18px;font-size:16px;line-height:1.45;color:var(--ink);transition:background-color .45s}
+.dx-cascade{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
+.dx-cascade li{position:relative;padding:8px 16px;border-radius:999px;background:var(--panel);font-size:15px;color:var(--ink);transition:background-color .45s}
+.dx-cascade li:not(:last-child)::after{content:"\2192";position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-52%);color:var(--muted)}
+.dx-more{display:flex;flex-direction:column;gap:10px}
+.dx-more__link{font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--tint-12);align-self:flex-start;padding-bottom:4px;transition:border-color .2s}
+.dx-more__link:hover{border-color:var(--ink)}
+@media (max-width:900px){.dx-ls{grid-template-columns:minmax(0,1fr)}.dx-teams{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-org__ln{display:none}.dx-org__top{margin:0 0 16px}.dx-mv li{grid-template-columns:36px minmax(0,1fr)}.dx-mv__d{grid-column:2;margin-top:6px!important}.dx-chs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.dx-teams,.dx-qd ul{grid-template-columns:minmax(0,1fr)}.dx-qd__me{display:none}.dx-qd li,.dx-qd li:nth-child(even){padding:22px 22px 24px;min-height:0}.dx-chs{grid-template-columns:minmax(0,1fr)}}
 /* ---------- case study: student writing freelance marketplace (NDA) ---------- */
 .wr{--green:#2FBF8A;--drop:#FF7A2F}
 .wr-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 9px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.14em;line-height:1.3;color:var(--muted)}
@@ -596,11 +659,20 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
   <main class="main"><div class="main__inner"><h1 class="sr">Projects</h1><div class="projects">
 <article class="project">
   <div class="project__card">
+    <div class="project__brand"><p class="project__word">DEVELUX</p></div>
+    <p class="project__domain">Building a design &amp; research function</p>
+    <div class="project__foot"><p class="project__role">Chief Design Officer</p><p class="project__sub">2023 &#8211; 2026</p></div>
+  </div>
+  <div class="project__img"><img src="assets/cover-develux.jpg?v=3" width="580" height="355" alt="Develux — building a design and research function, leadership case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+  <a class="project__link" href="#develux" aria-label="Develux — building a design and research function, leadership case"></a>
+</article>
+<article class="project">
+  <div class="project__card">
     <div class="project__brand"><span class="project__nda" aria-label="Under NDA">NDA</span></div>
     <p class="project__domain">Freelance marketplace for student writing</p>
     <div class="project__foot"><p class="project__role">Feature owner, product designer</p><p class="project__sub">2025</p></div>
   </div>
-  <div class="project__img"><img src="assets/cover-writers.jpg" width="580" height="355" alt="Freelance marketplace for student writing — choosing a writer, product design case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
+  <div class="project__img"><img src="assets/cover-writers.jpg?v=2" width="580" height="355" alt="Freelance marketplace for student writing — choosing a writer, product design case" loading="lazy"><span class="project__glass" aria-hidden="true"><span class="project__cta">View case<svg viewBox="0 0 16 16" width="14" height="14" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></div>
   <a class="project__link" href="#writers" aria-label="Freelance marketplace for student writing — choosing a writer, product design case"></a>
 </article>
 <article class="project">
@@ -1101,7 +1173,64 @@ layout();})();</script></section>
 </div>
 <a class="totop" href="#tabletki-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
 </section>
-<section class="view" id="view-writers" hidden>
+<section class="view" id="view-develux" hidden>
+<div class="case tab wr dx" id="dx-top">
+  <a class="back" href="#projects"><svg viewBox="0 0 108 12" fill="none" aria-hidden="true"><path d="M1 6h107M1 6l5.984-5M1 6l5.984 5" stroke="currentColor"/></svg>projects</a>
+  <div class="wr-head"><p class="wr-head__name">Building a design &amp; research function</p><span class="wr-tag">DEVELUX · EDTECH</span></div>
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Lead Product Designer &#8594; Chief Design Officer</dd></div>
+    <div><dt>Team</dt><dd>17 people in four disciplines</dd></div>
+    <div><dt>Period of time</dt><dd>Mar 2023 &#8211; Apr 2026</dd></div>
+  </dl>
+  <div class="wr-sum">
+    <p class="wr-sum__k">In short</p>
+    <p class="wr-sum__text">Design in Develux&#8217;s EdTech products was a service: two designers drew what product managers asked for, and few initiatives paid off. In three years I rebuilt it into a design and research function whose goals are tied to the success of the product teams.</p>
+  </div>
+
+  <hr class="rule" id="dx-change">
+  <div class="tab__section">
+    <h2 class="tab__h">What changed</h2>
+    <ul class="dx-chs"><li class="dx-ch" style="--i:0"><div class="dx-ch__b"><p class="dx-ch__k">Role of design<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Executors of product managers&#8217; requests</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>Partners who own the solution</p></div></li><li class="dx-ch" style="--i:1"><div class="dx-ch__b"><p class="dx-ch__k">Hypotheses<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Product managers&#8217; personal research</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>A shared insight hub: JTBD, opportunity trees, interviews</p></div></li><li class="dx-ch" style="--i:2"><div class="dx-ch__b"><p class="dx-ch__k">Team<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>2 designers</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>17 people in four disciplines</p></div></li><li class="dx-ch" style="--i:3"><div class="dx-ch__b"><p class="dx-ch__k">Outcome<svg class="dx-ch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></p><p class="dx-ch__o"><span class="sr">Before: </span>Few initiatives paid off</p></div><div class="dx-ch__a"><p class="dx-ch__n"><span class="sr">After: </span>A growing share of initiatives pays off</p></div></li></ul>
+  </div>
+
+  <hr class="rule" id="dx-moves">
+  <div class="tab__section">
+    <h2 class="tab__h">How I got there</h2>
+    <ol class="dx-mv"><li><span class="dx-mv__n">01</span><p class="dx-mv__t">Led by example</p><p class="dx-mv__d">Worked hands-on with product managers to show a different approach: problem first, research, business metrics.</p></li><li><span class="dx-mv__n">02</span><p class="dx-mv__t">Hired designers who research</p><p class="dx-mv__d">Once the approach proved itself, I hired designers who run user tests and surveys themselves.</p></li><li><span class="dx-mv__n">03</span><p class="dx-mv__t">Bet on research, not on more designers</p><p class="dx-mv__d">When demand grew, I hired a UX researcher instead. It became a team of six with an insight hub that product managers start from.</p></li><li><span class="dx-mv__n">04</span><p class="dx-mv__t">Built research into the process</p><p class="dx-mv__d">With the CPO and Ops, made it part of how product teams work, including ideation sessions based on insights.</p></li><li><span class="dx-mv__n">05</span><p class="dx-mv__t">Added UX writing, rebuilt web design</p><p class="dx-mv__d">The content team became UX writing. The web team went from 7 people to 4, focused on speed and templates.</p></li></ol>
+  </div>
+
+  <hr class="rule" id="dx-teams">
+  <div class="tab__section">
+    <h2 class="tab__h">Teams and what they answered for</h2>
+    <p class="wr-note">Every team&#8217;s goals were tied to the results of the product teams, not to its own output</p>
+    <div class="dx-org">
+      <div class="dx-org__top">Chief Design Officer<small>17 people</small></div>
+      <svg class="dx-org__ln" viewBox="0 0 1000 46" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M500 0v22M120 46V22h760v24M373 22v24M627 22v24" stroke="currentColor" vector-effect="non-scaling-stroke"/></svg>
+      <ul class="dx-teams"><li class="dx-team dx-c-blue"><div class="dx-team__h"><p class="dx-team__t">Product Design</p><div class="dx-pp" aria-hidden="true"><i></i><i></i><i></i></div><p class="dx-team__n">3 designers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Share of product teams&#8217; initiatives that succeed</p></div></li><li class="dx-team dx-c-mint"><div class="dx-team__h"><p class="dx-team__t">UX Research</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 5 researchers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Hypotheses built on research that brought value</p></div></li><li class="dx-team dx-c-pink"><div class="dx-team__h"><p class="dx-team__t">UX Writing</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 3 writers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Fast delivery, minimal developer time, consistent language</p></div></li><li class="dx-team dx-c-peach"><div class="dx-team__h"><p class="dx-team__t">Web &amp; Marketing Design</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 3 designers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Conversion and time to market</p></div></li></ul>
+    </div>
+    <ol class="dx-cascade" aria-label="Goal cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
+  </div>
+
+  <hr class="rule" id="dx-leading">
+  <div class="tab__section">
+    <h2 class="tab__h">What I was responsible for</h2>
+    <div class="dx-qd"><ul><li><p class="dx-qd__t">Quality &amp; standards</p><p class="dx-qd__d">What quality means and how we track it</p></li><li><p class="dx-qd__t">Delivery</p><p class="dx-qd__d">Clear inputs, outputs and processes with other teams</p></li><li><p class="dx-qd__t">People &amp; culture</p><p class="dx-qd__d">Hiring, capacity, skills, how we argue and present</p></li><li><p class="dx-qd__t">Goals &amp; vision</p><p class="dx-qd__d">Company strategy turned into goals for every team</p></li></ul><span class="dx-qd__me" aria-hidden="true">CDO</span></div>
+  </div>
+
+  <hr class="rule" id="dx-lessons">
+  <div class="tab__section">
+    <h2 class="tab__h">What didn&#8217;t work</h2>
+    <ul class="dx-ls"><li><div class="dx-ls__h"><p class="dx-ls__t"><span class="dx-ls__x" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Designers as feature owners</p><p class="dx-k">Tried</p><p class="dx-ls__d">A track for designers to run initiatives without product managers. Research and solutions were strong, owning a feature from scratch wasn&#8217;t.</p></div><div class="dx-ls__l"><p class="dx-k">Learned</p><p>I had projected my own profile onto the team. Designers are strongest owning the solution next to a product manager.</p></div></li><li><div class="dx-ls__h"><p class="dx-ls__t"><span class="dx-ls__x" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Market research for the board</p><p class="dx-k">Tried</p><p class="dx-ls__d">Market research through UX research for strategy sessions. The findings were interesting, but nobody acted on them.</p></div><div class="dx-ls__l"><p class="dx-k">Learned</p><p>Check who will use a new type of research before starting it.</p></div></li></ul>
+  </div>
+
+  <hr class="rule">
+  <div class="tab__section dx-more">
+    <p class="wr-note" style="margin:0">The approach in practice</p>
+    <a class="dx-more__link" href="#writers">Choosing a writer: +14% in an A/B test <span aria-hidden="true">&#8594;</span></a>
+  </div>
+</div>
+<a class="totop" href="#dx-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
+</section><section class="view" id="view-writers" hidden>
 <div class="case tab wr" id="wr-top">
   <a class="back" href="#projects"><svg viewBox="0 0 108 12" fill="none" aria-hidden="true"><path d="M1 6h107M1 6l5.984-5M1 6l5.984 5" stroke="currentColor"/></svg>projects</a>
   <div class="wr-head"><p class="wr-head__name">Freelance marketplace for student writing</p><span class="wr-tag">NDA</span></div>
@@ -1184,9 +1313,9 @@ layout();})();</script></section>
   </div>
 </div>
 <a class="totop" href="#wr-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 10l6-6.2M18 10l-6-6.2M12 3.8V19" stroke="currentColor" stroke-width="1.5"/></svg></a>
-</section><div class="lightbox" id="lightbox" role="dialog" aria-label="Zoomed picture"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><img src="" alt=""></div><button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button><script>
+</section><div class="lightbox" id="lightbox" role="dialog" aria-label="Zoomed picture"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><img src="" alt=""></div><button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="i-moon" viewBox="0 0 13 13" aria-hidden="true"><circle cx="3.5" cy="1.5" r=".4"/><circle cx="4.5" cy="1.5" r=".4"/><circle cx="2.5" cy="2.5" r=".4"/><circle cx="3.5" cy="2.5" r=".4"/><circle cx="1.5" cy="3.5" r=".4"/><circle cx="2.5" cy="3.5" r=".4"/><circle cx="3.5" cy="3.5" r=".4"/><circle cx="1.5" cy="4.5" r=".4"/><circle cx="2.5" cy="4.5" r=".4"/><circle cx="3.5" cy="4.5" r=".4"/><circle cx="0.5" cy="5.5" r=".4"/><circle cx="1.5" cy="5.5" r=".4"/><circle cx="2.5" cy="5.5" r=".4"/><circle cx="3.5" cy="5.5" r=".4"/><circle cx="0.5" cy="6.5" r=".4"/><circle cx="1.5" cy="6.5" r=".4"/><circle cx="2.5" cy="6.5" r=".4"/><circle cx="3.5" cy="6.5" r=".4"/><circle cx="4.5" cy="6.5" r=".4"/><circle cx="0.5" cy="7.5" r=".4"/><circle cx="1.5" cy="7.5" r=".4"/><circle cx="2.5" cy="7.5" r=".4"/><circle cx="3.5" cy="7.5" r=".4"/><circle cx="4.5" cy="7.5" r=".4"/><circle cx="1.5" cy="8.5" r=".4"/><circle cx="2.5" cy="8.5" r=".4"/><circle cx="3.5" cy="8.5" r=".4"/><circle cx="4.5" cy="8.5" r=".4"/><circle cx="5.5" cy="8.5" r=".4"/><circle cx="6.5" cy="8.5" r=".4"/><circle cx="11.5" cy="8.5" r=".4"/><circle cx="1.5" cy="9.5" r=".4"/><circle cx="2.5" cy="9.5" r=".4"/><circle cx="3.5" cy="9.5" r=".4"/><circle cx="4.5" cy="9.5" r=".4"/><circle cx="5.5" cy="9.5" r=".4"/><circle cx="6.5" cy="9.5" r=".4"/><circle cx="7.5" cy="9.5" r=".4"/><circle cx="8.5" cy="9.5" r=".4"/><circle cx="9.5" cy="9.5" r=".4"/><circle cx="10.5" cy="9.5" r=".4"/><circle cx="11.5" cy="9.5" r=".4"/><circle cx="2.5" cy="10.5" r=".4"/><circle cx="3.5" cy="10.5" r=".4"/><circle cx="4.5" cy="10.5" r=".4"/><circle cx="5.5" cy="10.5" r=".4"/><circle cx="6.5" cy="10.5" r=".4"/><circle cx="7.5" cy="10.5" r=".4"/><circle cx="8.5" cy="10.5" r=".4"/><circle cx="9.5" cy="10.5" r=".4"/><circle cx="10.5" cy="10.5" r=".4"/><circle cx="3.5" cy="11.5" r=".4"/><circle cx="4.5" cy="11.5" r=".4"/><circle cx="5.5" cy="11.5" r=".4"/><circle cx="6.5" cy="11.5" r=".4"/><circle cx="7.5" cy="11.5" r=".4"/><circle cx="8.5" cy="11.5" r=".4"/><circle cx="9.5" cy="11.5" r=".4"/><circle cx="5.5" cy="12.5" r=".4"/><circle cx="6.5" cy="12.5" r=".4"/><circle cx="7.5" cy="12.5" r=".4"/></svg><svg class="i-sun" viewBox="0 0 9 9" aria-hidden="true"><circle cx="4.5" cy="0.5" r=".4"/><circle cx="1.5" cy="1.5" r=".4"/><circle cx="7.5" cy="1.5" r=".4"/><circle cx="3.5" cy="2.5" r=".4"/><circle cx="4.5" cy="2.5" r=".4"/><circle cx="5.5" cy="2.5" r=".4"/><circle cx="2.5" cy="3.5" r=".4"/><circle cx="3.5" cy="3.5" r=".4"/><circle cx="4.5" cy="3.5" r=".4"/><circle cx="5.5" cy="3.5" r=".4"/><circle cx="6.5" cy="3.5" r=".4"/><circle cx="0.5" cy="4.5" r=".4"/><circle cx="2.5" cy="4.5" r=".4"/><circle cx="3.5" cy="4.5" r=".4"/><circle cx="4.5" cy="4.5" r=".4"/><circle cx="5.5" cy="4.5" r=".4"/><circle cx="6.5" cy="4.5" r=".4"/><circle cx="8.5" cy="4.5" r=".4"/><circle cx="2.5" cy="5.5" r=".4"/><circle cx="3.5" cy="5.5" r=".4"/><circle cx="4.5" cy="5.5" r=".4"/><circle cx="5.5" cy="5.5" r=".4"/><circle cx="6.5" cy="5.5" r=".4"/><circle cx="3.5" cy="6.5" r=".4"/><circle cx="4.5" cy="6.5" r=".4"/><circle cx="5.5" cy="6.5" r=".4"/><circle cx="1.5" cy="7.5" r=".4"/><circle cx="7.5" cy="7.5" r=".4"/><circle cx="4.5" cy="8.5" r=".4"/></svg></button><script>
 (function(){
-  var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken',tabletki:'view-tabletki',writers:'view-writers'};
+  var views={home:'view-home',projects:'view-projects',about:'view-about',contact:'view-contact',rocken:'view-rocken',tabletki:'view-tabletki',writers:'view-writers',develux:'view-develux'};
   var all=document.querySelectorAll('.view');
   var current=null, busy=false, pending=null;
   var EASE='cubic-bezier(.65,0,.35,1)';
@@ -1199,6 +1328,7 @@ layout();})();</script></section>
     if(/^(rocken-|jobs-|talent-)/.test(h)) return {view:'rocken',anchor:h};
     if(/^(tabletki-|tab-)/.test(h)) return {view:'tabletki',anchor:h};
     if(/^wr-/.test(h)) return {view:'writers',anchor:h};
+    if(/^dx-/.test(h)) return {view:'develux',anchor:h};
     return {view:'home',anchor:null};
   }
   function render(r){
@@ -1240,7 +1370,7 @@ layout();})();</script></section>
   }
   function transition(r){
     var from=current, to=r.view;
-    var isCase=function(v){return v==='rocken'||v==='tabletki'||v==='writers';};
+    var isCase=function(v){return v==='rocken'||v==='tabletki'||v==='writers'||v==='develux';};
     if(reduce||!wide()||from===to||from===null||isCase(to)||isCase(from)){
       if(from&&to!==from&&!reduce&&!isCase(from)&&!isCase(to)){ return crossfade(r); }
       render(r); return Promise.resolve();
@@ -1365,18 +1495,22 @@ layout();})();</script></section>
   apply(); if(mq.addEventListener) mq.addEventListener('change',apply);
 })();
 
-// project covers: glass rim copy of the cover + highlight and tilt that follow the pointer
+// develux case: "what changed" cards — the new state appears card by card when the block scrolls into view
+(function(){
+  var el=document.querySelector('.dx-chs'); if(!el||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  el.classList.add('dx-anim');
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ el.classList.add('is-in'); io.disconnect(); } }); },{threshold:.35});
+  io.observe(el);
+})();
+
+// project covers: tilt that follows the pointer
 (function(){
   var fine=matchMedia('(hover: hover) and (pointer: fine)'), reduce=matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('.project').forEach(function(card){
     var box=card.querySelector('.project__img'), img=box&&box.querySelector('img'); if(!img) return;
-    var rim=document.createElement('span'); rim.className='project__rim'; rim.setAttribute('aria-hidden','true');
-    var copy=img.cloneNode(); copy.removeAttribute('loading'); copy.alt=''; rim.appendChild(copy);
-    box.insertBefore(rim,box.querySelector('.project__glass'));
     card.addEventListener('pointermove',function(e){
       if(!fine.matches) return;
       var r=box.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
-      box.style.setProperty('--mx',(x*100).toFixed(1)+'%'); box.style.setProperty('--my',(y*100).toFixed(1)+'%');
       if(!reduce.matches){ box.classList.add('is-tilting'); box.style.setProperty('--ry',((x-.5)*7).toFixed(2)+'deg'); box.style.setProperty('--rx',((.5-y)*7).toFixed(2)+'deg'); }
     });
     card.addEventListener('pointerleave',function(){ box.classList.remove('is-tilting'); box.style.setProperty('--rx','0deg'); box.style.setProperty('--ry','0deg'); });
