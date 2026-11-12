@@ -352,29 +352,34 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(1){--c:#3B2539}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(2){--c:#272C55}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(3){--c:#412B20}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ch:nth-child(4){--c:#1E3B34}}
 .dx-chs.dx-anim .dx-ch__a{opacity:0;transform:translateY(8px)}
 .dx-chs.dx-anim.is-in .dx-ch__a{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,background-color .45s;transition-delay:calc(var(--i)*140ms + 150ms)}
-.dx-pr{--st:250px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;align-items:start;max-width:1160px}
-.dx-pr p,.dx-pr ul{margin:0}
-.dx-pr__col{display:flex;flex-direction:column}
-.dx-pr__h{padding-left:calc(var(--st) + 54px);margin-bottom:20px!important;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.dx-pr__row{display:grid;grid-template-columns:var(--st) minmax(0,1fr);column-gap:32px}
-.dx-pr__st{text-align:right;font-size:32px;line-height:38px;letter-spacing:-.015em;color:var(--ink);padding-bottom:40px}
-.dx-pr__rl{position:relative;list-style:none;padding:8px 0 40px 22px;box-shadow:-1px 0 0 var(--tint-12);display:flex;flex-direction:column;gap:10px}
-.dx-pr__rl::before{content:"";position:absolute;left:-3px;top:16px;width:5px;height:5px;border-radius:50%;background:var(--muted)}
-.dx-pr__rl li{display:flex;align-items:center;gap:10px;margin:0;padding-left:0;font-size:16px;line-height:22px;color:var(--ink-2)}
-.dx-pr__row--m .dx-pr__st,.dx-pr__row--m .dx-pr__rl{padding-bottom:6px}
-.dx-pr__v{font-size:40px!important;letter-spacing:-.02em}
-.dx-pr__v small{font-size:16px;letter-spacing:0;margin-left:2px;color:var(--muted)}
-.dx-pr__row--m .dx-pr__st{align-self:center}
-.dx-pr__ml{display:flex!important;flex-direction:column;justify-content:center;align-items:flex-start;font-size:16px;line-height:22px;color:var(--ink);padding:8px 0 8px 22px!important}
-.dx-pr__row--m .dx-pr__rl::before{top:50%!important;margin-top:-2.5px}
-.dx-pr__row--m .dx-pr__st{padding-bottom:0}
-@media (max-width:1180px){.dx-pr{--st:190px;column-gap:32px}.dx-pr__st{font-size:26px;line-height:32px}.dx-pr__rl{padding-top:5px}.dx-pr__rl::before{top:13px}}
-@media (max-width:900px){.dx-pr{grid-template-columns:minmax(0,1fr);row-gap:56px}}
-@media (max-width:600px){.dx-pr{--st:112px}.dx-pr__h{padding-left:calc(var(--st) + 32px)}.dx-pr__row{column-gap:16px}.dx-pr__st{font-size:19px;line-height:24px;padding-bottom:28px}.dx-pr__rl{padding:1px 0 28px 16px;gap:8px}.dx-pr__rl::before{top:9px}.dx-pr__rl li{font-size:15px}.dx-pr__v{font-size:30px!important}.dx-pr__ml{padding-left:16px!important;font-size:15px}}
-.dx-pr{--fn:#5D00FF}
-:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-pr,:root[data-site-theme="dark"] .dx-pr{--fn:#9B6CED}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-pr{--fn:#9B6CED}}
-.dx-pr__rl li.is-fn{color:var(--fn)}
+.dx-ph{--fn:#5D00FF;display:flex;flex-direction:column;gap:64px;max-width:1160px;padding-top:8px}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ph,:root[data-site-theme="dark"] .dx-ph{--fn:#9B6CED}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ph{--fn:#9B6CED}}
+.dx-ph p,.dx-ph ul{margin:0}
+.dx-ph__row{display:grid;grid-template-columns:96px repeat(3,minmax(0,1fr)) 200px}
+.dx-ph__h{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transform:translateY(-8px)}
+.dx-ph__st{position:relative;border-top:1px solid var(--tint-12);padding:26px 24px 0 0}
+.dx-ph__st::before{content:"";position:absolute;left:0;top:-3px;width:5px;height:5px;border-radius:50%;background:var(--muted)}
+.dx-ph__st.is-gap::before{content:none}
+.dx-ph__t{min-height:60px;font-size:24px;line-height:30px;letter-spacing:-.01em;color:var(--ink);margin-bottom:18px!important}
+.dx-ph ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px}
+.dx-ph li{margin:0;font-size:16px;line-height:22px;color:var(--ink-2)}
+.dx-ph li.is-fn{color:var(--fn)}
+.dx-ph__v{min-height:60px;font-size:40px;line-height:30px;letter-spacing:-.02em;color:var(--ink);margin-bottom:18px!important}
+.dx-ph__v small{font-size:16px;letter-spacing:0;margin-left:2px;color:var(--muted)}
+.dx-ph__ml{font-size:16px;line-height:22px;color:var(--ink)}
+@media (max-width:900px){
+  .dx-ph{gap:48px}
+  .dx-ph__row{grid-template-columns:minmax(0,1fr)}
+  .dx-ph__h{transform:none;margin-bottom:14px!important}
+  .dx-ph__st{border-top:0;border-left:1px solid var(--tint-12);padding:0 0 26px 22px}
+  .dx-ph__st::before{left:-3px;top:11px}
+  .dx-ph__st.is-gap{display:none}
+  .dx-ph__t{min-height:0;font-size:20px;line-height:26px;margin-bottom:10px!important}
+  .dx-ph__t br{display:none}
+  .dx-ph__m{padding-bottom:4px}
+  .dx-ph__v{min-height:0;font-size:32px;margin-bottom:10px!important}
+}
 .dx-mv{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px;max-width:1160px}
 .dx-mv li{display:grid;grid-template-columns:44px minmax(0,340px) minmax(0,1fr);gap:0 24px;align-items:baseline}
 .dx-mv p{margin:0}
@@ -1219,7 +1224,7 @@ layout();})();</script></section>
   <hr class="rule" id="dx-process">
   <div class="tab__section">
     <h2 class="tab__h">How the process changed</h2>
-    <div class="dx-pr"><div class="dx-pr__col"><p class="dx-pr__h">Before</p><div class="dx-pr__row"><p class="dx-pr__st">Discovery<br>&amp; Initiation</p><ul class="dx-pr__rl"><li>Product Manager</li></ul></div><div class="dx-pr__row"><p class="dx-pr__st">Delivery</p><ul class="dx-pr__rl"><li class="is-fn">UX/UI Design<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div><div class="dx-pr__row dx-pr__row--m"><p class="dx-pr__st dx-pr__v">9<small>%</small></p><p class="dx-pr__rl dx-pr__ml">Initiative success rate</p></div></div><div class="dx-pr__col"><p class="dx-pr__h">After</p><div class="dx-pr__row"><p class="dx-pr__st">Discovery</p><ul class="dx-pr__rl"><li class="is-fn">UX Research<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li></ul></div><div class="dx-pr__row"><p class="dx-pr__st">Ideation<br>&amp; Filtering</p><ul class="dx-pr__rl"><li class="is-fn">Product Designer<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li><li class="is-fn">UX Research<span class="sr"> (design &amp; research function)</span></li></ul></div><div class="dx-pr__row"><p class="dx-pr__st">Delivery</p><ul class="dx-pr__rl"><li class="is-fn">Product Designer<span class="sr"> (design &amp; research function)</span></li><li class="is-fn">UX Writer<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div><div class="dx-pr__row dx-pr__row--m"><p class="dx-pr__st dx-pr__v">12<small>%</small></p><p class="dx-pr__rl dx-pr__ml">Initiative success rate</p></div></div></div>
+    <div class="dx-ph"><div class="dx-ph__row"><p class="dx-ph__h">Before</p><div class="dx-ph__st"><p class="dx-ph__t">Discovery <br>&amp; Initiation</p><ul><li>Product Manager</li></ul></div><div class="dx-ph__st is-gap" aria-hidden="true"></div><div class="dx-ph__st"><p class="dx-ph__t">Delivery</p><ul><li class="is-fn">UX/UI Design<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div><div class="dx-ph__st dx-ph__m"><p class="dx-ph__v">9<small>%</small></p><p class="dx-ph__ml">Initiative success rate</p></div></div><div class="dx-ph__row"><p class="dx-ph__h">After</p><div class="dx-ph__st"><p class="dx-ph__t">Discovery</p><ul><li class="is-fn">UX Research<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li></ul></div><div class="dx-ph__st"><p class="dx-ph__t">Ideation <br>&amp; Filtering</p><ul><li class="is-fn">Product Designer<span class="sr"> (design &amp; research function)</span></li><li>Product Manager</li><li class="is-fn">UX Research<span class="sr"> (design &amp; research function)</span></li></ul></div><div class="dx-ph__st"><p class="dx-ph__t">Delivery</p><ul><li class="is-fn">Product Designer<span class="sr"> (design &amp; research function)</span></li><li class="is-fn">UX Writer<span class="sr"> (design &amp; research function)</span></li><li>Product Dev</li><li>Product Analytics</li></ul></div><div class="dx-ph__st dx-ph__m"><p class="dx-ph__v">12<small>%</small></p><p class="dx-ph__ml">Initiative success rate</p></div></div></div>
   </div>
 
   <hr class="rule" id="dx-moves">
