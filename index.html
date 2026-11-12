@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}/* case scroll reveal */
+@keyframes rvUp{from{opacity:0;translate:0 34px}to{opacity:1;translate:0 0}}
+.rv:not(.rv-done){opacity:0}
+.rv-go{animation:rvUp .95s cubic-bezier(.22,.61,.36,1) var(--rd,0ms) backwards}
+</style>
 <title>Pavlo Chenchyk — Design Leader &amp; Product Founder</title><link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png"><link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta name="description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:type" content="website"><meta property="og:url" content="https://4en4ik89-rgb.github.io/Portfolio/"><meta property="og:title" content="Pavlo Chenchyk — Design Leader &amp; Product Founder"><meta property="og:description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:image" content="https://4en4ik89-rgb.github.io/Portfolio/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,700;1,400&display=swap"><style>
 /* Layout: inner pages = grey canvas with a fixed white column on the right (Tilda "Pavel Chen" portfolio); home = 50/50 split. */
 :root{
@@ -1818,5 +1822,71 @@ layout();})();</script></section>
 })();
 </script>
 <script>document.querySelectorAll(".dx-ph__st").forEach(function(c){c.addEventListener("click",function(){if(!matchMedia("(hover:hover)").matches)c.classList.toggle("is-flip")})})</script>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var CASES=['rocken','tabletki','develux','writers'];
+  function vis(el){ return el.getClientRects().length>0; }
+  function skip(el){
+    if(/^(HR|SCRIPT|STYLE|TEMPLATE|BR)$/.test(el.tagName)) return true;
+    if(el.matches('.back,.totop,.sr')) return true;
+    var cs=getComputedStyle(el);
+    return cs.display==='none'||/fixed|absolute|sticky/.test(cs.position)||el.getBoundingClientRect().height<2;
+  }
+  function kids(el){ return [].filter.call(el.children,function(c){ return !skip(c); }); }
+  function isRow(el){
+    var cs=getComputedStyle(el); if(!/flex|grid/.test(cs.display)) return false;
+    var k=kids(el); if(k.length<2||k.length>12) return false;
+    var a=k[0].getBoundingClientRect(), b=k[1].getBoundingClientRect();
+    return Math.abs(a.top-b.top)<6 && Math.abs(a.left-b.left)>20;
+  }
+  function rowDelays(el,base){
+    var k=kids(el), ls=[], ts=[];
+    k.forEach(function(c){ var r=c.getBoundingClientRect(); var l=Math.round(r.left/8), t=Math.round(r.top/8); if(ls.indexOf(l)<0) ls.push(l); if(ts.indexOf(t)<0) ts.push(t); });
+    ls.sort(function(x,y){return x-y}); ts.sort(function(x,y){return x-y});
+    return k.map(function(c){ var r=c.getBoundingClientRect(); return [c, base+Math.min(ls.indexOf(Math.round(r.left/8))*110+ts.indexOf(Math.round(r.top/8))*90, 800)]; });
+  }
+  function units(el){
+    if(isRow(el)) return rowDelays(el,0);
+    var k=kids(el), hasRow=k.some(isRow);
+    if(!hasRow) return [[el,0]];
+    var out=[]; k.forEach(function(c){ if(isRow(c)) out=out.concat(rowDelays(c,80)); else out.push([c,0]); }); return out;
+  }
+  function go(el,d){
+    el.style.setProperty('--rd',d+'ms'); el.classList.add('rv-go');
+    el.addEventListener('animationend',function f(e){ if(e.target!==el||e.animationName!=='rvUp') return; el.classList.remove('rv-go'); el.removeEventListener('animationend',f); });
+  }
+  var io=new IntersectionObserver(function(es){
+    var ins=es.filter(function(e){ return e.isIntersecting; }).map(function(e){ return e.target; });
+    ins.sort(function(a,b){ var x=a.getBoundingClientRect(), y=b.getBoundingClientRect(); return (x.top-y.top)||(x.left-y.left); });
+    ins.forEach(function(el,i){
+      io.unobserve(el);
+      var base=Math.min(i*90,450);
+      units(el).forEach(function(u){ go(u[0], u[1]+base); });
+      el.classList.add('rv-done');
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0});
+  var vh=function(){ return Math.max(window.innerHeight,600); };
+  function collect(el,dep,out){
+    kids(el).forEach(function(c){
+      var ox=getComputedStyle(c).overflowX, wrap=ox==='visible'&&(c.matches('.tab__section,.section,.sub')||c.getBoundingClientRect().height>vh()*.85);
+      if(wrap&&dep<4&&kids(c).length) collect(c,dep+1,out); else out.push(c);
+    });
+    return out;
+  }
+  function setup(){
+    CASES.forEach(function(id){
+      var v=document.getElementById('view-'+id); if(!v||v.dataset.rv||!vis(v)) return;
+      var root=v.querySelector('.case'); if(!root) return;
+      v.dataset.rv='1';
+      collect(root,0,[]).forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+    });
+  }
+  function later(){ setTimeout(setup,30); }
+  window.addEventListener('hashchange',later); window.addEventListener('popstate',later);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',later); else later();
+  document.addEventListener('click',function(){ setTimeout(setup,60); });
+})();
+</script>
 </body>
 </html>
