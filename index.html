@@ -1894,7 +1894,7 @@ layout();})();</script></section>
 (function(){
   var ov=document.querySelector('.dx-ov'); if(!ov) return;
   var cFull=ov.querySelector('.dx-ov__pl'), cSpin=ov.querySelector('.dx-ov__spin'); if(!cFull||!cSpin||!cFull.getContext) return;
-  var R=168, STRIP=106, TILT=-0.33, PERIOD=26000;
+  var R=168, STRIP=106, TILT=-0.33, PERIOD=20000;
   var dpr=Math.min(window.devicePixelRatio||1,2);
   var stops=[[0,50,14,88],[.35,96,48,140],[.65,150,104,180],[.88,204,160,208],[1,226,185,223]], LUT=new Uint8Array(768);
   for(var i=0;i<256;i++){ var t=i/255,k=0; while(k<stops.length-2&&t>stops[k+1][0]) k++; var a=stops[k],b=stops[k+1],u=(t-a[0])/(b[0]-a[0]); for(var c=0;c<3;c++) LUT[i*3+c]=a[c+1]+(b[c+1]-a[c+1])*u; }
