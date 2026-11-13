@@ -7,6 +7,28 @@
 @keyframes rvUp{from{opacity:0;translate:0 34px}to{opacity:1;translate:0 0}}
 .rv:not(.rv-done){opacity:0}
 .rv-go{animation:rvUp .95s cubic-bezier(.22,.61,.36,1) var(--rd,0ms) backwards}
+.dx-ov{position:relative;isolation:isolate;margin:8px 0 56px}
+.dx-ov p{margin:0}
+.dx-ov__list{list-style:none;margin:0;padding:0;display:grid;grid-auto-rows:88px}
+.dx-ov__row{display:grid;grid-template-columns:minmax(0,1fr) 116px minmax(0,1fr);align-items:start}
+.dx-ov__team{grid-column:1;position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-end;text-align:right;padding-right:128px}
+.dx-ov__team::after{content:"";position:absolute;top:12px;right:-116px;width:226px;height:1px;background:var(--tint-12)}
+.dx-ov__t{font-size:18px;line-height:24px;color:var(--ink)}
+.dx-ov__n{margin-top:2px!important;font-size:14px;line-height:20px;color:var(--muted)}
+.dx-ov__a{grid-column:3;position:relative;z-index:2;max-width:340px;padding-left:30px;font-size:17px;line-height:24px;color:var(--ink)}
+.dx-ov__orb{position:absolute;inset:0;pointer-events:none}
+.dx-ov__orb i{position:absolute;top:-22px;left:calc(50% - 58px);width:332px;height:332px;border-radius:50%}
+.dx-ov__seg{z-index:3;clip-path:inset(0 216px 0 0);background:radial-gradient(circle at 50% 50%,#D9C2DE 0%,#B38DBE 32%,#7D4F95 62%,#4F2470 100%)}
+.dx-ov__glow{z-index:1;background:radial-gradient(circle at 50% 50%,rgba(170,140,190,.42) 0%,rgba(170,140,190,.22) 45%,rgba(170,140,190,0) 72%);filter:blur(18px)}
+@media (max-width:900px){
+  .dx-ov__orb{display:none}
+  .dx-ov__list{grid-auto-rows:auto;gap:0}
+  .dx-ov__row{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px;padding:18px 0;border-top:1px solid var(--tint-12)}
+  .dx-ov__team{align-items:flex-start;text-align:left;padding-right:0}
+  .dx-ov__team::after{display:none}
+  .dx-ov__a{grid-column:2;padding-left:0;max-width:none}
+}
+@media (max-width:560px){.dx-ov__row{grid-template-columns:minmax(0,1fr);gap:8px}.dx-ov__a{grid-column:1}}
 </style>
 <title>Pavlo Chenchyk — Design Leader &amp; Product Founder</title><link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png"><link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta name="description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:type" content="website"><meta property="og:url" content="https://pavlochenchyk.github.io/"><meta property="og:title" content="Pavlo Chenchyk — Design Leader &amp; Product Founder"><meta property="og:description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:image" content="https://pavlochenchyk.github.io/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,700;1,400&display=swap"><style>
 /* Layout: inner pages = grey canvas with a fixed white column on the right (Tilda "Pavel Chen" portfolio); home = 50/50 split. */
@@ -398,20 +420,6 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx{--s-blue:#272C55;--s-mint:#1E3B34;--s-pink:#3B2539;--s-peach:#412B20}}
 .dx-c-blue{--c:var(--s-blue);--c2:#7F8BFF}.dx-c-mint{--c:var(--s-mint);--c2:#4CC9A4}.dx-c-pink{--c:var(--s-pink);--c2:#E07BB8}.dx-c-peach{--c:var(--s-peach);--c2:#FF9A63}
 .dx-k{margin:0 0 6px!important;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.dx-org__top{width:230px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:16px;padding:13px 18px 14px;text-align:center;font-size:16px;transition:background-color .45s,color .45s}
-.dx-org__top small{display:block;font-size:12px;opacity:.7;margin-top:2px}
-.dx-org__ln{display:block;width:100%;height:46px;color:var(--muted);opacity:.6}
-.dx-teams{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.dx-team{display:flex;flex-direction:column;background:var(--panel);border-radius:22px;padding:8px;transition:background-color .45s}
-.dx-team p{margin:0}
-.dx-team__h{padding:14px 16px 18px}
-.dx-team__t{font-size:17px;color:var(--ink);margin-bottom:12px!important}
-.dx-pp{display:flex;flex-wrap:wrap;gap:6px}
-.dx-pp i{width:18px;height:18px;border-radius:50%;background:var(--c2)}
-.dx-pp i.is-lead{position:relative;background:none;box-shadow:inset 0 0 0 2px var(--c2)}
-.dx-pp i.is-lead::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--c2)}
-.dx-team__n{margin-top:8px!important;font-size:13px;color:var(--muted)}
-.dx-team__m{flex:1;border-radius:15px;background:var(--c);padding:14px 16px 16px;font-size:15px;line-height:1.45;color:var(--ink);transition:background-color .45s}
 .dx-qd{position:relative;max-width:900px}
 .dx-qd ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .dx-qd li{background:var(--panel);border-radius:20px;padding:24px 70px 28px 26px;min-height:92px;transition:background-color .45s}
@@ -435,8 +443,8 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .dx-more{display:flex;flex-direction:column;gap:10px}
 .dx-more__link{font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--tint-12);align-self:flex-start;padding-bottom:4px;transition:border-color .2s}
 .dx-more__link:hover{border-color:var(--ink)}
-@media (max-width:900px){.dx-ls{grid-template-columns:minmax(0,1fr)}.dx-teams{grid-template-columns:repeat(2,minmax(0,1fr))}.dx-org__ln{display:none}.dx-org__top{margin:0 0 16px}}
-@media (max-width:600px){.dx-teams,.dx-qd ul{grid-template-columns:minmax(0,1fr)}.dx-qd__me{display:none}.dx-qd li,.dx-qd li:nth-child(even){padding:22px 22px 24px;min-height:0}}
+@media (max-width:900px){.dx-ls{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.dx-qd ul{grid-template-columns:minmax(0,1fr)}.dx-qd__me{display:none}.dx-qd li,.dx-qd li:nth-child(even){padding:22px 22px 24px;min-height:0}}
 /* ---------- case study: student writing freelance marketplace (NDA) ---------- */
 .wr{--green:#2FBF8A;--drop:#FF7A2F}
 .wr-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 9px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.14em;line-height:1.3;color:var(--muted)}
@@ -1231,10 +1239,9 @@ layout();})();</script></section>
   <div class="tab__section">
     <h2 class="tab__h">Teams and what they answered for</h2>
     <p class="wr-note">Every team&#8217;s goals were tied to the results of the product teams, not to its own output</p>
-    <div class="dx-org">
-      <div class="dx-org__top">Chief Design Officer<small>17 people</small></div>
-      <svg class="dx-org__ln" viewBox="0 0 1000 46" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M500 0v22M120 46V22h760v24M373 22v24M627 22v24" stroke="currentColor" vector-effect="non-scaling-stroke"/></svg>
-      <ul class="dx-teams"><li class="dx-team dx-c-blue"><div class="dx-team__h"><p class="dx-team__t">Product Design</p><div class="dx-pp" aria-hidden="true"><i></i><i></i><i></i></div><p class="dx-team__n">3 designers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Share of product teams&#8217; initiatives that succeed</p></div></li><li class="dx-team dx-c-mint"><div class="dx-team__h"><p class="dx-team__t">UX Research</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 5 researchers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Hypotheses built on research that brought value</p></div></li><li class="dx-team dx-c-pink"><div class="dx-team__h"><p class="dx-team__t">UX Writing</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 3 writers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Fast delivery, minimal developer time, consistent language</p></div></li><li class="dx-team dx-c-peach"><div class="dx-team__h"><p class="dx-team__t">Web &amp; Marketing Design</p><div class="dx-pp" aria-hidden="true"><i class="is-lead"></i><i></i><i></i><i></i></div><p class="dx-team__n">Lead + 3 designers</p></div><div class="dx-team__m"><p class="dx-k">Answers for</p><p>Conversion and time to market</p></div></li></ul>
+    <div class="dx-ov">
+      <div class="dx-ov__orb" aria-hidden="true"><i class="dx-ov__glow"></i><i class="dx-ov__seg"></i></div>
+      <ul class="dx-ov__list"><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Product Design</p><p class="dx-ov__n">3 designers</p></div><p class="dx-ov__a">Share of product teams&#8217; initiatives that succeed</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Research</p><p class="dx-ov__n">Lead + 5 researchers</p></div><p class="dx-ov__a">Hypotheses built on research that brought value</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Writing</p><p class="dx-ov__n">Lead + 3 writers</p></div><p class="dx-ov__a">Fast delivery, minimal developer time, consistent language</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Web &amp; Marketing Design</p><p class="dx-ov__n">Lead + 3 designers</p></div><p class="dx-ov__a">Conversion and time to market</p></li></ul>
     </div>
     <ol class="dx-cascade" aria-label="Goal cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
   </div>
