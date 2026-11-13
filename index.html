@@ -7,22 +7,22 @@
 @keyframes rvUp{from{opacity:0;translate:0 34px}to{opacity:1;translate:0 0}}
 .rv:not(.rv-done){opacity:0}
 .rv-go{animation:rvUp .95s cubic-bezier(.22,.61,.36,1) var(--rd,0ms) backwards}
-.dx-ov{position:relative;isolation:isolate;margin:72px 0 104px;--r:168px}
-.dx-ov p{margin:0;position:relative;z-index:4}
+.dx-ov{position:relative;isolation:isolate;margin:72px 0 104px;--r:168px;--s:106px;--cx:calc(50% + var(--s) / 2 + 62px)}
+.dx-ov p{margin:0;position:relative;z-index:6}
 .dx-ov__list{list-style:none;margin:0;padding:0;display:grid;grid-auto-rows:88px}
-.dx-ov__row{display:grid;grid-template-columns:minmax(0,1fr) var(--r) minmax(0,1fr);align-items:start}
+.dx-ov__row{display:grid;grid-template-columns:minmax(0,1fr) var(--s) minmax(0,1fr);align-items:start;--e:0px}
+.dx-ov__row:nth-child(2){--e:88px}.dx-ov__row:nth-child(3){--e:106px}.dx-ov__row:nth-child(4){--e:73px}
 .dx-ov__team{grid-column:1;position:relative;display:flex;flex-direction:column;align-items:flex-end;text-align:right;padding-right:128px}
-.dx-ov__team::after{content:"";position:absolute;z-index:0;top:12px;right:calc(-1 * var(--r));width:calc(110px + var(--r));height:1px;background:var(--tint-12)}
+.dx-ov__team::after{content:"";position:absolute;z-index:5;top:12px;right:calc(var(--e) - var(--s));width:calc(110px + var(--s) - var(--e));height:1px;background:var(--tint-12)}
 .dx-ov__t{font-size:18px;line-height:24px;color:var(--ink)}
 .dx-ov__n{margin-top:2px!important;font-size:14px;line-height:20px;color:var(--muted)}
 .dx-ov__a{grid-column:3;max-width:340px;padding-left:30px;font-size:17px;line-height:24px;color:var(--ink)}
 .dx-ov__orb{position:absolute;inset:0;pointer-events:none}
 .dx-ov__orb i{position:absolute;display:block}
-.dx-ov__seg{z-index:1;top:calc(50% - var(--r));left:calc(50% - var(--r) / 2);width:var(--r);height:calc(var(--r) * 2);border-radius:var(--r) 0 0 var(--r);background:#371058}
-.dx-ov__glow{z-index:2;top:calc(50% - 126px);left:calc(50% + var(--r) / 2 - 143px);width:286px;height:280px;border-radius:50%;background:#E2B9DF;filter:blur(58px)}
-.dx-ov__noise{z-index:3;top:calc(50% - 280px);left:calc(50% + var(--r) / 2 - 290px);width:580px;height:580px;opacity:.3;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px;-webkit-mask-image:radial-gradient(closest-side,#000 0%,#000 38%,rgba(0,0,0,.55) 58%,transparent 82%);mask-image:radial-gradient(closest-side,#000 0%,#000 38%,rgba(0,0,0,.55) 58%,transparent 82%)}
-:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ov__glow,:root[data-site-theme="dark"] .dx-ov__glow{opacity:.32}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ov__glow{opacity:.32}}
+.dx-ov__circ{z-index:1;top:calc(50% - var(--r));left:calc(var(--cx) - var(--r));width:calc(var(--r) * 2);height:calc(var(--r) * 2);border-radius:50%;background:#371058}
+.dx-ov__glow{z-index:2;top:calc(50% + 14px - 140px);left:calc(var(--cx) - 143px);width:286px;height:280px;border-radius:50%;background:#E2B9DF;filter:blur(58px)}
+.dx-ov__noise{z-index:3;top:calc(50% + 14px - 270px);left:calc(var(--cx) - 270px);width:540px;height:540px;opacity:.25;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px;-webkit-mask-image:radial-gradient(closest-side,#000 0%,#000 38%,rgba(0,0,0,.55) 58%,transparent 82%);mask-image:radial-gradient(closest-side,#000 0%,#000 38%,rgba(0,0,0,.55) 58%,transparent 82%)}
+.dx-ov__glass{z-index:4;top:-100px;bottom:-100px;left:calc(50% + var(--s) / 2);width:392px;background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 @media (max-width:900px){
   .dx-ov__orb{display:none}
   .dx-ov{margin:32px 0 56px}.dx-ov__list{grid-auto-rows:auto;gap:0}
@@ -1243,7 +1243,7 @@ layout();})();</script></section>
     <h2 class="tab__h">Teams and what they answered for</h2>
     <p class="wr-note">Every team&#8217;s goals were tied to the results of the product teams, not to its own output</p>
     <div class="dx-ov">
-      <div class="dx-ov__orb" aria-hidden="true"><i class="dx-ov__seg"></i><i class="dx-ov__glow"></i><i class="dx-ov__noise"></i></div>
+      <div class="dx-ov__orb" aria-hidden="true"><i class="dx-ov__circ"></i><i class="dx-ov__glow"></i><i class="dx-ov__noise"></i><i class="dx-ov__glass"></i></div>
       <ul class="dx-ov__list"><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Product Design</p><p class="dx-ov__n">3 designers</p></div><p class="dx-ov__a">Share of product teams&#8217; initiatives that succeed</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Research</p><p class="dx-ov__n">Lead + 5 researchers</p></div><p class="dx-ov__a">Hypotheses built on research that brought value</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Writing</p><p class="dx-ov__n">Lead + 3 writers</p></div><p class="dx-ov__a">Fast delivery, minimal developer time, consistent language</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Web &amp; Marketing Design</p><p class="dx-ov__n">Lead + 3 designers</p></div><p class="dx-ov__a">Conversion and time to market</p></li></ul>
     </div>
     <ol class="dx-cascade" aria-label="Goal cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
