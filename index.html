@@ -20,6 +20,9 @@
 .dx-ov__orb{position:absolute;inset:0;pointer-events:none}
 .dx-ov__orb i{position:absolute;display:block}
 .dx-ov__circ{z-index:1;top:calc(var(--cy) - var(--r));left:calc(var(--cx) - var(--r));width:calc(var(--r) * 2);height:calc(var(--r) * 2);border-radius:50%;background:#371058}
+.dx-ov__orb canvas{position:absolute;display:block;top:calc(var(--cy) - var(--r));left:calc(var(--cx) - var(--r));height:calc(var(--r) * 2)}
+.dx-ov__pl{z-index:1;width:calc(var(--r) * 2)}
+.dx-ov__spin{z-index:3;width:106px}
 .dx-ov__glow{z-index:2;top:calc(var(--cy) + 14px - 140px);left:calc(var(--cx) - 143px);width:286px;height:280px;border-radius:50%;background:#E2B9DF;filter:blur(58px)}
 .dx-ov__noise{z-index:3;top:calc(var(--cy) + 14px - 270px);left:calc(var(--cx) - 270px);width:540px;height:540px;opacity:.25;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px;-webkit-mask-image:radial-gradient(closest-side,#000 0%,#000 38%,rgba(0,0,0,.55) 58%,transparent 82%);mask-image:radial-gradient(closest-side,#000 0%,#000 38%,rgba(0,0,0,.55) 58%,transparent 82%)}
 :root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ov__glow,:root[data-site-theme="dark"] .dx-ov__glow{opacity:.6}
@@ -1245,7 +1248,7 @@ layout();})();</script></section>
     <h2 class="tab__h">Teams and what they answered for</h2>
     <p class="wr-note">Every team&#8217;s goals were tied to the results of the product teams, not to its own output</p>
     <div class="dx-ov">
-      <div class="dx-ov__orb" aria-hidden="true"><i class="dx-ov__circ"></i><i class="dx-ov__glow"></i><i class="dx-ov__noise"></i><i class="dx-ov__glass"></i></div>
+      <div class="dx-ov__orb" aria-hidden="true"><i class="dx-ov__circ"></i><canvas class="dx-ov__pl"></canvas><i class="dx-ov__glow"></i><i class="dx-ov__noise"></i><canvas class="dx-ov__spin"></canvas><i class="dx-ov__glass"></i></div>
       <ul class="dx-ov__list"><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Product Design</p><p class="dx-ov__n">3 designers</p></div><p class="dx-ov__a">Share of product teams&#8217; initiatives that succeed</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Research</p><p class="dx-ov__n">Lead + 5 researchers</p></div><p class="dx-ov__a">Hypotheses built on research that brought value</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Writing</p><p class="dx-ov__n">Lead + 3 writers</p></div><p class="dx-ov__a">Fast delivery, minimal developer time, consistent language</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Web &amp; Marketing Design</p><p class="dx-ov__n">Lead + 3 designers</p></div><p class="dx-ov__a">Conversion and time to market</p></li></ul>
     </div>
     <ol class="dx-cascade" aria-label="Goal cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
@@ -1885,6 +1888,56 @@ layout();})();</script></section>
     ins.forEach(function(c,i){ io.unobserve(c); peek(c, 900+i*160); });
   },{threshold:.6});
   var first=document.querySelector('.dx-ph__st'); if(first) io.observe(first);
+})();
+</script>
+<script>
+(function(){
+  var ov=document.querySelector('.dx-ov'); if(!ov) return;
+  var cFull=ov.querySelector('.dx-ov__pl'), cSpin=ov.querySelector('.dx-ov__spin'); if(!cFull||!cSpin||!cFull.getContext) return;
+  var R=168, STRIP=106, TILT=-0.33, PERIOD=26000;
+  var dpr=Math.min(window.devicePixelRatio||1,2);
+  var stops=[[0,50,14,88],[.35,96,48,140],[.65,150,104,180],[.88,204,160,208],[1,226,185,223]], LUT=new Uint8Array(768);
+  for(var i=0;i<256;i++){ var t=i/255,k=0; while(k<stops.length-2&&t>stops[k+1][0]) k++; var a=stops[k],b=stops[k+1],u=(t-a[0])/(b[0]-a[0]); for(var c=0;c<3;c++) LUT[i*3+c]=a[c+1]+(b[c+1]-a[c+1])*u; }
+  var L=[-0.55,-0.42,0.72], ca=Math.cos(TILT), sa=Math.sin(TILT);
+  function build(cv,wCss){
+    var w=Math.round(wCss*dpr), h=Math.round(2*R*dpr); cv.width=w; cv.height=h;
+    var ctx=cv.getContext('2d'), img=ctx.createImageData(w,h), n=w*h;
+    var g={ctx:ctx,img:img,n:n,lat:new Float32Array(n),lon:new Float32Array(n),sh:new Float32Array(n),rim:new Float32Array(n),di:new Float32Array(n)};
+    for(var y=0;y<h;y++) for(var x=0;x<w;x++){
+      var i=y*w+x, nx=((x+.5)/dpr-R)/R, ny=((y+.5)/dpr-R)/R, d=Math.sqrt(nx*nx+ny*ny);
+      var al=Math.max(0,Math.min(1,(1-d)*R*dpr)); img.data[i*4+3]=al*255; if(!al) continue;
+      if(d>1){ nx/=d; ny/=d; } var nz=Math.sqrt(Math.max(0,1-nx*nx-ny*ny));
+      var xr=nx*ca-ny*sa, yr=nx*sa+ny*ca;
+      g.lat[i]=Math.asin(Math.max(-1,Math.min(1,yr))); g.lon[i]=Math.atan2(xr,nz);
+      var df=Math.max(0,nx*L[0]+ny*L[1]+nz*L[2]);
+      g.sh[i]=.3+.78*Math.pow(df,.9); g.rim[i]=Math.pow(1-nz,3)*.35*Math.min(1,df*2.2); g.di[i]=(Math.random()-.5)*5;
+    }
+    return g;
+  }
+  function draw(g,rot){
+    var d=g.img.data, lat=g.lat, lon=g.lon, sh=g.sh, rim=g.rim, di=g.di;
+    for(var i=0,n=g.n;i<n;i++){
+      var p=i*4; if(!d[p+3]) continue;
+      var la=lat[i], lo=lon[i]+rot;
+      var v=la*2.3+.5*Math.sin(lo*2+la*2)+.28*Math.sin(lo*3-la*3+1.7);
+      var q=((.5+.5*Math.sin(v*1.25))*255|0)*3, s=sh[i], f=rim[i], m=s*(1-f), e=di[i];
+      d[p]=LUT[q]*m+238*f+e; d[p+1]=LUT[q+1]*m+205*f+e; d[p+2]=LUT[q+2]*m+240*f+e;
+    }
+    g.ctx.putImageData(g.img,0,0);
+  }
+  var gFull=null,gSpin=null,raf=0,last=0,inView=false;
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function shown(){ return cFull.getClientRects().length>0; }
+  function init(){ if(gFull||!shown()) return; gFull=build(cFull,2*R); draw(gFull,0); if(!still) gSpin=build(cSpin,STRIP); }
+  function tick(ts){
+    raf=0; if(!inView||!shown()||!gSpin) return;
+    if(ts-last>30){ last=ts; draw(gSpin,-(ts%PERIOD)/PERIOD*6.28318); }
+    raf=requestAnimationFrame(tick);
+  }
+  function wake(){ init(); if(!raf&&inView&&gSpin) raf=requestAnimationFrame(tick); }
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ inView=es[0].isIntersecting; if(inView) wake(); },{rootMargin:'200px'}).observe(ov); }
+  else { inView=true; wake(); }
+  window.addEventListener('resize',wake); window.addEventListener('hashchange',function(){ setTimeout(wake,80); });
 })();
 </script>
 </body>
