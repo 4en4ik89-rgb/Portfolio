@@ -1872,7 +1872,7 @@ layout();})();</script></section>
     ins.sort(function(a,b){ var x=a.getBoundingClientRect(), y=b.getBoundingClientRect(); return (x.top-y.top)||(x.left-y.left); });
     ins.forEach(function(c,i){ io.unobserve(c); peek(c, 900+i*160); });
   },{threshold:.6});
-  document.querySelectorAll('.dx-ph__st').forEach(function(c){ io.observe(c); });
+  var first=document.querySelector('.dx-ph__st'); if(first) io.observe(first);
 })();
 </script>
 </body>
