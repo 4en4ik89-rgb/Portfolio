@@ -7,7 +7,7 @@
 @keyframes rvUp{from{opacity:0;translate:0 34px}to{opacity:1;translate:0 0}}
 .rv:not(.rv-done){opacity:0}
 .rv-go{animation:rvUp .95s cubic-bezier(.22,.61,.36,1) var(--rd,0ms) backwards}
-.dx-ov{position:relative;isolation:isolate;margin:72px 0 104px;--r:168px;--s:106px;--cx:calc(50% + var(--s) / 2 + 62px);--cy:calc(50% - 32px)}
+.dx-ov{position:relative;isolation:isolate;margin:72px 0 40px;--r:168px;--s:106px;--cx:calc(50% + var(--s) / 2 + 62px);--cy:calc(50% - 32px)}
 .dx-ov p{margin:0;position:relative;z-index:6}
 .dx-ov__list{list-style:none;margin:0;padding:0;display:grid;grid-auto-rows:88px}
 .dx-ov__row{display:grid;grid-template-columns:minmax(0,1fr) var(--s) minmax(0,1fr);align-items:start}
@@ -445,9 +445,6 @@ img[src$="rocken-logo.svg"],img[src$="asalart-logo.png"],img[src$="rocken-wordma
 .dx-ls__x svg{width:12px;height:12px}
 .dx-ls__d{font-size:15px;line-height:1.5;color:var(--ink-2)}
 .dx-ls__l{flex:1;border-radius:15px;background:var(--s-peach);padding:16px 18px 18px;font-size:16px;line-height:1.45;color:var(--ink);transition:background-color .45s}
-.dx-cascade{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 38px}
-.dx-cascade li{position:relative;padding:8px 16px;border-radius:999px;background:var(--panel);font-size:15px;color:var(--ink);transition:background-color .45s}
-.dx-cascade li:not(:last-child)::after{content:"\2192";position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-52%);color:var(--muted)}
 .dx-more{display:flex;flex-direction:column;gap:10px}
 .dx-more__link{font-size:22px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--tint-12);align-self:flex-start;padding-bottom:4px;transition:border-color .2s}
 .dx-more__link:hover{border-color:var(--ink)}
@@ -1246,12 +1243,10 @@ layout();})();</script></section>
   <hr class="rule" id="dx-teams">
   <div class="tab__section">
     <h2 class="tab__h">Teams and what they answered for</h2>
-    <p class="wr-note">Every team&#8217;s goals were tied to the results of the product teams, not to its own output</p>
     <div class="dx-ov">
       <div class="dx-ov__orb" aria-hidden="true"><i class="dx-ov__circ"></i><canvas class="dx-ov__pl"></canvas><i class="dx-ov__glow"></i><i class="dx-ov__noise"></i><canvas class="dx-ov__spin"></canvas><i class="dx-ov__glass"></i></div>
       <ul class="dx-ov__list"><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Product Design</p><p class="dx-ov__n">3 designers</p></div><p class="dx-ov__a">Share of product teams&#8217; initiatives that succeed</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Research</p><p class="dx-ov__n">Lead + 5 researchers</p></div><p class="dx-ov__a">Hypotheses built on research that brought value</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Writing</p><p class="dx-ov__n">Lead + 3 writers</p></div><p class="dx-ov__a">Fast delivery, minimal developer time, consistent language</p></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Web &amp; Marketing Design</p><p class="dx-ov__n">Lead + 3 designers</p></div><p class="dx-ov__a">Conversion and time to market</p></li></ul>
     </div>
-    <ol class="dx-cascade" aria-label="Goal cascade"><li>Company goals</li><li>Department goals</li><li>Leads&#8217; initiatives</li><li>Roadmaps</li></ol>
   </div>
 
   <hr class="rule" id="dx-leading">
