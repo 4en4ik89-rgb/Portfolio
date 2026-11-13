@@ -16,7 +16,7 @@
 .dx-ov__team::after{content:"";position:absolute;z-index:5;top:12px;right:calc(var(--e) - var(--s));width:calc(110px + var(--s) - var(--e));height:1px;background:var(--tint-12)}
 .dx-ov__t{font-size:18px;line-height:24px;color:var(--ink)}
 .dx-ov__n{margin-top:2px!important;font-size:14px;line-height:20px;color:var(--muted)}
-.dx-ov__a{grid-column:3;display:flex;align-items:center;gap:24px;max-width:450px;padding-left:30px;font-size:17px;line-height:24px;color:var(--ink)}
+.dx-ov__a{grid-column:3;display:flex;align-items:flex-start;gap:22px;max-width:450px;padding-left:30px;font-size:17px;line-height:24px;color:var(--ink)}
 .dx-ov__orb{position:absolute;inset:0;pointer-events:none}
 .dx-ov__orb i{position:absolute;display:block}
 .dx-ov__circ{z-index:1;top:calc(var(--cy) - var(--r));left:calc(var(--cx) - var(--r));width:calc(var(--r) * 2);height:calc(var(--r) * 2);border-radius:50%;background:#371058;transform:scale(.97)}
@@ -38,12 +38,18 @@
 }
 @media (max-width:560px){.dx-ov__row{grid-template-columns:minmax(0,1fr);gap:8px}.dx-ov__a{grid-column:1}}
 #view-develux .rule{border-top-color:transparent}
-.dx-ov__i{flex:none;position:relative;z-index:6;width:28px;height:28px;color:#8A55B4}
-.dx-ov__i *{vector-effect:non-scaling-stroke}
 
 
-:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ov__i,:root[data-site-theme="dark"] .dx-ov__i{color:#C79BDF}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ov__i{color:#C79BDF}}
+.dx-ov__b{flex:none;position:relative;z-index:6;width:20px;height:20px;margin-top:2px}
+.dx-ov__b::before,.dx-ov__b::after{content:"";position:absolute;border-radius:50%}
+.dx-ov__b::before{inset:0;background:rgba(150,108,185,.32);animation:dxPulse 3.2s ease-in-out infinite;animation-delay:var(--bd,0s)}
+.dx-ov__b::after{left:7px;top:7px;width:6px;height:6px;background:#7A4AA0}
+.dx-ov__row:nth-child(2) .dx-ov__b{--bd:-.8s}.dx-ov__row:nth-child(3) .dx-ov__b{--bd:-1.6s}.dx-ov__row:nth-child(4) .dx-ov__b{--bd:-2.4s}
+@keyframes dxPulse{0%,100%{transform:scale(.82);opacity:.75}50%{transform:scale(1.12);opacity:1}}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ov__b::before,:root[data-site-theme="dark"] .dx-ov__b::before{background:rgba(199,155,223,.24)}
+:root[data-theme="dark"]:not([data-site-theme="light"]) .dx-ov__b::after,:root[data-site-theme="dark"] .dx-ov__b::after{background:#C79BDF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ov__b::before{background:rgba(199,155,223,.24)}:root:not([data-theme="light"]):not([data-site-theme="light"]) .dx-ov__b::after{background:#C79BDF}}
+@media (prefers-reduced-motion:reduce){.dx-ov__b::before{animation:none}}
 </style>
 <title>Pavlo Chenchyk — Design Leader &amp; Product Founder</title><link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png"><link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta name="description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:type" content="website"><meta property="og:url" content="https://pavlochenchyk.github.io/"><meta property="og:title" content="Pavlo Chenchyk — Design Leader &amp; Product Founder"><meta property="og:description" content="Pavlo Chenchyk — design leader and product founder with 10+ years in product design. Led design and research teams of up to 17 people and launched products from scratch."><meta property="og:image" content="https://pavlochenchyk.github.io/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,700;1,400&display=swap"><style>
 /* Layout: inner pages = grey canvas with a fixed white column on the right (Tilda "Pavel Chen" portfolio); home = 50/50 split. */
@@ -1253,7 +1259,7 @@ layout();})();</script></section>
     <h2 class="tab__h">The UX ecosystem behind the product teams</h2>
     <div class="dx-ov">
       <div class="dx-ov__orb" aria-hidden="true"><i class="dx-ov__circ"></i><canvas class="dx-ov__pl"></canvas><i class="dx-ov__glow"></i><i class="dx-ov__noise"></i><canvas class="dx-ov__spin"></canvas><i class="dx-ov__glass"></i></div>
-      <ul class="dx-ov__list"><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Research</p><p class="dx-ov__n">Lead + 4 researchers</p></div><div class="dx-ov__a"><svg class="dx-ov__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M12 7.5v4.5M12 12l-5 4.5M12 12l5 4.5"/></svg><p>A shared insight hub, opportunity trees and tested hypotheses</p></div></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Product Design</p><p class="dx-ov__n">4 designers</p></div><div class="dx-ov__a"><svg class="dx-ov__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.2 8.2l4.3 4.3"/><rect x="12" y="12" width="9" height="9" rx="2"/></svg><p>Solution owners, connecting the business hypothesis to the final build</p></div></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Writing</p><p class="dx-ov__n">Lead + 3 writers</p></div><div class="dx-ov__a"><svg class="dx-ov__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5V5h11v2.5M8.5 5v14M6.5 19h4"/><path d="M13.5 12.5v-2h7.5v2M17.25 10.5V19M15.75 19h3"/></svg><p>One product language and ready copy, with fewer rounds with developers</p></div></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Web &amp; Marketing Design</p><p class="dx-ov__n">Lead + 3 designers</p></div><div class="dx-ov__a"><svg class="dx-ov__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="11" height="12" rx="1.5"/><path d="M6 9V7.5A1.5 1.5 0 0 1 7.5 6h8A1.5 1.5 0 0 1 17 7.5v10a1.5 1.5 0 0 1-1.5 1.5H14"/><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h8A1.5 1.5 0 0 1 20 4.5v10a1.5 1.5 0 0 1-1.5 1.5H17"/><path d="M6 13.5h5M6 17h3"/></svg><p>Fast template-based pages for SEO, designed to convert</p></div></li></ul>
+      <ul class="dx-ov__list"><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Research</p><p class="dx-ov__n">Lead + 4 researchers</p></div><div class="dx-ov__a"><span class="dx-ov__b" aria-hidden="true"></span><p>A shared insight hub, opportunity trees and tested hypotheses</p></div></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Product Design</p><p class="dx-ov__n">4 designers</p></div><div class="dx-ov__a"><span class="dx-ov__b" aria-hidden="true"></span><p>Solution owners, connecting the business hypothesis to the final build</p></div></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">UX Writing</p><p class="dx-ov__n">Lead + 3 writers</p></div><div class="dx-ov__a"><span class="dx-ov__b" aria-hidden="true"></span><p>One product language and ready copy, with fewer rounds with developers</p></div></li><li class="dx-ov__row"><div class="dx-ov__team"><p class="dx-ov__t">Web &amp; Marketing Design</p><p class="dx-ov__n">Lead + 3 designers</p></div><div class="dx-ov__a"><span class="dx-ov__b" aria-hidden="true"></span><p>Fast template-based pages for SEO, designed to convert</p></div></li></ul>
     </div>
   </div>
 
